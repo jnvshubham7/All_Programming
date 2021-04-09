@@ -4,6 +4,8 @@
 using namespaces std;
 int main()
 {
+     freopen("input.txt", "r", stdin);
+freopen("output.txt", "w", stdout);
     int i=4;
     double d=4.0;
     string s= "HackerRank";

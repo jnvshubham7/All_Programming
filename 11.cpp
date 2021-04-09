@@ -2,6 +2,8 @@
 using namespaces std;
 int main()
 {
+     freopen("input.txt", "r", stdin);
+freopen("output.txt", "w", stdout);
     for (x = 1; x < 11; x++) {
 
     if (x%2 == 0) {

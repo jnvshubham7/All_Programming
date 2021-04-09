@@ -1,6 +1,8 @@
 #include <iostream>
 int main()
 {
-    std::cout<< "shubham" ;
+     freopen("input.txt", "r", stdin);
+freopen("output.txt", "w", stdout);
+    std::cout<< "Shubham Kumar Bhokta" ;
     return 0;
 }
