@@ -1,2 +1,2 @@
-3
-7
+
+Sum of distances = 12 feet  1.6 inches
