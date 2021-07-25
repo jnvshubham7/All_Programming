@@ -1,1 +1,1 @@
-extracted();
+   int sum=0;
