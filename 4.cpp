@@ -2,8 +2,8 @@
 using namespace std;
 int main()
 {
-     freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
+//      freopen("input.txt", "r", stdin);
+// freopen("output.txt", "w", stdout);
 
     int num;
    // cout << "enter a integer number: ";
