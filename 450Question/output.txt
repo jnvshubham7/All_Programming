@@ -1,1 +1,2 @@
-5 1 88 8 44 
+Minimum element: 5
+Maximum element: 6422272
