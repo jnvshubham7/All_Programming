@@ -1,2 +1,1 @@
-Minimum element: 5
-Maximum element: 6422272
+s
