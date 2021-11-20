@@ -5,13 +5,14 @@ using namespace std;
 int main(){
     fileio;
 
-    int n, m, k;
-    cin >> n >> m >> k;
+  int a,b;
+    cin>>a>>b;
 
-   
+    while(a>0)
+    {
 
-    
-    
+        
+    }
 
 
     return 0;

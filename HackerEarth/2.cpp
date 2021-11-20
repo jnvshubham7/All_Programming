@@ -5,14 +5,7 @@ using namespace std;
 int main(){
     fileio;
 
-    int n, m, k;
-    cin >> n >> m >> k;
-
-   
-
     
-    
-
 
     return 0;
 }
