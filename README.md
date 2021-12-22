@@ -1,1 +1,3 @@
-# CPP_Programming
+# C++ Programming
+# Competetive Coding
+
