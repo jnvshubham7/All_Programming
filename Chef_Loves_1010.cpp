@@ -6,21 +6,34 @@ int main() {
 	cin>>n;
 	while(n--){
 	    int n;
+		int count=0,count1=0;
+
 	    cin>>n;
-	    int count = 0;
-	    string str;
-	    cin>>str;
-	    int a = 0, b = 0;
-	    for(int i=0; i<n; i++)
-	        if(str[i]=='1')
-	            a++;
-	        
-	        else
-	            b++;
-	        
-	    
-	        int sol = 0;
-	        sol = max(sol, min(a,b)-1);
-	        cout<<sol<<endl;
+		string s;
+		cin>>s;
+
+	    for(int i=0;i<n;i++){
+
+			if(s[i]=='0')
+				count++;
+			else
+				count1++;
+
+
+		}
+
+		if(n<4)
+		cout<<"0"<<endl;
+		else if(count>=2 && count1>=2)
+		{
+			if(count>count1)
+			cout<<(count1-1)<<endl;
+			else 
+			cout<<(count-1)<<endl;
+		}
+		else 
+		cout<<"0"<<endl;
 	    }
+
+		return 0;
 }
