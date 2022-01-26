@@ -1,10 +1,50 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define fileio freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout)
+class Solution {
+public:
+    int findLucky(vector<int>& arr) {
 
-int main(){
+        //sort the array
+        sort(arr.begin(),arr.end(), greater<int>());
 
-  int 
+        //store all elements in map and make pair of element and its frequency
+        unordered_map<int,int> m;
+        for(int i=0;i<arr.size();i++)
+        {
+            m[arr[i]]++;
+        }
 
-  return 0;
-}
+        //
+
+        //sort the map with respect to element first
+
+
+       // sort(m.begin(),m.end());
+
+
+
+        //check if element is equal to frequency
+        // for(auto it=m.begin();it!=m.end();it++)
+        // {
+        //     //sort map which is greater element
+        //     // if(it->second==it->first)
+        //     // {
+        //     //     return it->first;
+        //     // }
+
+
+
+        //     //also check element is maximum possible element
+        //     if(it->first>=it->second)
+        //     {
+        //         return it->first;
+        //     }
+        //     // if(it->second==it->first)
+        //     // {
+
+
+        //     //     return it->first;
+        //     // }
+        // }
+        return -1;
+        
+    }
+};
