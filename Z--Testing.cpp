@@ -1,50 +1,49 @@
-class Solution {
-public:
-    int findLucky(vector<int>& arr) {
+#include <bits/stdc++.h>
+using namespace std;
+// ll defin
+#define ll long long
 
-        //sort the array
-        sort(arr.begin(),arr.end(), greater<int>());
+#define fileio                                                                 \
+  freopen("input.txt", "r", stdin);                                            \
+  freopen("output.txt", "w", stdout)
 
-        //store all elements in map and make pair of element and its frequency
-        unordered_map<int,int> m;
-        for(int i=0;i<arr.size();i++)
-        {
-            m[arr[i]]++;
-        }
+int main() {
 
-        //
+  int t;
+  cin >> t;
+  while (t--) {
+    int n, x, y;
+    cin >> n >> x >> y;
+    int a[n];
+    int b[n];
 
-        //sort the map with respect to element first
-
-
-       // sort(m.begin(),m.end());
-
-
-
-        //check if element is equal to frequency
-        // for(auto it=m.begin();it!=m.end();it++)
-        // {
-        //     //sort map which is greater element
-        //     // if(it->second==it->first)
-        //     // {
-        //     //     return it->first;
-        //     // }
-
-
-
-        //     //also check element is maximum possible element
-        //     if(it->first>=it->second)
-        //     {
-        //         return it->first;
-        //     }
-        //     // if(it->second==it->first)
-        //     // {
-
-
-        //     //     return it->first;
-        //     // }
-        // }
-        return -1;
-        
+    // take input
+    for (int i = 0; i < n; i++) {
+      cin >> a[i];
     }
-};
+    for (int i = 0; i < n; i++) {
+      cin >> b[i];
+    }
+
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+      if (a[i] + x == b[i]  || a[i] + y == b[i]) {
+        count++;
+      }
+    }
+
+    // for (int i = 0; i < n; i++) {
+    //   if (a[i] + y == b[i]) {
+    //     count++;
+    //   }
+    // }
+
+    if (count == n) {
+      cout << "YES" << endl;
+    } else {
+      cout << "NO" << endl;
+    }
+  }
+
+  return 0;
+}
