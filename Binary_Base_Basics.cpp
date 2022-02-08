@@ -43,37 +43,82 @@ int flag=true;
         cout<<"YES"<<endl;
     }
 
-
-
-    //check every string create from flip 0 to 1 and 1 to 0 
+     //create two loop check every string create from flip 0 to 1 and 1 to 0 
     else{
         for(int i=0;i<s.length();i++){
-            string temp=s;
-            if(temp[i]=='0'){
-                temp[i]='1';
-            }
-            else{
-                temp[i]='0';
-            }
-            //check if temp is palindrome
-            if(temp==palindrome(temp)){
-                //check if we can do k-1 operation
-                if(k-1>=0){
+            for(int j=0;j<s.length();j++){
+                string temp=s;
+                temp[i]=s[j];
+                temp[j]=s[i];
+                if(palindrome(temp)==rev){
                     cout<<"YES"<<endl;
                     flag=false;
                     break;
                 }
-                else{
-                    cout<<"NO"<<endl;
-                    flag=false;
-                    break;
-                }
+            }
+            if(flag==false){
+                break;
             }
         }
-        if(flag){
+        if(flag==true){
             cout<<"NO"<<endl;
         }
+
     }
+    // else{
+    //     for(int i=0;i<s.length();i++){
+    //         for(int j=0;j<s.length();j++){
+    //             string temp=s;
+    //             temp[i]=s[j];
+    //             temp[j]=s[i];
+    //             if(temp==palindrome(temp)){
+    //                 flag=false;
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     if(flag){
+    //         cout<<"NO"<<endl;
+    //     }
+    //     else{
+    //         cout<<"YES"<<endl;
+    //     }
+    // }
+
+
+
+
+
+
+    //check every string create from flip 0 to 1 and 1 to 0 
+    // else{
+    //     for(int i=0;i<s.length();i++){
+    //         string temp=s;
+    //         if(temp[i]=='0'){
+    //             temp[i]='1';
+    //         }
+    //         else{
+    //             temp[i]='0';
+    //         }
+    //         //check if temp is palindrome
+    //         if(temp==palindrome(temp)){
+    //             //check if we can do k-1 operation
+    //             if(k-1>=0){
+    //                 cout<<"YES"<<endl;
+    //                 flag=false;
+    //                 break;
+    //             }
+    //             else{
+    //                 cout<<"NO"<<endl;
+    //                 flag=false;
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     if(flag){
+    //         cout<<"NO"<<endl;
+    //     }
+    // }
 
     //if k>=1 and string is not palindrome then check if we can make it palindrome by doing k number of operation
     // else if(k>=1 && s!=rev){

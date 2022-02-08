@@ -1,210 +1,60 @@
-//  vector<int> printCousins(Node* root, Node* node_to_find)
-//     {
+int minSwaps(vector<int>&nums){
 
 
+	int n = nums.size();
+	vector<int> count(n, 0);
+	for (int i = 0; i < n; i++) {
+		count[i] = i;
+	}
+	for (int i = 0; i < n; i++) {
+		if (nums[i] != i + 1) {
+			int j = nums[i] - 1;
+			swap(count[i], count[j]);
+		}
+	}
+	int res = 0;
+	for (int i = 0; i < n; i++) {
+		if (count[i] != i) {
+			res++;
+		}
+	}
+	return res;
+
+	//Find the minimum number of swaps required to sort the array in strictly increasing order.
+	//If the array is already sorted, return 0.
+
+	//Example 1:
+	//Input: [3,1,2]
+
+	//Output: 2
+
+	//Explanation:
+	//Swap the two elements with values 3 and 1.
+
+	//Example 2:
+	//Input: [2,3,4,1]
 
 
+	//Output: 3
 
+	//use binary search
+	//swap first with most greater element
+	//swap second with most greater element in the rest of the array
 
+	// int n = nums.size();
+	// int i = 0;
+	// int j = n-1;
+	// int count = 0;
+	// while(i<j){
+	// 	if(nums[i]<=nums[j]){
+	// 		i++;
+	// 	}
+	// 	else{
+	// 		count++;
+	// 		j--;
+	// 	}
+	// }
+	// return count;
 
-
-// vector<int> printCousins(Node* root, Node* node_to_find)
-//     {
-//        //level
-//        //O(N)
-       
-//        queue<Node*>q;
-//        q.push(root);
-//        bool marker = true;
-//        while(!q.empty() && marker)
-//        {
-//            int n = q.size();
-           
-//            for(int i=0;i<n;i++)
-//            {
-//                Node* node = q.front();
-//                q.pop();
-//                if(node->left==node_to_find || node->right ==node_to_find)
-//                marker = false;
-//                else
-//                { //push the children
-//                if(node->left)q.push(node->left);
-//                if(node->right)q.push(node->right);
-//                }
-//            }
-//        }
-       
-//        if(q.empty())return {-1};
-//        else
-//        {
-//             vector<int>ans;
-//             while(!q.empty())
-//             {
-//                 ans.push_back(q.front()->data);
-//                 q.pop();
-//             }
-            
-//             return ans;
-//        }
-
-//     }
-
-
-
-
-
-
-
-
-
-
-//         // vector<int> ans;
-//         // if(root==NULL)
-//         //     return ans;
-//         // queue<Node*> q;
-
-//         // q.push(root);
-//         // q.push(NULL);
-//         // while(!q.empty())
-//         // {
-//         //     Node* temp = q.front();
-//         //     q.pop();
-//         //     if(temp==NULL)
-//         //     {
-//         //         if(q.size()==1)
-//         //             break;
-//         //         q.push(NULL);
-//         //         continue;
-//         //     }
-//         //     if(temp->left!=NULL)
-//         //         q.push(temp->left);
-//         //     if(temp->right!=NULL)
-//         //         q.push(temp->right);
-//         // }
-//         // while(!q.empty())
-//         // {
-//         //     Node* temp = q.front();
-//         //     q.pop();
-//         //     if(temp==NULL)
-//         //         continue;
-//         //     if(temp->data==node_to_find->data)
-//         //     {
-//         //         if(temp->left!=NULL)
-//         //             ans.push_back(temp->left->data);
-//         //         if(temp->right!=NULL)
-//         //             ans.push_back(temp->right->data);
-//         //     }
-//         // }
-//         // return ans;
-
-
-        
-
-
-
-
-
-//         //code here
-//     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- string reverseWords(string S) 
-    { 
-
-
-       // function 
-        reverse (S) {
-    S = word.split('.').reverse().join('.');
-    
-    return S;
 
 }
-// word = 'i.like.this.program.very.much'
-// word = 'pqr.mno'
-// console.log(reverse(word))
-
-
-        //reverse the whole string not char 
-        //store the word in vector which . is provided by the user
-        //reverse the word and store it in the vector
-        //convert the vector to string
-        //return the string
-//assume . is the space
-//then store all words in vector
-//reverse the words and store it in the vector
-//convert the vector to string
-//return the string
-        // vector<string> v;
-        // stringstream ss(S);
-        // string temp;
-        // while(ss>>temp)
-        // {
-        //     v.push_back(temp);
-        // }
-        // for(int i=0;i<v.size();i++)
-        // {
-        //     reverse(v[i].begin(),v[i].end());
-        // }
-
-
-
-
-
-
-
-
-
-
-
-        // string ans;
-        // vector<string> v;
-        // stringstream ss(S);
-        // string temp;
-        // while(ss>>temp)
-        // {
-        //     v.push_back(temp);
-        // }
-        // for(int i=v.size()-1;i>=0;i--)
-        // {
-        //     ans+=v[i];
-        //     if(i!=0)
-        //     ans+=" ";
-        // }   
-        // return ans;
-
-
-
-
-
-
-        //reverse each word
-
-        // code here 
-    } 
-
-
-
-
-
-
-
-
-
-
-
-
-
