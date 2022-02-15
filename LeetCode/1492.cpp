@@ -1,13 +1,14 @@
- int kThSmallestFactor(int N , int K) {
-
-
+class Solution {
+public:
+    int kthFactor(int N, int K) {
+        
      //all factors of N is stored in vector
         vector<int> factors;
-        for(int i=1;i*i<=N;i++){
+        for(int i=1;i<=N;i++){
             if(N%i==0){
                 factors.push_back(i);
-                if(i!=N/i)
-                    factors.push_back(N/i);
+                // if(i!=N/i)
+                //     factors.push_back(N/i);
             }
         }
         //sort the vector
@@ -21,7 +22,6 @@
         {
             return factors[K-1];
         }
-       
-
-        // code here
+        
     }
+};
