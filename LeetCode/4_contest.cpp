@@ -1,106 +1,72 @@
-int remAnagram(string str1, string str2)
+
+        vector <int> search(string pat, string txt)
+        {
+
+
+            //store txt in unordered_map with index 
+            unordered_map<char, vector<int>> m;
+            for (int i = 0; i < txt.size(); i++)
+            {
+                m[txt[i]].push_back(i);
+            }
+
+            //check if pat is present in txt then return index of first char of every occurence
+            vector<int> ans;
+            for (int i = 0; i < pat.size(); i++)
+            {
+                if (m.find(pat[i]) != m.end())
+                {
+                    for (int j = 0; j < m[pat[i]].size(); j++)
+                    {
+
+                        //check if pat is present in txt
+                        if (txt.substr(m[pat[i]][j], pat.size()) == pat)
+                        {
+                            ans.push_back(m[pat[i]][j]+1);
+                        }
 
 
 
-{
-
-    //both string will make anagram if they have same characters 
-    //remove the characters from str1 and str2 and check if they are anagrams
-    //count removals and return it
-    int count=0;
-    int len1=str1.length();
-    int len2=str2.length();
-    int len=len1+len2;
-    int arr[26]={0};
-    for(int i=0;i<len1;i++){
-        arr[str1[i]-'a']++;
-    }
-    for(int i=0;i<len2;i++){
-        arr[str2[i]-'a']--;
-    }
-    for(int i=0;i<26;i++){
-        count+=abs(arr[i]);
-    }
-    return count;
-    
-
-//sort both with laxicographical order
-// sort(str1.begin(),str1.end());
-// sort(str2.begin(),str2.end());
-
-// //return both string 
-// return str1;
+                        // if (i == 0)
+                        // {
+                        //     ans.push_back(m[pat[i]][j]);
+                        // }
+                        // else
+                        // {
+                        //     if (m[pat[i]][j] - m[pat[i - 1]][j] == 1)
+                        //     {
+                        //         ans.push_back(m[pat[i]][j]);
+                        //     }
+                        // }
+                    }
+                    
+                }
+                break;
+            }
+            return ans;
+           
 
 
-
-
-
-
-
-
-
-
-
-
+            // vector <int> res;
+            // int m = pat.size();
+            // int n = txt.size();
+            // int i = 0;
+            // int j = 0;
+            // while (i < n && j < m)
+            // {
+            //     if (txt[i] == pat[j])
+            //     {
+            //         i++;
+            //         j++;
+            //     }
+            //     else
+            //     {
+            //         i = i - j + 1;
+            //         j = 0;
+            //     }
+            // }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//   int size1=str1.size();
-//     int size2=str2.size();
-
-
-    // Given two strings S1 and S2 in lowercase, the task is to make them anagram. 
-    // The only allowed operation is to remove a character from any string. 
-    // Find the minimum number of characters to be deleted to make both the strings anagram. 
-    // Two strings are called anagram of each other if one of them can be converted into another by rearranging its letters.
-
-
-
-    
-   //find size of both
-
-   //run loop a to z then check this char is present in both same '
-    //if yes then remove this char from both string
-
-
-
-
-
-
-
-
-
-
-  
-
-    //sort both strings with laxicographic order
-    // sort(str1.begin(),str1.end());
-    // sort(str2.begin(),str2.end());
-    // //which char is not same in both strings remove it count++
-    // int count=0;
-    // for(int i=0;i<size1;i++){
-    //     if(str1[i]!=str2[i]){
-    //         count++;
-    //     }
-    // }
-    // return count;
-
-
-    //return differnce
-   // return size1-size2;
-// Your code goes here
-}
+            //code hee.
+        }
