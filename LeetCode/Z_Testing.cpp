@@ -17,6 +17,10 @@
         {
             return -1;
         }
+
+        //print factors
+        
+
         else
         {
             return factors[K-1];
