@@ -1,6 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define fileio freopen("input.txt", "r", stdin);freopen("output.txt", "w", stdout)
 
 class Solution {
     public:
@@ -24,11 +21,5 @@ class Solution {
         return stoi(n);
 
     }
+};
 
-// int main(){
-//   //  fileio;
-
-    
-
-//     return 0;
- };
