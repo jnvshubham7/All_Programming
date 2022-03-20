@@ -1,58 +1,24 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define ll long long
+#include <stdio.h>
+#include <string.h>
+ 
+union Data {
+   int i;
+   float f;
+   char str[20];
+};
+ 
+int main( ) {
 
-int main(){
+   union Data data;        
 
-int t;
-cin>>t;
-while(t--){
+   data.i = 10;
+   printf( "data.i : %d\n", data.i);
+   
+   data.f = 220.5;
+   printf( "data.f : %f\n", data.f);
+   
+   strcpy( data.str, "C Programming");
+   printf( "data.str : %s\n", data.str);
 
-  int n;
-  cin>>n;
-  int a[n];
-  for(int i=0;i<n;i++)
-  {
-    cin>>a[i];
-  }
-
-   //find the maximum element in the array
-  int max=a[0];
-  for(int i=1;i<n;i++)
-  {
-    if(a[i]>max)
-    {
-      max=a[i];
-    }
-  }
-  //find the minimum element in the array
-
-  int min=a[0];
-  for(int i=1;i<n;i++)
-  {
-    if(a[i]<min)
-    {
-      min=a[i];
-    }
-  }
-  //find the maximum difference between the maximum and minimum element
-  int diff=max-min;
-  for(int i=0;i<n;i++)
-  {
-    if(a[i]>min && a[i]<max)
-    {
-      if(a[i]-min>diff)
-      {
-        diff=a[i]-min;
-      }
-    }
-  }
-  cout<<diff<<endl;
-  
-  
-
-
-}
-
-  return 0;
+   return 0;
 }
