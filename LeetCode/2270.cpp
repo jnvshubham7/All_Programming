@@ -1,6 +1,53 @@
 class Solution {
 public:
     int waysToSplitArray(vector<int>& nums) {
+
+int count=0;
+
+long long int  right_sum=0;
+long long int  left_sum=0;
+
+for(int i=0;i<nums.size();i++)
+{
+    right_sum += nums[i];
+}
+
+
+for(int i=0;i<nums.size()-1;i++)
+{
+    left_sum += nums[i];
+
+    right_sum -= nums[i];
+
+    if(left_sum>=right_sum)
+    count++;
+
+}
+
+return count;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //         You are given a 0-indexed integer array nums of length n.
 
 // nums contains a valid split at index i if the following are true:
@@ -20,9 +67,9 @@ public:
 // Thus, the number of valid splits in nums is 2.
 
 
-vector<int> right;
-vector<int> left;
-int count=0;
+// vector<int> right;
+// vector<int> left;
+// int count=0;
 
 
 
@@ -32,24 +79,24 @@ int count=0;
 //then compare the sum of left and right vector
 
 
-for(int i = 0; i < nums.size(); i++){
-    //split at every index in two parts
-   // Split nums at index 0
+// for(int i = 0; i < nums.size(); i++){
+//     //split at every index in two parts
+//    // Split nums at index 0
 
 
-    int left_sum = 0;
-    int right_sum = 0;
-    for(int j = 0; j < i; j++){
-        left_sum += nums[j];
-    }
-    for(int j = i+1; j < nums.size(); j++){
-        right_sum += nums[j];
-    }
-    if(left_sum >= right_sum){
-        count++;
-    }
-}
-return count;
+//     int left_sum = 0;
+//     int right_sum = 0;
+//     for(int j = 0; j < i; j++){
+//         left_sum += nums[j];
+//     }
+//     for(int j = i+1; j < nums.size(); j++){
+//         right_sum += nums[j];
+//     }
+//     if(left_sum >= right_sum){
+//         count++;
+//     }
+// }
+// return count;
 
 
 
