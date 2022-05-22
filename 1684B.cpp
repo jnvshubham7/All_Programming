@@ -8,14 +8,23 @@ int t;
 cin>>t;
 while(t--){
 
+    ll a,b,c;
+    cin>>a>>b>>c;
+
+    ll x,y,z;
+
+//     x % y=a,
+// y % z=b,
+// z % x=c
+
+//find x,y,z
 
 
-    
 
 
-    
 
-    
+
+
 
 }
 
