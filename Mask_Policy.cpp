@@ -12,6 +12,10 @@ int main(){
         int c=a-b;
         cout<<min(c,b)<<endl;
     }
+    
+
+
+
 
     return 0;
 }

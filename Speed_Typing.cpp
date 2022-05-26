@@ -80,11 +80,11 @@ for(int i=0;i<t;i++){
     //check if both set are same or not
     if(s1_set!=s2_set){
        // cout<<"Case #"<<t-1<<": "<<ans<<endl;
-        cout<<"Case #"<<t<<": IMPOSSIBLE"<<endl;
+        cout<<"Case #"<<t+1<<": IMPOSSIBLE"<<endl;
     }
     else{
       //  cout<<"Case #"<<t+1<<": IMPOSSIBLE"<<endl;
-        cout<<"Case #"<<t-1<<": "<<ans<<endl;
+        cout<<"Case #"<<t+1<<": "<<ans<<endl;
     }
   
 

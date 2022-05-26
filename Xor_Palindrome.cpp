@@ -3,19 +3,19 @@ using namespace std;
 #define ll long long
 
 
-bool isPalindrome(string s)
-{
-    int n = s.length();
-    int i = 0, j = n - 1;
-    while (i < j)
-    {
-        if (s[i] != s[j])
-            return false;
-        i++;
-        j--;
-    }
-    return true;
-}
+// bool isPalindrome(string s)
+// {
+//     int n = s.length();
+//     int i = 0, j = n - 1;
+//     while (i < j)
+//     {
+//         if (s[i] != s[j])
+//             return false;
+//         i++;
+//         j--;
+//     }
+//     return true;
+// }
 
 int main(){
 
@@ -28,6 +28,19 @@ while(t--){
 
     string s;
     cin>>s;
+
+    int cnt=0;
+
+
+    for(int i=0;i<n/2;i++)
+    {
+
+        if(s[i]!=s[n-1-i])
+        cnt++;
+
+    }
+
+    cout<<cnt<<endl;
 
 //     you are given a binary string A of length N
 
@@ -48,12 +61,12 @@ while(t--){
 
 // Find the minimum number of operations required to convert the given string into a palindrome.
 
-if(isPalindrome(s))
-{
-    cout<<"0"<<endl;
-}
-else
-{
+// if(isPalindrome(s))
+// {
+//     cout<<"0"<<endl;
+// }
+// else
+// {
 
     //Find the minimum number of operations required to convert the given string into a palindrome
 
@@ -86,7 +99,7 @@ else
     // }
 
     // cout<<n-dp[n-1][n-1]<<endl;
-}
+
 }
     
 
