@@ -1,10 +1,10 @@
 {
 	"first template": {
 		"prefix": [
-			"c"
-		"#include"
-		"include",
+			"#",
+			"c",
 			"default"
+			
 		],
 		"body": [
 			"#include<bits/stdc++.h>",
