@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-        vector<vector<int>> ans;
+        
 
 // int dfs(vector<vector<int>>& grid, vector<int> x, int y, int n, int m)
 // {
@@ -20,6 +20,7 @@ public:
 
 //dfs function 
   
+vector<vector<int>> ans;
 
   void dfs(vector<vector<int>>& grid, int x, int y, int n, int m)
     {
