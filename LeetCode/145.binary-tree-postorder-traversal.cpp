@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=144 lang=cpp
+ * @lc app=leetcode id=145 lang=cpp
  *
- * [144] Binary Tree Preorder Traversal
+ * [145] Binary Tree Postorder Traversal
  */
 
 // @lc code=start
@@ -25,14 +25,15 @@ public:
         {
             return;
         }
-        ans.push_back(root->val);
         solve(root->left);
         solve(root->right);
+        ans.push_back(root->val);
     }
-
     
-    vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> postorderTraversal(TreeNode* root) {
+
         solve(root);
+
         return ans;
         
     }
@@ -68,9 +69,10 @@ public:
 //         if(root==NULL)
 //         return;
        
-//        cout<<root->val<<" ";
+      
 //         solve(root->left);
 //         solve(root->right);
+//          cout<<root->val<<" ";
         
 //     }
 
