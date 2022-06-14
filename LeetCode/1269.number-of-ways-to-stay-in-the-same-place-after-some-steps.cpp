@@ -1,7 +1,15 @@
+/*
+ * @lc app=leetcode id=1269 lang=cpp
+ *
+ * [1269] Number of Ways to Stay in the Same Place After Some Steps
+ */
+
+// @lc code=start
 class Solution {
 public:
-    int countOperations(int num1, int num2) {
-long long count=0;
+    int numWays(int steps, int arrLen) {
+
+        long long count=0;
 
       while(num1!=0 ){
         if(num1>=num2 ){
@@ -26,3 +34,5 @@ long long count=0;
         
     }
 };
+// @lc code=end
+
