@@ -1,9 +1,15 @@
+/*
+ * @lc app=leetcode id=35 lang=cpp
+ *
+ * [35] Search Insert Position
+ */
+
+// @lc code=start
 class Solution {
 public:
-    int search(vector<int>& nums, int target) {
+    int searchInsert(vector<int>& nums, int target) {
 
-        //use binary search to find the target
-        int left = 0;
+         int left = 0;
         int right = nums.size() - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -17,8 +23,9 @@ public:
                 right = mid - 1;
             }
         }
-        return -1;
-        
+        return left;
         
     }
 };
+// @lc code=end
+

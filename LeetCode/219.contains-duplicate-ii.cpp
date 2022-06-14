@@ -9,21 +9,24 @@ class Solution {
 public:
     bool containsNearbyDuplicate(vector<int>& nums, int k) {
 
-        unordered_map<int, int> mp;
+       unordered_map<int, int> map;
+    for (int i = 0; i < nums.size(); i++) {
 
-       
-
-        for(int i = 0; i < nums.size(); i++) {
-
-            if(mp.find(nums[i]) != mp.end() && abs(i - mp[nums[i]]) <= k) {
-                return true;
-            }
-             mp[nums[i]]=i;
-
+      map[nums[i]]++;
+    }
+    // check if two element is same then check index of two element is less than
+    // k or not
+    for (int i = 0; i < nums.size(); i++) {
+      if (map[nums[i]] > 1) {
+        for (int j = i + 1; j < nums.size(); j++) {
+          if (nums[i] == nums[j] && abs(i - j) <= k) {
+            return true;
+          }
         }
+      }
+    }
 
-        return false;
-
+    return false;
 
 
 
