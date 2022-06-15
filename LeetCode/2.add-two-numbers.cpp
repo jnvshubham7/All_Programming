@@ -18,6 +18,24 @@
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+
+       if(l1==NULL && l2==NULL)
+       return NULL;
+       if(l1==NULL)
+       return l2;
+       if(l2==NULL)
+       return l1;
+
+       int sum=l1->val+l2->val;
+
+       
+
+       ListNode* l3=new ListNode(sum%10);
+       l3->next=addTwoNumbers(l1->next,l2->next);
+
+       
+
+       return l3;
         
     }
 };

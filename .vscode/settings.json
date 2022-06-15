@@ -1,1 +1,8 @@
-{}
+{
+    "editor.renderWhitespace": "selection",
+    "search.mode": "view",
+    "editor.find.seedSearchStringFromSelection": "always",
+    "search.quickOpen.history.filterSortOrder": "default",
+    "search.searchEditor.doubleClickBehaviour": "goToLocation",
+    "search.useReplacePreview": true
+}
