@@ -19,21 +19,25 @@ public:
         }
 
         int sum=0;
-        for(auto i:mp)
+        
+        for(auto x:mp)
         {
-            if(mp[i].second%2==0)
-            {
-                sum+=mp[i].second;
-            }
-
-            else if(mp[i].second%2!=0)
-            {
-                sum+=mp[i].second;
-                sum+=1;
-            }
+            
+            if(x.second%2==0)
+            sum+=x.second;
+            else 
+            sum+=(x.second-1);
         }
 
+        if(mp.size()==1)
+        return s.size();
+
+      else   if(s.size()==sum)
         return sum;
+    
+        else 
+        return sum+1;
+
         
     }
 };
