@@ -8,6 +8,17 @@
 class Solution {
 public:
     string minWindow(string s, string t) {
+
+        int n=s.size();
+        int m=t.size();
+
+        if(n>m)
+        return "";
+
+        if(n==m)
+        return s;
+
+        
         
     }
 };
