@@ -32,8 +32,40 @@ public:
 
     
     vector<int> preorderTraversal(TreeNode* root) {
-        solve(root);
-        return ans;
+
+        vector<int> v;
+        if(root==NULL)
+        return v;
+
+        stack<TreeNode*> st;
+        st.push(root);
+        while(!st.empty())
+        {
+            TreeNode* curr=st.top();
+            st.pop();
+
+            v.push_back(curr->val);
+             if(curr->right)
+            {
+                st.push(curr->right);
+            }
+            if(curr->left)
+            {
+                st.push(curr->left);
+
+            }
+           
+
+        }
+        
+
+        return v;
+
+
+
+
+        // solve(root);
+        // return ans;
         
     }
 };
@@ -89,7 +121,42 @@ int main(){
     root->right = new TreeNode(2);
     root->right->left = new TreeNode(3);
 
-   solve(root);
+     vector<int> v;
+     stack<TreeNode*> st;
+        //if(root==NULL)
+        //return v;
+
+        
+        st.push(root);
+        //print st
+       
+           
+
+        while(!st.empty())
+        {
+            
+            TreeNode* curr=st.top();
+            st.pop();
+
+            
+
+            v.push_back(curr->val);
+             if(curr->right)
+            {
+                st.push(curr->right);
+            }
+            if(curr->left)
+            {
+                st.push(curr->left);
+
+            }
+           
+
+        }
+
+       // return v;
+
+  // solve(root);
 
     return 0;
 }

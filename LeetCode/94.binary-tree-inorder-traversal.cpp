@@ -34,9 +34,41 @@ vector<int> ans;
     
     vector<int> inorderTraversal(TreeNode* root) {
 
-        solve(root);
+        vector<int> v;
 
-        return ans;
+        if(root==NULL)
+        return v;
+
+        stack<TreeNode*> st;
+
+         TreeNode* curr=root;
+         
+
+         while(true)
+         {
+            if(curr != NULL)
+            {
+                st.push(curr);
+                curr=curr->left;
+            }
+            else {
+                if(st.empty())
+                break;
+
+                curr=st.top();
+                st.pop();
+
+                v.push_back(curr->val);
+                curr=curr->right;
+            }
+         }
+
+         return v;
+
+
+       // solve(root);
+
+       // return ans;
         
     }
 };

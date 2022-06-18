@@ -18,30 +18,45 @@
  */
 class Solution {
 public:
-   
-int height(TreeNode* root){
+
+// int height(TreeNode* root)
+// {
+//     if(root==NULL)
+//     return 0;
+
+//     int l=height(root->left);
+//     int r=height(root->right);
+
+//     return 1+max(l,r);
+// }
+
+int diameter=0;
+int solve(TreeNode* root)
+{
     if(root==NULL)
-        return 0;
-    return 1+max(height(root->left),height(root->right));
-}
-
-
-
-    int diameterOfBinaryTree(TreeNode* root) {
-
-if(root==NULL)
     return 0;
 
 
-int l=height(root->left);
-int r=height(root->right);
+
+    int left=solve(root->left);
+    int right=solve(root->right);
+    diameter=max(diameter,left+right);
+
+return 1+max(left,right);
 
 
-int ld=diameterOfBinaryTree(root->left);
-int rd=diameterOfBinaryTree(root->right);   
+    
+    
+
+}
+
+ int diameterOfBinaryTree(TreeNode* root) {
+
+   solve(root);
+
+   return diameter;
 
 
-return max(l+r,max(ld,rd));
     }
 
 };

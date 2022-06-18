@@ -22,52 +22,36 @@ public:
 int height(TreeNode* root)
 {
     if(root==NULL)
-    {
-        return 0;
-    }
-    return 1+max(height(root->left),height(root->right));
+    return 0;
+    int l=height(root->left);
+    int r=height(root->right);
+
+    return 1+max(l,r);
+
 }
 
 bool dfs(TreeNode* root)
 {
     if(root==NULL)
-    {
-        return true;
-    }
-
-    bool left=dfs(root->left);
-    bool right=dfs(root->right);
-
-    //check height which is not more than 1
-    if(abs(height(root->left)-height(root->right))>1)
-    {
-        return false;
-    }
-
-    return left&&right;
+    return true;
 
 
+    int l_height=height(root->left);
+    int r_height=height(root->right);
 
+    if(abs(l_height-r_height)>1)
+    return false;
 
+    bool l=dfs(root->left);
+    bool r=dfs(root->right);
+
+    if(!l || !r)
+    return false;
+
+    return true;
 
 
 
-   
-//     if(root==NULL)
-//     return true;
-
-//    if(root->left!=NULL && root->right)
-//         {
-//             return true;
-//         }
-
-//     if(root->left)
-//     dfs(root->left,level+1);
-
-//     if(root->right)
-//     dfs(root->right,level+1);
-
-//     return false;
 
 }
 
@@ -75,20 +59,6 @@ bool dfs(TreeNode* root)
     bool isBalanced(TreeNode* root) {
 
         return dfs(root);
-
-
-        // if(root==NULL)
-        // return true;
-
-        // if(root->left!=NULL && root->right)
-        // {
-        //     return true;
-        // }
-
-        // return false;
-
-        
-
 
         
     }
