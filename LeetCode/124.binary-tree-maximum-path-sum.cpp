@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=100 lang=cpp
+ * @lc app=leetcode id=124 lang=cpp
  *
- * [100] Same Tree
+ * [124] Binary Tree Maximum Path Sum
  */
 
 // @lc code=start
@@ -18,24 +18,27 @@
  */
 class Solution {
 public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {
+int ans=INT_MIN;
+int solve(TreeNode* root)
+{
+    if(root==NULL)
+    return 0;
 
-        if(p==NULL && q==NULL)
-        return true;
+    int left=max(0,solve(root->left));
+    int right=max(0,solve(root->right));
+   
 
-        if(p==NULL || q==NULL)
-        return false;
+    ans=max(ans,left+right+root->val);
 
-      
-      if(p->val!=q->val)
-      return false;
-      bool left=isSameTree(p->left,q->left);
-      bool right=isSameTree(p->right,q->right);
+    return root->val+max(left,right);
+}
 
-      if(!left || !right)
-      return false;
+    int maxPathSum(TreeNode* root) {
 
-      return true;
+        solve(root);
+
+        return ans;
+        
     }
 };
 // @lc code=end
