@@ -2,8 +2,10 @@
 	"first template": {
 		"prefix": [
 			"#",
-			"c",
+			"1",
 			"default"
+			,
+			"s"
 			
 		],
 		"body": [
@@ -68,16 +70,20 @@
 			"int main(){",
 			//"\tfileio;",
 			"",
-			"int t;",
-			"cin>>t;",
-			"while(t--){",
+			// "int t;",
+			// "cin>>t;",
+			// "while(t--){",
 			"",
 			"\t$0",
 			"",
-			"}",
+			//"}",
 			"",
 			"\treturn 0;",
 			"}"
 		]
 	},
+
+	
 }
+
+
