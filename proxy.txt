@@ -1,3 +1,0 @@
-http://IIT2020007:Shubham%4012@172.31.2.3:8080
-"http.proxy": "http://172.31.2.3:8080",
-    "http.proxyStrictSSL": false,
