@@ -4,5 +4,8 @@
     "editor.find.seedSearchStringFromSelection": "always",
     "search.quickOpen.history.filterSortOrder": "default",
     "search.searchEditor.doubleClickBehaviour": "goToLocation",
-    "search.useReplacePreview": true
+    "search.useReplacePreview": true,
+    "clangd.detectExtensionConflicts": false,
+    "clangd.restartAfterCrash": false,
+    "clangd.serverCompletionRanking": false
 }

@@ -15,23 +15,31 @@ public:
         for(int i=0;i<s.size();i++){
             
                 s1.push_back(s[i]);
+                cout<<s[i]<<" ";
             
         }
+        cout<<endl;
         //store all characters in t in vector v2
         for(int i=0;i<t.size();i++){
           
                 s2.push_back(t[i]);
+                cout<<t[i]<<" ";
             
+
         }
+
+        cout<<endl;
         //sort s1 and s2
         sort(s1.begin(),s1.end());
         sort(s2.begin(),s2.end());
         //compare s1 and s2 
         for(int i=0;i<s1.size();i++){
             if(s1[i]!=s2[i]){
+                cout<<s1[i]<<" "<<s2[i]<<endl;
                 return s2[i];
             }
         }
+        cout<<s2[s2.size()-1]<<endl;
         return s2[s2.size()-1];
         
     }

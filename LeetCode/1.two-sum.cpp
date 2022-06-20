@@ -20,6 +20,7 @@ public:
 				{
 					v.push_back(i);
 					v.push_back(j);
+                    cout<<nums[i]<<" "<<nums[j]<<endl;
 					return v;
 				}
 			}
