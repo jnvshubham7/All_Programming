@@ -19,26 +19,39 @@
 class Solution {
 public:
     int widthOfBinaryTree(TreeNode* root) {
-
-         queue<pair<TreeNode*, int>> q;
-        q.push({root, 0});
-        long ans = 0;
-        while(!q.empty()){
-            int n = q.size();
-            long start = q.front().second;
-            long end = q.back().second;
-            ans = max(ans, end-start+1);
-            for(int i = 0; i < n; i++) {
-                pair<TreeNode*, int> p = q.front(); 
-                TreeNode* node = p.first;
-                long idx = p.second;
-                q.pop();
-                if(node->left) q.push({node->left, 2*idx+1});
-                if(node->right) q.push({node->right, 2*idx+2});
-            }
+    if (root == NULL)
+        return 0;
+    queue<pair<TreeNode *, long long int>> q;
+    q.push({root, 0});
+    int ans=0;
+    while (!q.empty())
+    {
+        int n = q.size();
+       // cout<<n<<" ";
+        int mn=q.front().second;
+       // cout<<mn<<" ";
+        //print q.first and q.second
+        int mx=q.back().second;
+       // cout<<mx<<" "<<endl;
+        //print all q.second 
+       
+       
+        int first,last;
+        for (int i = 0; i < n; i++)
+        {
+            TreeNode *temp=q.front().first;
+            long long int curr_min=q.front().second-mn;
+            cout<<curr_min<<" "<<endl;
+            q.pop();
+            if(i==0) first=curr_min;
+            if(i==n-1) last=curr_min;
+           // cout<<i<<" "<<first<<" "<<last<<" ";
+            if(temp->left) q.push({temp->left,curr_min*2+1});
+            if(temp->right) q.push({temp->right,curr_min*2+2});
         }
-        return ans;
-        
+        ans=max(ans,last-first+1);
+    }
+    return ans;
     }
 };
 // @lc code=end
