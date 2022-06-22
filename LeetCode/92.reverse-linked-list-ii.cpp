@@ -19,6 +19,40 @@ class Solution {
 public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
 
+
+        //use recursion 
+
+        
+
+        // ListNode* curr=head;
+        // ListNode* prev=head;
+
+        // stack<int> st;
+
+        // for(int i=0;i<left;i++)
+        // {
+        //     prev=curr;
+        //     curr=curr->next;
+            
+        // }
+
+        // for(int i=0;i<=right;i++)
+        // {
+        //     st.push(curr->val);
+        //     curr=curr->next;
+        // }
+
+        // for(int i=0;i<=right;i++)
+        // {
+        //     prev->val=st.top();
+        //     st.pop();
+        //     prev=prev->next;
+        // }
+
+        // return head;
+
+
+
         
     }
 };
