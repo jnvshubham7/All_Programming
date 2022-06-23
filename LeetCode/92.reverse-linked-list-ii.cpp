@@ -20,36 +20,68 @@ public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
 
 
-        //use recursion 
 
-        
+        ListNode* curr=head;
+        ListNode* prev=head;
 
-        // ListNode* curr=head;
-        // ListNode* prev=head;
+        //print val
 
-        // stack<int> st;
+        //print list node
+        cout<<"list node"<<endl;
 
-        // for(int i=0;i<left;i++)
-        // {
-        //     prev=curr;
-        //     curr=curr->next;
+        cout<<curr->val<<" ";
+        cout<<prev->val<<endl;
+
+
+        stack<int> st;
+
+        for(int i=0;i<left-1;i++)
+        {
+            //print "first loop "
+            cout<<"first loop "<<endl;
+            curr=curr->next;
+            prev=prev->next;
+
+            //print the values of the nodes
+            cout<<curr->val<<" ";
+            cout<<prev->val<<" "<<endl;
+        }
+
+        for(int i=0;i<(right-left+1);i++)
+        {
+
+            //print "second loop "
+            cout<<"second loop "<<endl;
+            st.push(curr->val);
+            curr=curr->next;
+
+           
+            //print the values of the stack
+            cout<<st.top()<<" ";
+
+             //print the values of the nodes
+            cout<<curr->val<<" "<<endl;
+
+
+        }
+
+        for(int i=0;i<(right-left+1);i++)
+        {
+
+            //print "third loop "
+            cout<<"third loop "<<endl;
+            prev->val=st.top();
+            cout<<st.top()<<" ";
             
-        // }
+            st.pop();
 
-        // for(int i=0;i<=right;i++)
-        // {
-        //     st.push(curr->val);
-        //     curr=curr->next;
-        // }
+            prev=prev->next;
+            cout<<prev->val<<" "<<endl;
 
-        // for(int i=0;i<=right;i++)
-        // {
-        //     prev->val=st.top();
-        //     st.pop();
-        //     prev=prev->next;
-        // }
+        }
 
-        // return head;
+        return head;
+
 
 
 
