@@ -1,3 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define vi vector<int>
+#define pii pair<int,int>
+#define rep(i,n) for(int i=0;i<n;i++)
+#define all(v) v.begin(),v.end()
+#define mem(a,b) memset(a,b,sizeof(a))
+#define MOD 1000000007
+#define pb push_back
+    
+
+
+
+   
 /*
  * @lc app=leetcode id=84 lang=cpp
  *
@@ -95,3 +110,16 @@ public:
 };
 // @lc code=end
 
+
+
+
+
+int main(){
+Solution s;
+
+    vector<int> heights={2,1,5,6,2,3};
+    cout<<s.largestRectangleArea(heights)<<endl;
+
+
+    return 0;
+}

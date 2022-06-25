@@ -4,6 +4,21 @@
  * [1] Two Sum
  */
 
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define vi vector<int>
+#define pii pair<int,int>
+#define fr(i,n) for(int i=0;i<n;i++)
+#define all(v) v.begin(),v.end()
+#define mem(a,b) memset(a,b,sizeof(a))
+#define MOD 1000000007
+#define pb push_back
+    
+
+
+
+
 // @lc code=start
 class Solution {
 public:
@@ -20,7 +35,7 @@ public:
 				{
 					v.push_back(i);
 					v.push_back(j);
-                    cout<<nums[i]<<" "<<nums[j]<<endl;
+                   // cout<<nums[i]<<" "<<nums[j]<<endl;
 					return v;
 				}
 			}
@@ -96,3 +111,26 @@ public:
 };
 // @lc code=end
 
+
+
+
+
+
+int main(){
+Solution s;
+
+   int a[]={2,7,11,15};
+    vector<int> v(a,a+4);
+
+    vi v1=s.twoSum(v,9);
+
+  fr(i,v1.size())
+  {
+        cout<<v1[i]<<" ";
+  }
+    
+
+
+
+    return 0;
+}

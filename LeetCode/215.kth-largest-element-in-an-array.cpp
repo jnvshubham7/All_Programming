@@ -4,6 +4,21 @@
  * [215] Kth Largest Element in an Array
  */
 
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define vi vector<int>
+#define pii pair<int,int>
+#define fr(i,n) for(int i=0;i<n;i++)
+#define all(v) v.begin(),v.end()
+#define mem(a,b) memset(a,b,sizeof(a))
+#define MOD 1000000007
+#define pb push_back
+    
+
+
+
+
 // @lc code=start
 class Solution {
 public:
@@ -42,3 +57,17 @@ public:
 };
 // @lc code=end
 
+
+
+
+
+int main(){
+Solution s;
+
+    vi nums = {3,2,3,1,2,4,5,5,6};
+    int k = 4;
+    cout<<s.findKthLargest(nums,k)<<endl;
+
+
+    return 0;
+}

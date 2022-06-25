@@ -4,6 +4,38 @@
  * [100] Same Tree
  */
 
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define vi vector<int>
+#define pii pair<int,int>
+#define fr(i,n) for(int i=0;i<n;i++)
+#define all(v) v.begin(),v.end()
+#define mem(a,b) memset(a,b,sizeof(a))
+#define MOD 1000000007
+#define pb push_back
+  
+  struct TreeNode {
+      int val;
+      TreeNode *left;
+      TreeNode *right;
+      TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+  
+  };
+
+// void print(TreeNode* root)
+// {
+//     if(root==NULL)
+//     {
+//        // cout<<"NULL"<<endl;
+//         return;
+//     }
+//     cout<<root->val<<" ";
+//     print(root->left);
+//     print(root->right);
+// }
+
+
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -40,3 +72,108 @@ public:
 };
 // @lc code=end
 
+
+
+
+
+
+int main(){
+Solution s;
+
+//take two array input then create tree from it
+ int n;
+ cin>>n;
+ int a[n],b[n];
+  fr(i,n){
+    cin>>a[i];
+  }
+  
+  
+  TreeNode* root=new TreeNode(a[0]);
+  TreeNode* temp=root;
+  fr(i,n){
+    if(i==0)
+    continue;
+    if(a[i]<temp->val){
+      if(temp->left==NULL){
+        temp->left=new TreeNode(a[i]);
+        temp=temp->left;
+      }
+      else{
+        temp=temp->left;
+        temp->left=new TreeNode(a[i]);
+        temp=temp->left;
+      }
+    }
+    else{
+      if(temp->right==NULL){
+        temp->right=new TreeNode(a[i]);
+        temp=temp->right;
+      }
+      else{
+        temp=temp->right;
+        temp->right=new TreeNode(a[i]);
+        temp=temp->right;
+      }
+    }
+  }
+
+  fr(i,n){
+    cin>>b[i];
+  }
+  TreeNode* root2=new TreeNode(b[0]);
+  TreeNode* temp2=root2;
+  fr(i,n){
+    if(i==0)
+    continue;
+    if(b[i]<temp2->val){
+      if(temp2->left==NULL){
+        temp2->left=new TreeNode(b[i]);
+        temp2=temp2->left;
+      }
+      else{
+        temp2=temp2->left;
+        temp2->left=new TreeNode(b[i]);
+        temp2=temp2->left;
+      }
+    }
+    else{
+      if(temp2->right==NULL){
+        temp2->right=new TreeNode(b[i]);
+        temp2=temp2->right;
+      }
+      else{
+        temp2=temp2->right;
+        temp2->right=new TreeNode(b[i]);
+        temp2=temp2->right;
+      }
+    }
+  }
+
+  cout<<s.isSameTree(root,root2);
+
+  //print val of tree
+  // print(root);
+  // cout<<endl;
+  // print(root2);
+  // cout<<endl;
+  
+
+
+
+  
+
+ 
+
+ 
+
+
+  //cout<<s.isSameTree(root,root2);
+
+
+
+
+  
+
+  return 0;
+}
