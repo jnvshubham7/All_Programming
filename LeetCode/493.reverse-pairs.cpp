@@ -1,17 +1,32 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define ll long long
-
-
 /*
  * @lc app=leetcode id=493 lang=cpp
  *
  * [493] Reverse Pairs
  */
 
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define vi vector<int>
+#define pii pair<int,int>
+#define fr(i,n) for(int i=0;i<n;i++)
+#define all(v) v.begin(),v.end()
+#define mem(a,b) memset(a,b,sizeof(a))
+#define MOD 1000000007
+#define pb push_back
+#define mp make_pair
+#define pii pair<int,int>
+#define vll vector<ll>
+#define vc vector<char>
+#define vs vector<string>
+    
+
+
+
+
 // @lc code=start
 class Solution {
-private:
+public:
     ll count;
    
     void checkCount(vector<ll>& nums, ll start, ll mid, ll end){
@@ -57,20 +72,27 @@ public:
 
 
 
+
+
 int main(){
+Solution s;
 
-
-    Solution s;
-   ll n;
+    int n;
     cin>>n;
-    vector<ll> nums(n);
-    for(ll i = 0; i < n; i++){
-        ll x;
-        cin>>x;
-        nums[i] = x;
 
+    int a[n];
+    fr(i,n){
+        cin>>a[i];
     }
+
+    vector<ll> nums;
+    fr(i,n){
+        nums.pb(a[i]);
+    }
+
     cout<<s.reversePairs(nums)<<endl;
+    
+
 
 
 

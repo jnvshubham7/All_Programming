@@ -4,6 +4,31 @@
  * [92] Reverse Linked List II
  */
 
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define vi vector<int>
+#define pii pair<int,int>
+#define fr(i,n) for(int i=0;i<n;i++)
+#define all(v) v.begin(),v.end()
+#define mem(a,b) memset(a,b,sizeof(a))
+#define MOD 1000000007
+#define pb push_back
+#define mp make_pair
+#define pii pair<int,int>
+#define vll vector<ll>
+#define vc vector<char>
+#define vs vector<string>
+    
+struct ListNode {
+    int val;
+    ListNode* next;
+    ListNode(int x) : val(x), next(NULL) {}
+
+};
+
+
+
 // @lc code=start
 /**
  * Definition for singly-linked list.
@@ -90,3 +115,44 @@ public:
 };
 // @lc code=end
 
+
+
+
+
+int main(){
+Solution s;
+
+    int n,left,right;
+    cin>>n>>left>>right;
+
+    int a[n];
+    fr(i,n)
+    {
+        cin>>a[i];
+    }
+
+    ListNode* head = new ListNode(a[0]);
+    ListNode* curr = head;
+    fr(i,n)
+    {
+        if(i!=0)
+        {
+            curr->next = new ListNode(a[i]);
+            curr = curr->next;
+        }
+    }
+    ListNode* ans = s.reverseBetween(head,left,right);
+    while(ans!=NULL)
+    {
+        cout<<ans->val<<" ";
+        ans=ans->next;
+    }
+    cout<<endl;
+    //cout<<s.reverseBetween(head,left,right)<<endl;
+
+
+
+
+
+    return 0;
+}
