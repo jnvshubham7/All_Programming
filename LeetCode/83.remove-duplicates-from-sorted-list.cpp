@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=19 lang=cpp
+ * @lc app=leetcode id=83 lang=cpp
  *
- * [19] Remove Nth Node From End of List
+ * [83] Remove Duplicates from Sorted List
  */
 
 #include<bits/stdc++.h>
@@ -20,13 +20,11 @@ using namespace std;
 #define vc vector<char>
 #define vs vector<string>
     
-
     struct ListNode {
         int val;
         ListNode* next;
         ListNode(int x) : val(x), next(NULL) {}
     };
-    
 
 
 
@@ -44,28 +42,36 @@ using namespace std;
  */
 class Solution {
 public:
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
+    ListNode* deleteDuplicates(ListNode* head) {
 
+        if(head==NULL) return head;
+
+        set <int> s;
         ListNode* temp=head;
-        int cnt=0;
         while(temp!=NULL){
-            cnt++;
+            s.insert(temp->val);
             temp=temp->next;
-        }
-        int k=cnt-n;
-        if(k==0){
-            head=head->next;
-            return head;
         }
         temp=head;
-        while(k>1){
-            temp=temp->next;
-            k--;
-        }
-        temp->next=temp->next->next;
-        return head;
 
-        
+        vector<int> v;
+        //push all the elements in the set into the vector
+        for(auto it:s){
+            v.push_back(it);
+        }
+
+
+       ListNode* head1=new ListNode(v[0]);
+         ListNode* temp1=head1;
+        for(int i=1;i<v.size();i++){
+            temp1->next=new ListNode(v[i]);
+            temp1=temp1->next;
+        }
+        return head1;
+
+
+
+
         
     }
 };
@@ -80,28 +86,33 @@ Solution s;
 
     int n;
     cin>>n;
+   vi v(n);
 
-    int a[n];
-    fr(i,n){
-        cin>>a[i];
+   fr(i,n)
+   {
+         cin>>v[i];
+   }
+   
+   ListNode* head= new ListNode(v[0]);
+    ListNode* temp=head;
+   
+    for(int i=1;i<n;i++)
+    {
+        temp->next=new ListNode(v[i]);
+        temp=temp->next;
     }
 
-    int k;
-    cin>>k;
-
-    ListNode* head = new ListNode(a[0]);
-    ListNode* cur = head;
-    fr(i,n-1){
-        cur->next = new ListNode(a[i+1]);
-        cur = cur->next;
-    }
-    cur->next = NULL;
-    ListNode* res = s.removeNthFromEnd(head,k);
-    while(res){
+    ListNode* res=s.deleteDuplicates(head);
+    while(res!=NULL)
+    {
         cout<<res->val<<" ";
-        res = res->next;
+        res=res->next;
     }
-    cout<<endl;
+
+
+
+
+
 
 
 

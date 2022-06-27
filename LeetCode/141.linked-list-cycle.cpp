@@ -40,20 +40,35 @@ struct ListNode {
  */
 class Solution {
 public:
-    bool hasCycle(ListNode *head) {
-        
-        if(head == NULL)
-           return false;
-         ListNode* slow = head;
-            ListNode* fast = head;
-            while(fast != NULL && fast->next != NULL){
-                slow = slow->next;
-                fast = fast->next->next;
-                if(slow == fast)
-                    return true;
+    int hasCycle(ListNode *head) {
 
-            }
+        int len=0;
+        ListNode* temp=head;
+        while(temp!=NULL){
+            len++;
+            temp=temp->next;
+        }
+
+        return len;
+
+        //check last node->next==NULL
+
+        temp=head;
+        for(int i=0;i<len-1;i++){
+            temp=temp->next;
+        }
+        if(temp->next==NULL){
             return false;
+        }
+
+
+       return true;;
+
+
+
+
+        
+       
         
     }
 };
@@ -89,13 +104,13 @@ Solution s;
 
     //print 
     
-    ListNode* temp = head;
-    while(temp != NULL)
-    {
-        cout<<temp->val<<" ";
-        temp = temp->next;
-    }
-    cout<<endl;
+    // ListNode* temp = head;
+    // while(temp != NULL)
+    // {
+    //     cout<<temp->val<<" ";
+    //     temp = temp->next;
+    // }
+    // cout<<endl;
     
     
    
@@ -117,3 +132,44 @@ Solution s;
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  if(head == NULL)
+//            return false;
+//          ListNode* slow = head;
+//             ListNode* fast = head;
+//             while(fast != NULL && fast->next != NULL){
+//                 slow = slow->next;
+//                 fast = fast->next->next;
+//                 if(slow == fast)
+//                     return true;
+
+//             }
+//             return false;
