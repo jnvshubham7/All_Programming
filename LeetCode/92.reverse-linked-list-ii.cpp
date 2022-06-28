@@ -42,75 +42,64 @@ struct ListNode {
  */
 class Solution {
 public:
+#define ll long long
+#define vi vector<int>
+#define pii pair<int,int>
+#define fr(i,n) for(int i=0;i<n;i++)
+#define all(v) v.begin(),v.end()
+#define mem(a,b) memset(a,b,sizeof(a))
+#define MOD 1000000007
+#define pb push_back
+#define mp make_pair
+#define pii pair<int,int>
+#define vll vector<ll>
+#define vc vector<char>
+#define vs vector<string>
+
     ListNode* reverseBetween(ListNode* head, int left, int right) {
 
-
-
+        int len=0;
         ListNode* curr=head;
-        ListNode* prev=head;
-
-        //print val
-
-        //print list node
-        cout<<"list node"<<endl;
-
-        cout<<curr->val<<" ";
-        cout<<prev->val<<endl;
-
-
-        stack<int> st;
-
-        for(int i=0;i<left-1;i++)
-        {
-            //print "first loop "
-            cout<<"first loop "<<endl;
+        while(curr){
+            len++;
             curr=curr->next;
-            prev=prev->next;
+        }
+        
+        int arr[len];
 
-            //print the values of the nodes
-            cout<<curr->val<<" ";
-            cout<<prev->val<<" "<<endl;
+        fr(i,len){
+            arr[i]=head->val;
+            head=head->next;
         }
 
-        for(int i=0;i<(right-left+1);i++)
-        {
+        //reverse arr from left element to right element
 
-            //print "second loop "
-            cout<<"second loop "<<endl;
-            st.push(curr->val);
-            curr=curr->next;
+        int index=arr[left];
+        int index2=arr[right];
 
-           
-            //print the values of the stack
-            cout<<st.top()<<" ";
-
-             //print the values of the nodes
-            cout<<curr->val<<" "<<endl;
-
-
+        while(index<index2){
+            int temp=arr[index];
+            arr[index]=arr[index2];
+            arr[index2]=temp;
+            index++;
+            index2--;
         }
-
-        for(int i=0;i<(right-left+1);i++)
-        {
-
-            //print "third loop "
-            cout<<"third loop "<<endl;
-            prev->val=st.top();
-            cout<<st.top()<<" ";
-            
-            st.pop();
-
-            prev=prev->next;
-            cout<<prev->val<<" "<<endl;
-
-        }
-
-        return head;
-
-
-
+        
 
         
+
+        //create new linked list from arr
+        ListNode* newHead=new ListNode(arr[0]);
+        ListNode* curr2=newHead;
+        fr(i,len){
+            if(i==0)continue;
+            curr2->next=new ListNode(arr[i]);
+            curr2=curr2->next;
+        }
+        return newHead;
+
+
+
     }
 };
 // @lc code=end
@@ -156,3 +145,105 @@ Solution s;
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // ListNode* curr=head;
+        // ListNode* prev=head;
+
+        // //print val
+
+        // //print list node
+        // cout<<"list node"<<endl;
+
+        // cout<<curr->val<<" ";
+        // cout<<prev->val<<endl;
+
+
+        // stack<int> st;
+
+        // for(int i=0;i<left-1;i++)
+        // {
+        //     //print "first loop "
+        //     cout<<"first loop "<<endl;
+        //     curr=curr->next;
+        //     prev=prev->next;
+
+        //     //print the values of the nodes
+        //     cout<<curr->val<<" ";
+        //     cout<<prev->val<<" "<<endl;
+        // }
+
+        // for(int i=0;i<(right-left+1);i++)
+        // {
+
+        //     //print "second loop "
+        //     cout<<"second loop "<<endl;
+        //     st.push(curr->val);
+        //     curr=curr->next;
+
+           
+        //     //print the values of the stack
+        //     cout<<st.top()<<" ";
+
+        //      //print the values of the nodes
+        //     cout<<curr->val<<" "<<endl;
+
+
+        // }
+
+        // for(int i=0;i<(right-left+1);i++)
+        // {
+
+        //     //print "third loop "
+        //     cout<<"third loop "<<endl;
+        //     prev->val=st.top();
+        //     cout<<st.top()<<" ";
+            
+        //     st.pop();
+
+        //     prev=prev->next;
+        //     cout<<prev->val<<" "<<endl;
+
+        // }
+
+        // return head;
+
+
+

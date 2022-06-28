@@ -188,6 +188,7 @@
 			"#define vll vector<ll>",
 			"#define vc vector<char>",
 			"#define vs vector<string>",
+			"",
 			// "#define ld long double",
 			// 
 			// "#define pll pair<ll,ll>",
