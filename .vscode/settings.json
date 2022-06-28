@@ -1,5 +1,5 @@
 {
-    "editor.renderWhitespace": "selection",
+    "editor.renderWhitespace": "none",
     "search.mode": "view",
     "editor.find.seedSearchStringFromSelection": "always",
     "search.quickOpen.history.filterSortOrder": "default",
