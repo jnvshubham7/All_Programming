@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=328 lang=cpp
+ * @lc app=leetcode id=203 lang=cpp
  *
- * [328] Odd Even Linked List
+ * [203] Remove Linked List Elements
  */
 
 // @lc code=start
@@ -17,9 +17,9 @@
  */
 class Solution {
 public:
-    ListNode* oddEvenList(ListNode* head) {
+    ListNode* removeElements(ListNode* head, int val) {
 
-        if(head ==NULL)
+        if(head==NULL)
         {
             return head;
         }
@@ -30,26 +30,16 @@ public:
             v.push_back(p->val);
             p = p->next;
         }
-
-        vector<int> odd;
-        vector<int> even;
+        vector<int> v1;
         for(int i = 0; i < v.size(); i++) {
-            if(i % 2 == 0) {
-                odd.push_back(v[i]);
-            } else {
-                even.push_back(v[i]);
+            if(v[i] != val) {
+                v1.push_back(v[i]);
             }
         }
-
-        vector<int> v1;
-
-        for(int i = 0; i < odd.size(); i++) {
-            v1.push_back(odd[i]);
+        if(v1.size()==0)
+        {
+            return nullptr;
         }
-        for(int i = 0; i < even.size(); i++) {
-            v1.push_back(even[i]);
-        }
-
         ListNode* head1 = new ListNode(v1[0]);
         ListNode* p1 = head1;
         for(int i = 1; i < v1.size(); i++) {
@@ -57,9 +47,6 @@ public:
             p1 = p1->next;
         }
         return head1;
-
-
-
 
         
     }

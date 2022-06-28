@@ -74,18 +74,15 @@ public:
             next=curr->next;
             curr->next=prev;
             prev=curr;
+
             curr=next;
             count++;
         }
 
-        if(next!=NULL)
-        {
+       
             head->next=reverseKGroup(next,k);
-        }
-        else
-        {
-            head->next=NULL;
-        }
+        
+       
 
         return prev;
 
