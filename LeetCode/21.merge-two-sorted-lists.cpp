@@ -39,35 +39,40 @@ class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
 
-        int len1=0;
-        ListNode* temp1=l1;
-
-
-        while(temp1)
+        if(l1==NULL)
         {
-            len++;
-            temp1=temp1->next;
-
+            return l2;
         }
-
-        int arr1[len1];
-
-       fr(i,len1)
-       {
-        arr1[i]=temp1->val;
-        temp1=temp1->next;
-       }
-
-       
-
-
-
-
-
-
-
-
-
+        if(l2==NULL)
+        {
+            return l1;
+        }
+        vector<int>v;
+        ListNode* curr=l1;
+        while(curr!=NULL)
+        {
+            v.push_back(curr->val);
+            curr=curr->next;
+        }
+        curr=l2;
+        while(curr!=NULL)
+        {
+            v.push_back(curr->val);
+            curr=curr->next;
+        }
+        sort(v.begin(),v.end());
+        if(v.size()==0)
+        {
+            return NULL;
+        }
+        ListNode* ans=new ListNode(v[0]);
+        ListNode* curr2=ans;
+        for(int i=1;i<v.size();i++)
+        {
+            curr2->next=new ListNode(v[i]);
+            curr2=curr2->next;
+        }
+        return ans;
    
         
         
