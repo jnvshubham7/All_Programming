@@ -1,0 +1,1 @@
+{"name":"Local: djisktraCPP","url":"c:\\Users\\Shubham\\Desktop\\Graph_Code\\djisktraCPP.cpp","tests":[{"id":1656301558586,"input":"6 9\n0 1 5\n0 2 3\n1 3 6\n1 2 2\n2 4 4\n2 5 2\n2 3 7\n3 4 -1\n4 5 -2\n0","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Shubham\\Desktop\\Graph_Code\\djisktraCPP.cpp","group":"local","local":true}
