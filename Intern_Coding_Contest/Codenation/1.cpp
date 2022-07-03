@@ -45,14 +45,9 @@ int arr[]={4,3,1};
 int n=sizeof(arr)/sizeof(arr[0]);
 
 
-int x=1;
+int total=1;
 int day=0;
 
-while(true)
-{
-    if()
-
-}
 
 // int x=1;
 // int ans=0;
