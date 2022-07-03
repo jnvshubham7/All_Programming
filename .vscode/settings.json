@@ -88,6 +88,8 @@
     "editor.renderControlCharacters": false,
     "leetcode.endpoint": "leetcode",
     "git.enabled": false,
+    "cph.general.defaultLanguage": "cpp",
+    "cph.general.saveLocation": "C:\\Users\\Shubham\\Documents\\GitHub\\CPP_Programming\\.cph",
     // "workbench.colorCustomizations": {
     //     "editorGutter.addedBackground": "#333",
     //     "editorGutter.deletedBackground": "#333",
