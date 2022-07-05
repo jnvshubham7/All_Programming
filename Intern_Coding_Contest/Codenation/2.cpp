@@ -43,6 +43,18 @@ int solve(int A,vector<vector<int>> B,string C,vector<vector<int>> D){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
    
 }
 

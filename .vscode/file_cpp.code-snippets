@@ -173,8 +173,8 @@
 			"d"
 		],
 		"body": [
-			"#include<bits/stdc++.h>",
-			"using namespace std;",
+			// "#include<bits/stdc++.h>",
+			// "using namespace std;",
 			"#define ll long long",
 			"#define vi vector<int>",
 			"#define pii pair<int,int>",

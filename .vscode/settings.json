@@ -90,6 +90,8 @@
     "git.enabled": false,
     "cph.general.defaultLanguage": "cpp",
     "cph.general.saveLocation": "C:\\Users\\Shubham\\Documents\\GitHub\\CPP_Programming\\.cph",
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
     // "workbench.colorCustomizations": {
     //     "editorGutter.addedBackground": "#333",
     //     "editorGutter.deletedBackground": "#333",

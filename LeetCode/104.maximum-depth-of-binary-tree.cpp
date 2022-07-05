@@ -19,36 +19,65 @@
 class Solution {
 public:
 
-int solve(TreeNode* root)
+
+int height(TreeNode* root)
 {
-    
-if(root==NULL)
-return 0;
-    int ans=0;
-   int l=solve(root->left);
-   int r=solve(root->right);
-
-   if(root->left && root->right)
-   {
-    return 1+max(l,r);
-   }
-   else if(root->left)
-   {
-    return 1+l;
-   }
-
-   else {
-    return r+1;
-   }
-
-   return ans;
-
+    if(root==NULL)
+    {
+        return 0;
+    }
+    int left=height(root->left);
+    int right=height(root->right);
+    return max(left,right)+1;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// int solve(TreeNode* root)
+// {
+    
+// if(root==NULL)
+// return 0;
+//     int ans=0;
+//    int l=solve(root->left);
+//    int r=solve(root->right);
+
+//    if(root->left && root->right)
+//    {
+//     return 1+max(l,r);
+//    }
+//    else if(root->left)
+//    {
+//     return 1+l;
+//    }
+
+//    else {
+//     return r+1;
+//    }
+
+//    return ans;
+
+// }
 
     int maxDepth(TreeNode* root) {
 
 
-return solve(root);
+return height(root);
 
 // int res=0;
 // queue<TreeNode *> q;
