@@ -55,7 +55,8 @@
         "yaml": false,
         "plaintext": true,
         "markdown": false,
-        "cpp": true
+        "cpp": true,
+        "jsonc": false
     },
     "bracket-pair-colorizer-2.depreciation-notice": false,
     "editor.fontSize": 16,
@@ -92,6 +93,8 @@
     "cph.general.saveLocation": "C:\\Users\\Shubham\\Documents\\GitHub\\CPP_Programming\\.cph",
     "editor.scrollbar.horizontal": "hidden",
     "editor.scrollbar.vertical": "hidden",
+    "workbench.list.horizontalScrolling": true,
+    "audioCues.lineHasError": "off",
     // "workbench.colorCustomizations": {
     //     "editorGutter.addedBackground": "#333",
     //     "editorGutter.deletedBackground": "#333",

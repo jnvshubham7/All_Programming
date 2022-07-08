@@ -16,6 +16,13 @@ public:
         if(n==1) return 1;
         sort(nums.begin(), nums.end());
 
+
+     
+
+        //if all the numbers are same, return 1
+        if(nums[0]==nums[n-1]) return 1;
+
+
         int ans=0;
 
         set<int> st;
@@ -24,10 +31,11 @@ public:
             }
 
             //print st
-            for (int i=0; i<st.size();i++)
-            {
-               // cout<<st[i]<<" ";
-            }
+           for(auto it=st.begin(); it!=st.end(); it++)
+              {
+                cout<<*it<<" ";
+                }
+            cout<<endl;
 
 
             vector<int> v;
@@ -39,22 +47,28 @@ public:
             
            }
 
-           for(int i=0; i<v.size();i++)
+          int cnt=0;
+
+           for(int i=0 ;i<v.size()-1;i++)
            {
             if(v[i+1]-v[i]==1)
             {
+                //cout<<v[i+1]-v[i]<endl;
+                cout<<"yes"<<endl;
+                cnt++;
                 continue;
             }
             else
             {
-                ans=i;
+                //ans=i;
                 
                 break;
                 
             }
            }
+          
 
-           return ans+1;
+           return cnt+1;
 
 
 
