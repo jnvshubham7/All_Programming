@@ -22,6 +22,8 @@
 			"#define vll vector<ll>",
 			"#define vc vector<char>",
 			"#define vs vector<string>",
+			"#define ppi pair<int,pair<int,int>>",
+			"#define ppd pair<double,pair<int,int>>",
 			// "#define ld long double",
 			// 
 			// "#define pll pair<ll,ll>",
@@ -111,6 +113,8 @@
 			"#define vll vector<ll>",
 			"#define vc vector<char>",
 			"#define vs vector<string>",
+			"#define ppi pair<int,pair<int,int>>",
+			"#define ppd pair<double,pair<int,int>>",
 			"\t$0",
 			"",
 			"",
@@ -188,6 +192,8 @@
 			"#define vll vector<ll>",
 			"#define vc vector<char>",
 			"#define vs vector<string>",
+			"#define ppi pair<int,pair<int,int>>",
+			"#define ppd pair<double,pair<int,int>>",
 			"",
 			// "#define ld long double",
 			// 

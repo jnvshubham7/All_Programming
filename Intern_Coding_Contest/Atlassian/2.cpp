@@ -1,0 +1,1 @@
+// https://www.chegg.com/homework-help/questions-and-answers/1-find-sequence-game-string-direction-length-n-consists-characters-l-r-l-denotes-left-r-de-q92783942

@@ -7,26 +7,43 @@
 // @lc code=start
 class Solution {
 public:
+#define ll long long
+#define vi vector<int>
+#define pii pair<int,int>
+#define fr(i,n) for(int i=0;i<n;i++)
+#define all(v) v.begin(),v.end()
+#define mem(a,b) memset(a,b,sizeof(a))
+#define MOD 1000000007
+#define pb push_back
+#define mp make_pair
+#define pii pair<int,int>
+#define vll vector<ll>
+#define vc vector<char>
+#define vs vector<string>
+#define ppi pair<int,pair<int,int>>
+
     vector<int> topKFrequent(vector<int>& nums, int k) {
 
-         vector<int> result;
-        priority_queue<pair<int,int>> pq;                  // this is our heap
-        unordered_map<int,int> mp;                         // hash map to store the frequency of an element             
-        int ctr=1;
-        for(int i=0;i<nums.size();i++){                    // binds the frequency to its respective element       
-            mp[nums[i]]++;
-        }       
-        for(auto &it: mp){                           // stores the key value pair to heap such that it sorted by the value ie frequency
-            pq.push(make_pair(it.second,it.first));
-        }
-        while((ctr<=k)){
-            result.push_back(pq.top().second);
-            pq.pop();
-            ctr++;
-        }
-        return result;
-        
+        int n=nums.size();
+       unordered_map<int,int> m;
+
+         for(int i=0;i<n;i++){
+              m[nums[i]]++;
+         }
+
+         priority_queue<pair<int,int>> pq;
+            for(auto it:m){
+                pq.push(mp(it.second,it.first));
+            }
+            vector<int> ans;
+            for(int i=0;i<k;i++){
+                ans.push_back(pq.top().second);
+                pq.pop();
+            }
+            return ans;
+
     }
+
 };
 // @lc code=end
 

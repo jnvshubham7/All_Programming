@@ -20,27 +20,35 @@ class Solution {
 public:
 
 vector<int> v;
-void solve(TreeNode* root, int level)
-{
-    if(root==NULL)
-    return;
-    if(v.size()==level)
-    {
-        v.push_back(root->val);
-        cout<<root->val<<" ";
-    }
 
-    if(root->right)
-    solve(root->right,level+1);
-    if(root->left)
-    solve(root->left,level+1);
-
-}
     vector<int> rightSideView(TreeNode* root) {
 
-        solve(root,0);
+        if(root==NULL)
+            return v;
+
+       queue<TreeNode*> q;
+         q.push(root);
+        
+
+        while(!q.empty())
+        {
+            int sz = q.size();
+            for(int i=0;i<sz;i++)
+            {
+                TreeNode* temp = q.front();
+                q.pop();
+                if(i==sz-1)
+                    v.push_back(temp->val);
+                if(temp->left)
+                    q.push(temp->left);
+                if(temp->right)
+                    q.push(temp->right);
+            }
+        }
 
         return v;
+
+
         
     }
 };

@@ -28,13 +28,35 @@ using namespace std;
 class Solution {
 public: 
 
-   
+    vector<string> ans;
+
+
 
     vector<string> generateParenthesis(int n) {
-       
 
-        
+        solve("",n,n);
+        return ans;
+
+
     }
+
+    void solve(string op,int open,int close){
+        if(open==0 && close==0){
+            ans.push_back(op);
+            return;
+        }
+        if(open>0){
+            op.push_back('(');
+            solve(op,open-1,close);
+            op.pop_back();
+        }
+        if(close>open){
+            op.push_back(')');
+            solve(op,open,close-1);
+            op.pop_back();
+        }
+    }
+
 };
 // @lc code=end
 
