@@ -44,33 +44,60 @@ using namespace std;
  */
 class Solution {
 public:
+#define ll long long
+#define vi vector<int>
+#define pii pair<int,int>
+#define fr(i,n) for(int i=0;i<n;i++)
+#define all(v) v.begin(),v.end()
+#define mem(a,b) memset(a,b,sizeof(a))
+#define MOD 1000000007
+#define pb push_back
+#define mp make_pair
+#define pii pair<int,int>
+#define vll vector<ll>
+#define vc vector<char>
+#define vs vector<string>
+#define ppi pair<int,pair<int,int>>
+#define ppd pair<double,pair<int,int>>
 
-  TreeNode* ans;
 
-   void print(TreeNode* root)
-   {
-         if(root==NULL)
-         {
-              return;
-         }
-         cout<<root->val<<" ";
-         print(root->left);
-         print(root->right);
-   }
-
-   void bfs(vector<int>&preorder)
-   {
-    
-   }
- 
 
     TreeNode* bstFromPreorder(vector<int>& preorder) {
+
+        return solve(preorder);
+
+      
+    }
+
+    TreeNode* solve(vector<int>& preorder)
+    {
         if(preorder.size()==0)
         {
             return NULL;
         }
-        bfs(preorder);
         
+        int root=preorder[0];
+        TreeNode* root_node=new TreeNode(root);
+        
+        vector<int> left_preorder;
+        vector<int> right_preorder;
+        
+        for(int i=1;i<preorder.size();i++)
+        {
+            if(preorder[i]<root)
+            {
+                left_preorder.pb(preorder[i]);
+            }
+            else
+            {
+                right_preorder.pb(preorder[i]);
+            }
+        }
+        
+        root_node->left=solve(left_preorder);
+        root_node->right=solve(right_preorder);
+        
+        return root_node;
     }
 };
 // @lc code=end

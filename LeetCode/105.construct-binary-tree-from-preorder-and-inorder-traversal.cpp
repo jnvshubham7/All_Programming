@@ -18,57 +18,71 @@
  */
 class Solution {
 public:
+     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
 
- unordered_map<int, int> dict;
+        return dfs(preorder, inorder, 0, preorder.size() - 1, 0, inorder.size() - 1);
 
-    TreeNode *solve(vector<int> &preorder, vector<int> &inorder, int start, int end, int &index) {
-        if (start > end) 
-        {
-            cout<<start<<" "<<end<<" ";
-            cout<<"NULL"<<" ";
-             return NULL;
-
-        }
-
-        cout<<start<<" "<<end<<" "<<endl;
-         
        
-    
-        TreeNode *root = new TreeNode(preorder[index]);
+       
+    }
 
-        cout<<root->val<<" ";
+    TreeNode* dfs(vector<int>& preorder, vector<int>& inorder, int pre_start, int pre_end, int in_start, int in_end) {
+        if (pre_start > pre_end || in_start > in_end) {
+            return nullptr;
+        }
+        int root_val = preorder[pre_start];
+        int root_index = search(inorder, in_start, in_end, root_val);
+
+        TreeNode* root = new TreeNode(root_val);
+
+       int left_size = root_index - in_start;
+       int right_size = in_end - root_index;
 
 
-        int position = dict[preorder[index]];
-        cout<<position<<" "<<endl; 
-        index++;
-        root -> left = solve(preorder, inorder, start, position - 1, index);
 
-        
 
-        root -> right = solve(preorder, inorder, position + 1, end, index);
+         int pre_left_start = pre_start + 1;
+         int pre_left_end = pre_start + left_size;
 
-         
 
-      
+        int pre_right_start = pre_left_end + 1;
+        int pre_right_end = pre_end;
 
+        int in_left_start = in_start;
+        int in_left_end = root_index - 1;
+
+        int in_right_start = root_index + 1;
+        int in_right_end = in_end;
+
+        root->left = dfs(preorder, inorder, pre_left_start, pre_left_end, in_left_start, in_left_end);
+        root->right = dfs(preorder, inorder, pre_right_start, pre_right_end, in_right_start, in_right_end);
         return root;
+
+
+
+
+
+
+
+
+       
     }
 
-
-
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-
-        int index=0;
-
-         for (int i = 0; i < inorder.size(); ++i) 
-         {
-            dict[inorder[i]] = i;
-         }
-            
-       return solve(preorder, inorder, 0, preorder.size() - 1, index);
-
+    int search(vector<int>& inorder, int start, int end, int target) {
+        for (int i = start; i <= end; i++) {
+            if (inorder[i] == target) {
+                return i;
+            }
+        }
+        return -1;
     }
+
+   
+    
 };
 // @lc code=end
 
+Void solve{
+static int count = 0;
+count++;
+}

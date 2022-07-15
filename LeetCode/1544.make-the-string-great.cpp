@@ -18,24 +18,12 @@ public:
                 st.push(s[i]);
             }
 
-            else if(st.top()==s[i])
-            {
-                st.pop();
-            }
-           
-            // else if(st.top()==tolower(s[i]))
-           
-            // {
-            //     //erase that char in s
-            //     s.erase(s.begin()+i);
-            //     st.pop();
-            // }
-            // else if(st.top()==toupper(s[i]))
-            // {
-            //     //erase that char in s
-            //     s.erase(s.begin()+i);
-            //     st.pop();
-            // }
+           else if(abs(st.top()-s[i])==32)
+           {
+               st.pop();
+
+           }
+
             else
             {
                 st.push(s[i]);

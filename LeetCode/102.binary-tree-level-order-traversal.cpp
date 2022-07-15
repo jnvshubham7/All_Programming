@@ -19,17 +19,25 @@
 class Solution {
 public:
 
-vector<vector<int>> ans;
-
-void bfs()
-
+    vector<vector<int>> ans;
 
 
     vector<vector<int>> levelOrder(TreeNode* root) {
 
-        solve(root);
+        dfs(root, 0);
         return ans;
-        
+
+      
+    }
+
+    void dfs(TreeNode* root, int level) {
+        if (root == nullptr) return;
+        if (ans.size() == level) {
+            ans.push_back({});
+        }
+        ans[level].push_back(root->val);
+        dfs(root->left, level + 1);
+        dfs(root->right, level + 1);
     }
 };
 // @lc code=end

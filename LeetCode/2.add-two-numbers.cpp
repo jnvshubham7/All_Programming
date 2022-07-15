@@ -19,66 +19,62 @@ class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 
-        int len1 = 0, len2 = 0;
-        ListNode* p = l1;
-        while(p != nullptr) {
-            len1++;
-            p = p->next;
-        }
-        p = l2;
-        while(p != nullptr) {
-            len2++;
-            p = p->next;
-        }
-        int len = len1 > len2 ? len1 : len2;
+        l1=reverse(l1);
+        l2=reverse(l2);
 
-        string s1, s2;
-        p = l1;
-        while(p != nullptr) {
-            s1 += to_string(p->val);
-            p = p->next;
+        unsigned long long  int num1=0,num2=0,result=0;
+        ListNode* head=NULL;
+        num1=l1->val;
+        l1=l1->next;
+        while(l1!=NULL)
+        {
+            num1=num1*10+l1->val;
+            l1=l1->next;
         }
-        p = l2;
-        while(p != nullptr) {
-            s2 += to_string(p->val);
-            p = p->next;
+        num2=l2->val;
+        l2=l2->next;
+        while(l2!=NULL)
+        {
+            num2=num2*10+l2->val;
+            l2=l2->next;
         }
-        string s = to_string(stoi(s1) + stoi(s2));
-        reverse(s.begin(), s.end());
-        ListNode* head = new ListNode(s[0] - '0');
-        p = head;
-        for(int i = 1; i < s.size(); i++) {
-            p->next = new ListNode(s[i] - '0');
-            p = p->next;
-        }
-        return head;
 
-
-        // string s1 = "";
-        // string s2 = "";
-        // ListNode* p = l1;
-        // while(p != nullptr) {
-        //     s1 += to_string(p->val);
-        //     p = p->next;
-        // }
-        // p = l2;
-        // while(p != nullptr) {
-        //     s2 += to_string(p->val);
-        //     p = p->next;
-        // }
-        // string s = to_string(stoi(s1) + stoi(s2));
-        // reverse(s.begin(), s.end());
-        // ListNode* head = new ListNode(s[0] - '0');
-        // ListNode* p1 = head;
-        // for(int i = 1; i < s.size(); i++) {
-        //     p1->next = new ListNode(s[i] - '0');
-        //     p1 = p1->next;
-        // }
-        // return head;
+        result=num1+num2;
+        if(result==0)
+        {
+            head=new ListNode(0);
+            return head;
+        }
+        else
+        {
+            while(result!=0)
+            {
+                ListNode* temp=new ListNode(result%10);
+                temp->next=head;
+                head=temp;
+                result=result/10;
+            }
+        }
+        ListNode* x=reverse(head);
+        return x;
 
 
         
     }
+
+    ListNode* reverse(ListNode* head)
+    {
+        if(head==NULL || head->next==NULL) return head;
+
+        ListNode* chotaHead=reverse(head->next);
+
+        head->next->next=head;
+
+        head->next=NULL;
+
+        return chotaHead;
+    }
+
 };
 // @lc code=end
 
