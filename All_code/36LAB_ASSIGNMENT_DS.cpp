@@ -3,8 +3,7 @@ using namespace std;
 using namespace std::chrono;
 int shiftAndInsert(int a[], int index, int value, int& filled, int maxCapacity)
 {
-         freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
+        
         if (filled == maxCapacity) {
                 cout << "Cant insert new value, array full " << endl;
                 return 0;

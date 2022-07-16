@@ -8,8 +8,7 @@ using namespace std;
 
 int leastFrequent(int arr[], int n) 
 { 
-     freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
+    
 
     // Sort the array 
 
