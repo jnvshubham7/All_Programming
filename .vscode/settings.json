@@ -85,7 +85,7 @@
     // "explorer.decorations.colors": true,//shows colors
     // "explorer.decorations.colors": false, //displays no colors
     "git.decorations.enabled": true,
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "editor.renderControlCharacters": false,
     "leetcode.endpoint": "leetcode",
     "git.enabled": false,
