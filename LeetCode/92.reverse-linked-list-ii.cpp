@@ -58,48 +58,66 @@ public:
 
     ListNode* reverseBetween(ListNode* head, int left, int right) {
 
-        int len=0;
-        ListNode* curr=head;
-        while(curr){
-            len++;
-            curr=curr->next;
+
+        ListNode* temp=head;
+        ListNode* temp1=head;
+        vector<int>v;
+		//converting linked list to vector
+        while(temp){
+            v.push_back(temp->val);
+            temp=temp->next;
         }
+		//reversing the vector accordingly
+        reverse(v.begin()+left-1,v.begin()+right);
+        int i=0;
+		//converting vector to linked list
+        while(temp1){
+            temp1->val=v[i++];
+            temp1=temp1->next;
+        }
+        return head;
+
+//   int len=0;
+//         ListNode* curr=head;
+//         while(curr){
+//             len++;
+//             curr=curr->next;
+//         }
         
-        int arr[len];
+//         int arr[len];
 
-        fr(i,len){
-            arr[i]=head->val;
-            head=head->next;
-        }
+//         fr(i,len){
+//             arr[i]=head->val;
+//             head=head->next;
+//         }
 
-        //reverse arr from left element to right element
+//         //reverse arr from left element to right element
 
-        int index=arr[left];
-        int index2=arr[right];
+//         int index=arr[left];
+//         int index2=arr[right];
 
-        while(index<index2){
-            int temp=arr[index];
-            arr[index]=arr[index2];
-            arr[index2]=temp;
-            index++;
-            index2--;
-        }
+//         while(index<index2){
+//             int temp=arr[index];
+//             arr[index]=arr[index2];
+//             arr[index2]=temp;
+//             index++;
+//             index2--;
+//         }
         
 
         
 
-        //create new linked list from arr
-        ListNode* newHead=new ListNode(arr[0]);
-        ListNode* curr2=newHead;
-        fr(i,len){
-            if(i==0)continue;
-            curr2->next=new ListNode(arr[i]);
-            curr2=curr2->next;
-        }
-        return newHead;
+//         //create new linked list from arr
+//         ListNode* newHead=new ListNode(arr[0]);
+//         ListNode* curr2=newHead;
+//         fr(i,len){
+//             if(i==0)continue;
+//             curr2->next=new ListNode(arr[i]);
+//             curr2=curr2->next;
+//         }
+//         return newHead;
 
-
-
+      
     }
 };
 // @lc code=end
@@ -177,6 +195,47 @@ Solution s;
 
 
 
+
+
+//   int len=0;
+//         ListNode* curr=head;
+//         while(curr){
+//             len++;
+//             curr=curr->next;
+//         }
+        
+//         int arr[len];
+
+//         fr(i,len){
+//             arr[i]=head->val;
+//             head=head->next;
+//         }
+
+//         //reverse arr from left element to right element
+
+//         int index=arr[left];
+//         int index2=arr[right];
+
+//         while(index<index2){
+//             int temp=arr[index];
+//             arr[index]=arr[index2];
+//             arr[index2]=temp;
+//             index++;
+//             index2--;
+//         }
+        
+
+        
+
+//         //create new linked list from arr
+//         ListNode* newHead=new ListNode(arr[0]);
+//         ListNode* curr2=newHead;
+//         fr(i,len){
+//             if(i==0)continue;
+//             curr2->next=new ListNode(arr[i]);
+//             curr2=curr2->next;
+//         }
+//         return newHead;
 
 
 

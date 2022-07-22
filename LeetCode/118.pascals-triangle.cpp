@@ -9,24 +9,28 @@ class Solution {
 public:
     vector<vector<int>> generate(int numRows) {
 
-        
-vector<vector<int>> v(numRows);
-v[0].push_back(1);
+       int n = numRows;
+         vector<vector<int>> ans;
+         int dp[n][n];
+           dp[0][0] = 1;
+              for (int i = 1; i < n; i++) {
+                dp[i][0] = 1;
+                dp[i][i] = 1;
+                for (int j = 1; j < i; j++) {
+                     dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];
+                }
+              }
+                for (int i = 0; i < n; i++) {
+                    vector<int> temp;
+                    for (int j = 0; j <= i; j++) {
+                        temp.push_back(dp[i][j]);
+                    }
+                    ans.push_back(temp);
+                }
+                return ans;
 
-for(int i=1;i<numRows;i++){
-    v[i].push_back(1);
-    for(int j=1;j<i;j++){
-        v[i].push_back(v[i-1][j-1]+v[i-1][j]);
 
 
-    }
-
-    v[i].push_back(1);
-
-}
-return v;
-
-        
     }
 };
 // @lc code=end

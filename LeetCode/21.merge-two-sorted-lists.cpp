@@ -49,13 +49,13 @@ public:
         }
         vector<int>v;
         ListNode* curr=l1;
-        while(curr!=NULL)
+        while(curr)
         {
             v.push_back(curr->val);
             curr=curr->next;
         }
         curr=l2;
-        while(curr!=NULL)
+        while(curr)
         {
             v.push_back(curr->val);
             curr=curr->next;

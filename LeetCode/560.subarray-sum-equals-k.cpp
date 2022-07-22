@@ -7,18 +7,23 @@
 // @lc code=start
 class Solution {
 public:
-    int subarraySum(vector<int>& nums, int k) {
+    int subarraySum(vector<int>& arr, int s) {
 
-          int count = 0, sum = 0;
-        unordered_map<int, int> m;
-        m[0] = 1;
-        for (int i=0; i<nums.size(); i++) {
-            sum += nums[i];
-            count += m[sum - k];
-            m[sum]++;
+        unordered_map<int,int> mp;
+        mp[0]=1;
+        int sum=0;
+        int ans=0;
+        for(int i=0;i<arr.size();i++)
+        {
+            sum+=arr[i];
+            ans+=mp[sum-s];
+            mp[sum]++;
         }
-        return count;
+        return ans;
         
+
+         
+       
     }
 };
 // @lc code=end
