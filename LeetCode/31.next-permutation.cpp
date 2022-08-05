@@ -65,6 +65,16 @@ ll t;
 cin>>t;
 while(t--){
 
+    ll n;
+    cin>>n;
+    vi arr(n);
+    fr(i,n)
+    cin>>arr[i];
+    s.nextPermutation(arr);
+    fr(i,n)
+    cout<<arr[i]<<" ";
+    cout<<endl;
+
     
 
 

@@ -11,15 +11,10 @@ public:
 
         int n=arr.size();
         int sum=0;
-        int prefix_sum[n];
-        prefix_sum[0]=arr[0];
-        for(int i=1;i<n;i++)
-        {
-            prefix_sum[i]=prefix_sum[i-1]+arr[i];
-        }
-       
 
         
+
+       
     }
 };
 // @lc code=end

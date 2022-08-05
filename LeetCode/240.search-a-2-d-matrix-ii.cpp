@@ -12,38 +12,80 @@ public:
         int n = matrix.size();
         int m=matrix[0].size();
 
-        int i=0,j=m-1;
-        while(i>=0 && i<n && j>=0 && j<m){
-            if(matrix[i][j]==target) return true;
-            else if(matrix[i][j]>target) j--;
-           else if(matrix[i][j]<target) i++;
+        int i=0;
+        int j=m-1;
+
+        while(i<n && j>=0){
+            if(matrix[i][j]==target){
+                return true;
+            }
+            else if(matrix[i][j]<target){
+                i++;
+            }
+            else{
+                j--;
+            }
         }
+
         return false;
 
+ 
 
 
-
-
-
-
-
-
-
-
-        // for(int i=0;i<n;i++)
-        // {
-        //     vector<int> v=matrix[i];
-        //     if(binary_search(v.begin(),v.end(),target))
-           
-        //         return true;
-                
-                
-
-
-        // }
-        // return false;
-        
     }
 };
 // @lc code=end
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+//  int i=0,j=m-1;
+//         while(i>=0 && i<n && j>=0 && j<m){
+//             if(matrix[i][j]==target) return true;
+//             else if(matrix[i][j]>target) j--;
+//            else if(matrix[i][j]<target) i++;
+//         }
+//         return false;
+
+
+
+
+
+
+
+
+
+
+
+//         // for(int i=0;i<n;i++)
+//         // {
+//         //     vector<int> v=matrix[i];
+//         //     if(binary_search(v.begin(),v.end(),target))
+           
+//         //         return true;
+                
+                
+
+
+//         // }
+//         // return false;

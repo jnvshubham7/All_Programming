@@ -46,67 +46,15 @@ public:
         int m = s1.size();
         int n = s2.size();
         int k = s3.size();
-        if (m + n != k) return false;
-       
-        int dp[m+1][n+1];
-        mem(dp,0);
-        dp[0][0] = true;
-        for (int i = 1; i <= m; i++) {
-            dp[i][0] = dp[i - 1][0] && (s1[i - 1] == s3[i - 1]);
-
-        //     cout<<dp[i-1][0]<<" "<<dp[i][0]<<endl;
-
-        //   cout<<s1[i-1]<<" "<<s3[i-1]<<endl;
-            
-            
+        if(m+n!=k)
+        {
+            return false;
         }
-        cout<<endl;
-        // for(int i=0;i<=m;i++){
-        //     for(int j=0;j<=n;j++){
-        //         cout<<dp[i][j]<<" ";
-        //     }
-        //     cout<<endl;
-        // }
-        // cout<<endl;
-        for (int j = 1; j <= n; j++) {
-            dp[0][j] = dp[0][j - 1] && (s2[j - 1] == s3[j - 1]);
-
-            // cout<<dp[0][j-1]<<" "<<dp[0][j]<<endl;
-
-            // cout<<s2[j-1]<<" "<<s3[j-1]<<endl;
-        }
-        cout<<endl;
-        // for(int i=0;i<=m;i++){
-        //     for(int j=0;j<=n;j++){
-        //         cout<<dp[i][j]<<" ";
-        //     }
-        //     cout<<endl;
-        // }
-        // cout<<endl;
-
-        for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= n; j++) {
-                dp[i][j] = (dp[i - 1][j] && (s1[i - 1] == s3[i + j - 1])) || (dp[i][j - 1] && (s2[j - 1] == s3[i + j - 1]));
-                // cout<<dp[i-1][j]<<" "<<dp[i][j]<<endl;
-                // cout<<s1[i-1]<<" "<<s3[i+j-1]<<endl;
-            }
-            cout<<endl;
-        }
-        cout<<endl;
         
 
 
-        //print whole dp
-        // for(int i=0;i<=m;i++){
-        //     for(int j=0;j<=n;j++){
-        //         cout<<dp[i][j]<<" ";
-        //     }
-        //     cout<<endl;
-        // }
 
-         return dp[m][n];
-
-        // return dp[m][n];
+      
        
     }
 };
@@ -130,3 +78,92 @@ Solution s;
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   if (m + n != k) return false;
+       
+//         int dp[m+1][n+1];
+//         mem(dp,0);
+//         dp[0][0] = true;
+//         for (int i = 1; i <= m; i++) {
+//             dp[i][0] = dp[i - 1][0] && (s1[i - 1] == s3[i - 1]);
+
+//         //     cout<<dp[i-1][0]<<" "<<dp[i][0]<<endl;
+
+//         //   cout<<s1[i-1]<<" "<<s3[i-1]<<endl;
+            
+            
+//         }
+//         cout<<endl;
+//         // for(int i=0;i<=m;i++){
+//         //     for(int j=0;j<=n;j++){
+//         //         cout<<dp[i][j]<<" ";
+//         //     }
+//         //     cout<<endl;
+//         // }
+//         // cout<<endl;
+//         for (int j = 1; j <= n; j++) {
+//             dp[0][j] = dp[0][j - 1] && (s2[j - 1] == s3[j - 1]);
+
+//             // cout<<dp[0][j-1]<<" "<<dp[0][j]<<endl;
+
+//             // cout<<s2[j-1]<<" "<<s3[j-1]<<endl;
+//         }
+//         cout<<endl;
+//         // for(int i=0;i<=m;i++){
+//         //     for(int j=0;j<=n;j++){
+//         //         cout<<dp[i][j]<<" ";
+//         //     }
+//         //     cout<<endl;
+//         // }
+//         // cout<<endl;
+
+//         for (int i = 1; i <= m; i++) {
+//             for (int j = 1; j <= n; j++) {
+//                 dp[i][j] = (dp[i - 1][j] && (s1[i - 1] == s3[i + j - 1])) || (dp[i][j - 1] && (s2[j - 1] == s3[i + j - 1]));
+//                 // cout<<dp[i-1][j]<<" "<<dp[i][j]<<endl;
+//                 // cout<<s1[i-1]<<" "<<s3[i+j-1]<<endl;
+//             }
+//             cout<<endl;
+//         }
+//         cout<<endl;
+        
+
+
+//         //print whole dp
+//         // for(int i=0;i<=m;i++){
+//         //     for(int j=0;j<=n;j++){
+//         //         cout<<dp[i][j]<<" ";
+//         //     }
+//         //     cout<<endl;
+//         // }
+
+//          return dp[m][n];
+
+//         // return dp[m][n];

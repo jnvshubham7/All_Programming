@@ -1,4 +1,5 @@
-/*
+
+./*
  * @lc app=leetcode id=100 lang=cpp
  *
  * [100] Same Tree
@@ -23,17 +24,17 @@ using namespace std;
   
   };
 
-// void print(TreeNode* root)
-// {
-//     if(root==NULL)
-//     {
-//        // cout<<"NULL"<<endl;
-//         return;
-//     }
-//     cout<<root->val<<" ";
-//     print(root->left);
-//     print(root->right);
-// }
+void print(TreeNode* root)
+{
+    if(root==NULL)
+    {
+       // cout<<"NULL"<<endl;
+        return;
+    }
+    cout<<root->val<<" ";
+    print(root->left);
+    print(root->right);
+}
 
 
 // @lc code=start
@@ -150,7 +151,7 @@ Solution s;
     }
   }
 
-  cout<<s.isSameTree(root,root2);
+  //cout<<s.isSameTree(root,root2);
 
   //print val of tree
   // print(root);
