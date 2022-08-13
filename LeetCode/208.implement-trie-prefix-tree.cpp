@@ -13,21 +13,36 @@ using namespace std;
 
 
 // @lc code=start
-class TrieNode {
-public:
+// class TrieNode {
+// public:
 
     
-    // Initialize your data structure here.
-    bool is_word;
-    TrieNode *children[26];
+//     // Initialize your data structure here.
+//     bool is_word;
+//     TrieNode *children[26];
     
-    TrieNode() {
-        is_word = false;
+//     TrieNode() {
+//         is_word = false;
         
-        for (int i = 0; i < 26; i++)
+//         for (int i = 0; i < 26; i++)
+//             children[i] = NULL;
+//     }
+// };
+
+class TrieNode {
+    public:
+    bool is_word;
+
+    TrieNode * children[26];
+
+    TrieNode()
+    {
+        is_word = false;
+
+        for(int i=0; i<26; i++)
             children[i] = NULL;
     }
-};
+}
 
 class Trie {
 public:

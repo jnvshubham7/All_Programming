@@ -91,11 +91,10 @@ Solution s;
   
   
   TreeNode* root=new TreeNode(a[0]);
-  TreeNode* temp=root;
-  fr(i,n){
-    if(i==0)
-    continue;
-    if(a[i]<temp->val){
+    TreeNode* temp=root;
+    for(int i=1;i<a.size();i++)
+    {
+        if(a[i]<temp->val){
       if(temp->left==NULL){
         temp->left=new TreeNode(a[i]);
         temp=temp->left;
@@ -117,47 +116,46 @@ Solution s;
         temp=temp->right;
       }
     }
-  }
+    }
 
   fr(i,n){
     cin>>b[i];
   }
-  TreeNode* root2=new TreeNode(b[0]);
-  TreeNode* temp2=root2;
-  fr(i,n){
-    if(i==0)
-    continue;
-    if(b[i]<temp2->val){
-      if(temp2->left==NULL){
-        temp2->left=new TreeNode(b[i]);
-        temp2=temp2->left;
+ TreeNode* root=new TreeNode(a[0]);
+    TreeNode* temp=root;
+    for(int i=1;i<a.size();i++)
+    {
+        if(a[i]<temp->val){
+      if(temp->left==NULL){
+        temp->left=new TreeNode(a[i]);
+        temp=temp->left;
       }
       else{
-        temp2=temp2->left;
-        temp2->left=new TreeNode(b[i]);
-        temp2=temp2->left;
+        temp=temp->left;
+        temp->left=new TreeNode(a[i]);
+        temp=temp->left;
       }
     }
     else{
-      if(temp2->right==NULL){
-        temp2->right=new TreeNode(b[i]);
-        temp2=temp2->right;
+      if(temp->right==NULL){
+        temp->right=new TreeNode(a[i]);
+        temp=temp->right;
       }
       else{
-        temp2=temp2->right;
-        temp2->right=new TreeNode(b[i]);
-        temp2=temp2->right;
+        temp=temp->right;
+        temp->right=new TreeNode(a[i]);
+        temp=temp->right;
       }
     }
-  }
+    }
 
   //cout<<s.isSameTree(root,root2);
 
-  //print val of tree
-  // print(root);
-  // cout<<endl;
-  // print(root2);
-  // cout<<endl;
+//  print val of tree
+  print(root);
+  cout<<endl;
+  print(root2);
+  cout<<endl;
   
 
 

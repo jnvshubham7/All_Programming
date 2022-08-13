@@ -31,7 +31,6 @@ using namespace std;
         TreeNode* right;
         TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 
-
      };
 
 
@@ -122,35 +121,55 @@ int main(){
 Solution s;
 
 
-    vector<int> a={1,2,2,3,4,4};
+    vector<int> a={1,2,2,3,4,4,5,6,7};
 
     TreeNode* root=new TreeNode(a[0]);
     TreeNode* temp=root;
+
+
     for(int i=1;i<a.size();i++)
     {
-        if(a[i]<temp->val){
-      if(temp->left==NULL){
+      if(a[i]<temp->val)
+      {
         temp->left=new TreeNode(a[i]);
         temp=temp->left;
       }
-      else{
-        temp=temp->left;
-        temp->left=new TreeNode(a[i]);
-        temp=temp->left;
-      }
-    }
-    else{
-      if(temp->right==NULL){
-        temp->right=new TreeNode(a[i]);
-        temp=temp->right;
-      }
-      else{
-        temp=temp->right;
+      else
+      {
         temp->right=new TreeNode(a[i]);
         temp=temp->right;
       }
     }
-    }
+
+
+
+
+  //   for(int i=1;i<a.size();i++)
+  //   {
+  //   if(a[i]<temp->val){
+
+  //     //if(temp->left==NULL){
+  //       temp->left=new TreeNode(a[i]);
+  //       temp=temp->left;
+  //     // }
+  //     // else{
+  //     //   temp=temp->left;
+  //     //   temp->left=new TreeNode(a[i]);
+  //     //   temp=temp->left;
+  //     // }
+  //   }
+  //   else{
+  //    // if(temp->right==NULL){
+  //       temp->right=new TreeNode(a[i]);
+  //       temp=temp->right;
+  //     // }
+  //     // else{
+  //     //   temp=temp->right;
+  //     //   temp->right=new TreeNode(a[i]);
+  //     //   temp=temp->right;
+  //     // }
+  //   }
+  // }
 
     //print root
     print(root);

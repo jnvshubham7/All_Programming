@@ -43,6 +43,28 @@ public:
 
     vector<vector<int>> subsets(vector<int>& nums) {
 
+
+
+        sort(nums.begin(), nums.end());
+        vector<vector<int>> ans;
+        vector<int> temp;
+        ans.pb(temp);
+
+        fr(i,nums.size())
+        {
+            int n = ans.size();
+            fr(j,n)
+            {
+                vector<int> t = ans[j];
+                t.pb(nums[i]);
+                ans.pb(t);
+            }
+
+        }
+
+
+        return ans;
+
         
 
         
