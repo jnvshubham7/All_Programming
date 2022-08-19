@@ -3,8 +3,9 @@
 using namespace std;
 #define N 3
 
-struct Node
+class Node
 {
+    public:
     
     Node* parent;
 
@@ -23,13 +24,16 @@ struct Node
 
 int printMatrix(int mat[N][N])
 {
-    for (int i = 0; i < N; i++)
-    {
-        for (int j = 0; j < N; j++)
-            printf("%d ", mat[i][j]);
-        printf("\n");
-    }
-   
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+        cout<<mat[i][j]<<" ";
+        cout<<endl;
+        //return mat[i][j];
+		// 	printf("%d ", mat[i][j]);
+		// printf("\n");
+	}
+    return 0;
 }
 
 Node* newNode(int mat[N][N], int x, int y, int newX,
@@ -84,7 +88,7 @@ void printPath(Node* root)
     printPath(root->parent);
     printMatrix(root->mat);
 
-    printf("\n");
+     printf("\n");
 }
 
 struct comp
@@ -99,7 +103,7 @@ void solve(int initial[N][N], int x, int y,
         int final[N][N])
 {
     
-    priority_queue<Node*, std::vector<Node*>, comp> pq;
+    priority_queue<Node*, vector<Node*>, comp> pq;
 
     
     Node* root = newNode(initial, x, y, x, y, 0, NULL);
@@ -169,6 +173,14 @@ int main()
 
     return 0;
 }
+
+
+
+
+
+
+
+
 
 
 

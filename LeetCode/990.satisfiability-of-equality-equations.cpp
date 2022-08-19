@@ -8,8 +8,11 @@
 class Solution {
 public:
     bool equationsPossible(vector<string>& equations) {
-        
-        int n = equations.size();
+
+       
+
+
+      int n = equations.size();
         vector<int> parent(n, -1);
         for (int i = 0; i < n; i++) {
             if (equations[i][1] == '=') {
@@ -37,8 +40,21 @@ public:
             return i;
         }
         return parent[i] = find(parent[i], parent);
+
+
+
     }
     
 };
 // @lc code=end
+
+
+
+
+
+
+
+
+
+
 

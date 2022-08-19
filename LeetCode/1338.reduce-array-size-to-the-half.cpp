@@ -24,40 +24,34 @@ public:
 
     int minSetSize(vector<int>& arr) {
 
-        int n = arr.size();
+      int n=arr.size();
 
-    int sum = 0;
-
-    int cnt=0;
-
-        unordered_map<int, int> m;
-        for (int i = 0; i < n; i++) {
+      unordered_map<int,int> m;
+        fr(i,n)
+        {
             m[arr[i]]++;
         }
 
-       priority_queue<pair<int, int>> pq;
-        for (auto it = m.begin(); it != m.end(); it++) {
-            pq.push(mp(it->second, it->first));
+        priority_queue<int> pq;
+        for(auto it:m)
+        {
+            pq.push(it.second);
         }
 
-        //print pq
-        // while(!pq.empty()) {
-        //     cout << pq.top().first << " " << pq.top().second << endl;
-        //     pq.pop();
-        // }
+        int cnt=0;
 
+        int sz=n/2;
 
-       while(!pq.empty()) {
-           int x=pq.top().first;
-           sum+=x;
-           cnt++;
-              pq.pop();
-              if(sum>=n/2)
-                break;
-
+        while(!pq.empty())
+        {
+            cnt++;
+            sz-=pq.top();
+            pq.pop();
+            if(sz<=0) break;
         }
-
         return cnt;
+
+
 
 
         

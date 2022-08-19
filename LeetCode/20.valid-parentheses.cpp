@@ -7,6 +7,7 @@
 // @lc code=start
 class Solution {
 public:
+   unordered_map<char,int> mp= {{'(',-1},{')',1},{'[',-2},{']',2},{'{',-3},{'}',3}};
     bool isValid(string s) {
 
        if(s.size() == 0)
@@ -20,27 +21,58 @@ public:
          stack<char> st;
             int n=s.size();
 
-            for(int i=0;i<s.size();i++)
-            {
-                if(s[i] == '(' || s[i] == '{' || s[i] == '[' || s[i] == '<') 
-                st.push(s[i]);
-                else{
-                    if(st.empty()) {
+           for(auto b:s)
+           {
+              if(mp[b]<0)
+              {
+                st.push(b);
+              }
+                else
+                {
+                    if(st.empty())
+                    {
                         return false;
                     }
-                    else if(s[i] == ')' && st.top() == '(') st.pop();
-                    else if(s[i] == ']' && st.top() == '[') st.pop();
-                    else if(s[i] == '}' && st.top() == '{') st.pop();
-                    else if(s[i] == '>' && st.top() == '<') st.pop();
-                    else 
+                    auto top = st.top();
+                    st.pop();
+                    if(mp[top] + mp[b] != 0)
                     {
                         return false;
                     }
                 }
-            }
+           }
 
-            if(st.empty()) return true;
-            else return false;
+              if(st.empty())
+                {
+                    return true;
+                }
+               
+                    return false;
+                
+
+
+
+            // for(int i=0;i<s.size();i++)
+            // {
+            //     if(s[i] == '(' || s[i] == '{' || s[i] == '[' || s[i] == '<') 
+            //     st.push(s[i]);
+            //     else{
+            //         if(st.empty()) {
+            //             return false;
+            //         }
+            //         else if(s[i] == ')' && st.top() == '(') st.pop();
+            //         else if(s[i] == ']' && st.top() == '[') st.pop();
+            //         else if(s[i] == '}' && st.top() == '{') st.pop();
+            //         else if(s[i] == '>' && st.top() == '<') st.pop();
+            //         else 
+            //         {
+            //             return false;
+            //         }
+            //     }
+            // }
+
+            // if(st.empty()) return true;
+            // else return false;
         
     }
 };

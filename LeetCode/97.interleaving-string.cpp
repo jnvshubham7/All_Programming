@@ -41,15 +41,20 @@ public:
 #define vc vector<char>
 #define vs vector<string>
 
+   
+
     bool isInterleave(string s1, string s2, string s3) {
 
         int m = s1.size();
         int n = s2.size();
-        int k = s3.size();
-        if(m+n!=k)
-        {
-            return false;
-        }
+        int l = s3.size();
+
+       vector<vector<int>> dp(m+1,vector<int>(n+1,-1));
+
+
+        if(m+n != l) return false;
+
+       return  rec(s1,s2,s3,0,0,0,dp);
         
 
 
@@ -57,6 +62,29 @@ public:
       
        
     }
+
+    bool rec(string s1, string s2, string s3, int i, int j, int k, vector<vector<int>> &dp){
+       
+       if(dp[i][j] != -1) return dp[i][j];
+       
+        if(k == s3.size()) return  true;
+        if(i == s1.size() && j == s2.size()) return dp[i][j] = true;
+        if(i < s1.size() && s1[i] == s3[k]){
+            if(rec(s1,s2,s3,i+1,j,k+1,dp)) return dp[i][j] = true;
+        }
+        if(j < s2.size() && s2[j] == s3[k]){
+            if(rec(s1,s2,s3,i,j+1,k+1,dp)) return dp[i][j] = true;
+        }
+        if(i<s1.size() && j<s2.size() && s1[i] == s3[k] && s2[j] == s3[k]){
+
+            if(rec(s1,s2,s3,i+1,j,k+1,dp) || rec(s1,s2,s3,i,j+1,k+1,dp)) return dp[i][j] = true;
+           
+        }
+        return dp[i][j] = false;
+
+    }
+
+
 };
 // @lc code=end
 
