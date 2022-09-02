@@ -29,14 +29,43 @@ class Solution {
 public:
    bool checkString(string s) {
 
-     for(int i = 1; i < s.size(); i++){
-			if(s[i - 1] == 'b' && s[i] == 'a'){
-				return false;
-			}
+    // int n=s.size();
+	// for(int i=0;i<n;i++){
+	// 	if(s[i]=='b'){
+	// 		for(int j=i+1;j<n;j++){
+	// 			if(s[j]=='a'){
+	// 				return false;
+	// 			}
+	// 		}
+	// 	}
+
+	// }
+
+	// return true;
+
+	int n=s.size();
+	int a=0,b=0;
+	for(int i=0;i<n;i++){
+		if(s[i]=='a'){
+			a++;
+
 		}
-		return true;
+		else{
+			b++;
+		}
+		if(b>a){
+			return false;
+		}
+	}
+
+	return true;
 
 
+
+
+
+		
+	
 
 
 

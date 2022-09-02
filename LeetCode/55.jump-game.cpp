@@ -10,44 +10,38 @@ public:
     bool canJump(vector<int>& nums) {
 
         int n=nums.size();
+        unordered_map<int,int> mp;
 
-        
+        for(int i=0;i<n;i++)
+        {
+            mp[i]=nums[i];
+        }
 
         int i=0;
-
-        int flag=1;
-
-        while(n--)
+        while(i<n)
         {
-            int temp=nums[i];
-            if(temp>n)
+            if(mp[i]==0)
             {
-               flag=0;
-               break;
+                if(i==n-1)
+                    return true;
+                else
+                    return false;
             }
-            if(temp==0)
+            else
             {
-
-                if(i!=(n-1))
+                if(possible(mp,i))
+                {
+                    i+=mp[i];
+                }
+                else
                 {
                     return false;
                 }
-
-                return true;
-                break;
+                
             }
-
-            i+=temp;
-
-           // if(i==n-1)
         }
-
         return true;
 
-
-
-
-        
     }
 };
 // @lc code=end

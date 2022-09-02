@@ -19,28 +19,47 @@ class Solution {
 public:
     bool isPalindrome(ListNode* head) {
 
-        if(head == NULL)
-        {
-            return true;
-        }
-        vector<int> v;
-        ListNode* p = head;
-        while(p != nullptr) {
-            v.push_back(p->val);
-            p = p->next;
-        }
-        int i = 0;
-        int j = v.size()-1;
-        while(i < j) {
-            if(v[i] != v[j]) {
-                return false;
-            }
-            i++;
-            j--;
-        }
-        return true;
+        
+
+
         
     }
 };
 // @lc code=end
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  if(head == NULL)
+//         {
+//             return true;
+//         }
+//         vector<int> v;
+//         ListNode* p = head;
+//         while(p != nullptr) {
+//             v.push_back(p->val);
+//             p = p->next;
+//         }
+//         int i = 0;
+//         int j = v.size()-1;
+//         while(i < j) {
+//             if(v[i] != v[j]) {
+//                 return false;
+//             }
+//             i++;
+//             j--;
+//         }
+//         return true;
