@@ -20,14 +20,17 @@ public:
 
         int ans = 0;
 
-        for(int i = 0; i < s.size(); i++) {
-            if(i + 1 < s.size() && m[s[i]] < m[s[i + 1]]) {
+        for (int i = 0; i < s.size(); i++) {
+            if (i + 1 < s.size() && m[s[i]] < m[s[i + 1]]) {
                 ans -= m[s[i]];
             } else {
                 ans += m[s[i]];
             }
         }
+
         return ans;
+
+       
         
     }
 };

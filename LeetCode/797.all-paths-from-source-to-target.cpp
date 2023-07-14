@@ -8,42 +8,30 @@
 class Solution {
 public:
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-
-        vector<vector<int>> res;
+        vector<vector<int>> result;
         vector<int> path;
         path.push_back(0);
-        dfs(graph,0,path,res);
-        return res;
-        
+        dfs(graph, 0, path, result);
+        return result;
+
+
+
+
     }
 
-    void dfs(vector<vector<int>>& graph,int cur,vector<int>& path,vector<vector<int>>& res){
-        if(cur==graph.size()-1){
-            res.push_back(path);
+    void dfs(vector<vector<int>>& graph, int node, vector<int>& path, vector<vector<int>>& result) {
+        if (node == graph.size() - 1) {
+            result.push_back(path);
             return;
         }
 
-       // cout<<graph[cur].size()<<endl;
-        for(int i=0;i<graph[cur].size();i++){
-            path.push_back(graph[cur][i]);
-
-
-           // cout<<graph[cur][i]<<" ";
-
-
-            dfs(graph,graph[cur][i],path,res);
-
-
-            //print path
-            // for(int j=0;j<path.size();j++){
-            //     cout<<path[j]<<" ";
-            // }
-            // cout<<endl;
-
-
+        for (int i = 0; i < graph[node].size(); i++) {
+            path.push_back(graph[node][i]);
+            dfs(graph, graph[node][i], path, result);
             path.pop_back();
         }
     }
+
 };
 // @lc code=end
 

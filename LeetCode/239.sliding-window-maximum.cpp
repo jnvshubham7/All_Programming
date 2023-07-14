@@ -8,41 +8,42 @@
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-
-        // vector<int> ans;
-        // if(nums.size()==0)
-        // {
-        //     return ans;
-        // }
-
-        // int sum=0;
-
-
-        // int i=0;
-        // int j=0;
-        // while(j<nums.size())
-        // {
-
-        //     sum+=nums[j];
-           
-        //    if(j-i+1<k)
-        //    {
-        //     j++;
-        //    }
-        //    else if(j-i+1==k)
-        //    {
-        //     ans.push_back(sum);
-        //     sum-=nums[i];
-        //     i++;
-        //     j++;
-        //    }
-          
-            
-           
-        // }
-
-        // return ans;
+       vector<int> ans;
+        list<int> l;
+        int i=0;
+        int j=0;
         
+        if (k>nums.size()) // edge case
+        {
+            ans.push_back(*max_element(nums.begin(),nums.end()));
+            return ans;
+        }
+        
+        while (j<nums.size())
+        {
+            while(l.size()>0 && l.back() <nums[j])
+            {
+                l.pop_back();
+            }
+            l.push_back(nums[j]);
+            if ((j-i+1)<k)
+                j++;
+            else if (j-i+1==k)
+            {
+                //print the list 
+
+                // for(auto it : l)
+                //     cout<<it<<" ";
+                // cout<<endl;
+                ans.push_back(l.front());
+                if (l.front()==nums[i])
+                    l.pop_front();
+                i++;
+                j++;
+            }
+            
+        }
+        return ans;
     }
 };
 // @lc code=end

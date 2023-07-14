@@ -18,90 +18,33 @@
  */
 class Solution {
 public:
-     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
 
+      unordered_map<int, int> indexMap;
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+      
+        for (int i = 0; i < inorder.size(); i++) {
+            indexMap[inorder[i]] = i;
+        }
 
-      int p_size=preorder.size();
-        int i_size=inorder.size();
+        int preIndex = 0;
+        return buildTreeHelper(preorder, inorder, preIndex, 0, inorder.size() - 1);   
+       
+    }
 
-        return solve(preorder,0,p_size-1,inorder,0,i_size-1);
-
-
-    //   for(int i=0;i<n;i++)
-    //   {
-    //       int pre=preorder[i];
-    //       int ind_pos= find_ind(inorder,pre);
-
-    //         TreeNode* left=buildTree(preorder,inorder,0,ind_pos-1);
-    //         TreeNode* right=buildTree(preorder,inorder,ind_pos+1,n-1);
-    //         TreeNode* root=new TreeNode(pre);
-    //         root->left=left;
-    //         root->right=right;
-    //         return root;
-    //   }
-
-    //     return NULL;
-
-
-    //  }
-
-    //     int find_ind(vector<int>& inorder,int pre)
-    //     {
-    //         int n=inorder.size();
-    //         for(int i=0;i<n;i++)
-    //         {
-    //             if(inorder[i]==pre)
-    //             {
-    //                 return i;
-    //             }
-    //         }
-    //         return -1;
-    //     }
-
-    //     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder,int start,int end)
-    //     {
-    //         if(start>end)
-    //         {
-    //             return NULL;
-    //         }
-    //         int pre=preorder[0];
-    //         int ind_pos= find_ind(inorder,pre);
-    //         TreeNode* left=buildTree(preorder,inorder,0,ind_pos-1);
-    //         TreeNode* right=buildTree(preorder,inorder,ind_pos+1,end);
-    //         TreeNode* root=new TreeNode(pre);
-    //         root->left=left;
-    //         root->right=right;
-    //         return root;
-    //     }
-     }
-
-
-    TreeNode* solve(vector<int>& preorder,int pre_start, int pre_end,vector<int>& inorder,int in_start,int in_end)
-    {
-        if(pre_start>pre_end)
-        {
+    TreeNode* buildTreeHelper(vector<int>& preorder, vector<int>& inorder, int& preIndex, int inStart, int inEnd) {
+        if (inStart > inEnd) {
             return NULL;
         }
-        int pre=preorder[pre_start];
-        TreeNode* root=new TreeNode(pre);
-        int ind_pos= find_ind(inorder,pre,in_start,in_end);
-        root->left=solve(preorder,pre_start+1,pre_start+ind_pos-in_start,inorder,in_start,ind_pos-1);
-        root->right=solve(preorder,pre_start+ind_pos-in_start+1,pre_end,inorder,ind_pos+1,in_end);
-        
+
+        TreeNode* root = new TreeNode(preorder[preIndex]);
+        int inIndex = indexMap[preorder[preIndex]];
+        preIndex++;
+        root->left = buildTreeHelper(preorder, inorder, preIndex, inStart, inIndex - 1);
+        root->right = buildTreeHelper(preorder, inorder, preIndex, inIndex + 1, inEnd);
+        return root;
     }
 
-    int find_ind(vector<int>& inorder,int pre,int start,int end)
-    {
-        for(int i=start;i<=end;i++)
-        {
-            if(inorder[i]==pre)
-            {
-                return i;
-            }
-        }
-        return -1;
-    }
-  
-    
+
 };
+
 // @lc code=end

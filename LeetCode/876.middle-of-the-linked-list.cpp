@@ -46,14 +46,22 @@ public:
         
         if(head==NULL)
             return NULL;
-        if(head->next==NULL)
-            return head;
+        
 
-        if(head->next->next==NULL)
-            return head->next;
+        // ListNode* slow=head;
+        // ListNode* fast=head;
+        // while(fast!=NULL && fast->next!=NULL)
+        // {
+        //     slow=slow->next;
+        //     fast=fast->next->next;
+        // }
+
+        // return slow;
 
         ListNode* slow=head;
-        ListNode* fast=head;
+
+        ListNode *fast=head;
+
         while(fast!=NULL && fast->next!=NULL)
         {
             slow=slow->next;
@@ -62,21 +70,7 @@ public:
 
         return slow;
 
-        // int len=0;
-        // ListNode* temp=head;
-        // while(temp){
-        //     len++;
-        //     temp=temp->next;
-        // }
-        // int mid=len/2;
-
-        // ListNode* curr=head;
-        // for(int i=0;i<mid;i++){
-        //     curr=curr->next;
-        // }
-        // return curr;
-        
-
+       
 
 
 

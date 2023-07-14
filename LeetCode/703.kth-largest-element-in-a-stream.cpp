@@ -11,22 +11,27 @@ public:
     int size;
     KthLargest(int k, vector<int>& nums) {
         size=k;
-        for(int ele : nums) add(ele);
+        for(int i=0;i<nums.size();i++){
+            minHeap.push(nums[i]);
+           
+        }
+       
     }
     
     int add(int val) {
-        if(minHeap.size() < size)
-            minHeap.push(val);
-        else{
-            if(val > minHeap.top()){
-                minHeap.pop();
-                minHeap.push(val);
-            }
+
+        minHeap.push(val);
+        while(minHeap.size()>size){
+            minHeap.pop();
         }
         return minHeap.top();
+
+
+      
         
     }
 };
+
 
 /**
  * Your KthLargest object will be instantiated and called as such:

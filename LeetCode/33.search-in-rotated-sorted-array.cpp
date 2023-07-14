@@ -7,80 +7,31 @@
 // @lc code=start
 class Solution {
 public:
-   
-
-   int binarySearch(vector<int>& nums, int target, int start, int end)
-   {
-        while(start <= end)
-        {
-            int mid = start + (end - start)/2;
-            if(nums[mid] == target)
-            {
-                return mid;
-            }
-            if(nums[mid] < target)
-            {
-                start = mid + 1;
-            }
-            else
-            {
-                end = mid - 1;
-            }
-        }
-        return -1;
-   }
-
-    int findMin(vector<int>& nums, int target) {
-        int n=nums.size();
-         int start = 0, end = n-1;
-         int min_index = -1;
-        if(nums[start] < nums[end])
-        {
-            binarySearch(nums, target, start, end);
-        }
-        while(start <= end)
-        {
-            int mid = start + (end - start)/2;
-            int next = (mid+1)%n;
-            int prev = (mid + n - 1)%n;
-            if(nums[mid] <= nums[next] && nums[mid] <= nums[prev])
-            {
-                min_index = mid;
-                
-            }
-            if(nums[mid] <= nums[end])
-            {
-                end = mid - 1;
-            }
-            else if(nums[start] <= nums[mid])
-            {
-                start = mid + 1;
-            }
-        }
-        int left=binarySearch(nums, target, 0, min_index-1);
-        int right=binarySearch(nums, target, min_index, n-1);
-        if(left == -1)
-        {
-            return right;
-        }
-        else if(right == -1)
-        {
-            return left;
-        }
-       
-       return -1;
-
-
-        
-    }
-
-
-
     int search(vector<int>& nums, int target) {
-        
+        int left = 0;
+        int right = nums.size() - 1;
 
-        return findMin(nums, target);
-        
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (nums[mid] == target)
+                return mid;
+
+            if (nums[left] <= nums[mid]) {
+                if (target >= nums[left] && target < nums[mid])
+                    right = mid - 1;
+                else
+                    left = mid + 1;
+            }
+            else {
+                if (target > nums[mid] && target <= nums[right])
+                    left = mid + 1;
+                else
+                    right = mid - 1;
+            }
+        }
+
+        return -1;
     }
 };
 // @lc code=end

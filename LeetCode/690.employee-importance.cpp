@@ -18,7 +18,8 @@ public:
 class Solution {
 public:
     int getImportance(vector<Employee*> employees, int id) {
-        
+
+       
     }
 };
 // @lc code=end

@@ -24,59 +24,26 @@ class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
 
-        int n=nums.size();
+        priority_queue<int,vector<int>,greater<int>> pq;
 
-        priority_queue<int> pq;
-
-        for(int i=0;i<n;i++)
+        for(int i=0;i<nums.size();i++)
         {
             pq.push(nums[i]);
+            if(pq.size()>k)
+            {
+                pq.pop();
+            }
         }
 
-        //print pq
-        // for(int i=0;i<n;i++)
-        // {
-        //     cout<<pq.top()<<" ";
-        //     pq.pop();
-        // }
-        // cout<<endl;
-
-
-
-       for(int i=0;i<k-1;i++)
-       {
-
-        pq.pop();
-
-
-
-       }
-
-
-         return pq.top();
-
-
-
-        
-      
-
-
-
-
-        
-
-        // sort(nums.begin(), nums.end());
-        
-        // reverse(nums.begin(), nums.end());
-
-        // return nums[k-1];
-
-
-
-
+        return pq.top();
         
     }
 };
+
+//time complexity: O(nlogk)
+//space complexity: O(k)
+
+
 // @lc code=end
 
 

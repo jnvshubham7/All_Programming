@@ -44,99 +44,21 @@ using namespace std;
 class Solution {
 public:
 
-   
-   ListNode* reverse(ListNode* head)
-   {
-       if(head==NULL || head->next==NULL) return head;
-
-       ListNode* chotaHead=reverse(head->next);
-
-       head->next->next=head;
-
-       head->next=NULL;
-
-       return chotaHead;
-    
-
-
-   }
-
-    //  void solve(ListNode* &head,ListNode* curr,ListNode* prev)
-    //  {
-
-    //     if(curr==NULL)
-    //     {
-    //         head=prev;
-    //         return;
-    //     }
-
-    //     ListNode* forward=curr->next;
-
-    //     solve(head,forward,curr);
-
-    //     curr->next=prev;
-
-    //  }
-
-
-
-
     ListNode* reverseList(ListNode* head) {
 
-        return reverse(head);
+        ListNode* prev = NULL;
+        ListNode* curr = head;
+        ListNode* next = NULL;
 
-        // if(head==NULL || head->next==NULL) return head;
+        while (curr != NULL) {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
 
-        // ListNode* prev=NULL;
-
-        // ListNode* curr=head;
-
-        // solve(head,curr,prev);
-
-        // return head;
-
-        // ListNode* forward=NULL;
-
-        // while(curr!=NULL)
-        // {
-        //    forward=curr->next;
-        //    curr->next=prev;
-        //    prev=curr;
-        //    curr=forward;
-        // }
-
-        // return prev;
-
-        
-
-    //     int len=0;
-    //     ListNode* curr=head;
-    //     while(curr!=NULL){
-    //         len++;
-    //         curr=curr->next;
-    //     }
-        
-    //     int arr[len];
-
-    //    for(int i=0;i<len;i++){
-    //        arr[i]=head->val;
-    //        head=head->next;
-    //    }
-
-    //    reverse(arr,arr+len);
-
-    //      ListNode* newhead=new ListNode(arr[0]);
-    //         ListNode* curr2=newhead;
-    //         for(int i=1;i<len;i++){
-    //             curr2->next=new ListNode(arr[i]);
-    //             curr2=curr2->next;
-    //         }
-    //         return newhead;
-
+        return prev;
     
-
-    
-
     }
 };
 // @lc code=end
@@ -177,3 +99,17 @@ Solution s;
 
     return 0;
 }
+
+
+
+
+  if(head==NULL || head->next==NULL) return head;
+
+       ListNode* chotaHead=reverse(head->next);
+
+       head->next->next=head;
+
+       head->next=NULL;
+
+       return chotaHead;
+    

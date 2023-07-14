@@ -7,7 +7,9 @@
 // @lc code=start
 class Solution {
 public:
-    int longestIncreasingPath(vector<vector<int>>& matrix) {
+    int longestIncreasingPath(vector<vector<int>>& m) {
+
+        int n = m.size();
         
     }
 };

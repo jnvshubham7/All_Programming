@@ -7,35 +7,48 @@
 // @lc code=start
 class Solution {
 public:
+    int memo[2501][2501];
     int lengthOfLIS(vector<int>& nums) {
 
         int n=nums.size();
 
-       vector<int> dp(n,1);
+       
+        memset(memo,-1,sizeof(memo));
 
-       for(int i=0;i<n;i++){
-           for(int j=0;j<i;j++){
+      
 
-               if(nums[i]>nums[j]){
-                   dp[i]=max(dp[i],dp[j]+1);
-                  
-                   
-               }
-           }
-       }
+        return LIS(nums,-1,0);
 
-       for(int i=0;i<dp.size();i++)
-       {
-        //cout<<dp[i]<<" ";
-       }
-
-
-       return *max_element(dp.begin(), dp.end());
-
-
-
-        
+       
     }
+
+    int LIS(vector<int>& nums,int prev,int curr)
+    {
+        if(curr==nums.size())
+        {
+            return 0;
+        }
+
+        if(memo[prev+1][curr]!=-1)
+        {
+            return memo[prev+1][curr];
+        }
+
+        int taken=0;
+        if(prev<0 || nums[curr]>nums[prev])
+        {
+            taken=1+LIS(nums,curr,curr+1);
+        }
+
+        int not_taken=LIS(nums,prev,curr+1);
+
+        memo[prev+1][curr]=max(taken,not_taken);
+
+        return memo[prev+1][curr];
+    }
+
+  
+   
 };
 // @lc code=end
 

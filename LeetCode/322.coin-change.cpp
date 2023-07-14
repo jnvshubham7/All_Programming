@@ -22,8 +22,117 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
+
+
+    int coinChange(vector<int>& coins, int amount) {
+
+        vector<vector<int>> dp(coins.size()+1,vector<int>(amount+1,-1));
+
+       int res=  rec(coins,amount,0, dp);
+
+         if(res==INT_MAX-1)
+         {
+              return -1;
+         }
+         else
+         {
+              return res;
+         }
+      
+    }
+
+    int rec(vector<int>& coins,int amount,int i, vector<vector<int>> &dp)
+    {
+        if(amount==0)
+        {
+            return 0;
+        }
+
+        if(dp[i][amount]!=-1)
+        {
+            return dp[i][amount];
+        }
+
+        if(i>=coins.size())
+        {
+            return INT_MAX-1;
+        }
+
+        if(coins[i]<=amount)
+        {
+            return dp[i][amount]=min(1+rec(coins,amount-coins[i],i, dp),rec(coins,amount,i+1, dp));
+        }
+        else
+        {
+            return dp[i][amount]=rec(coins,amount,i+1, dp);
+        }
+        
+    }                                               
+
    
-   int solve(vector<int>& coins, int amount)
+};
+// @lc code=end
+
+
+
+
+
+
+int main(){
+Solution s;
+
+   int n;
+    cin>>n;
+    vi v;
+    fr(i,n)
+    {
+        int x;
+        cin>>x;
+        v.pb(x);
+    }
+    int amount;
+    cin>>amount;
+    cout<<s.coinChange(v,amount)<<endl;
+
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ int solve(vector<int>& coins, int amount)
    {
 
     
@@ -106,42 +215,3 @@ public:
 
     // return dp[n][m];
 
-
-
-
-    
-   }
-
-    int coinChange(vector<int>& coins, int amount) {
-
-        return solve(coins,amount);
-
-        
-    }
-};
-// @lc code=end
-
-
-
-
-
-
-int main(){
-Solution s;
-
-   int n;
-    cin>>n;
-    vi v;
-    fr(i,n)
-    {
-        int x;
-        cin>>x;
-        v.pb(x);
-    }
-    int amount;
-    cin>>amount;
-    cout<<s.coinChange(v,amount)<<endl;
-
-
-    return 0;
-}

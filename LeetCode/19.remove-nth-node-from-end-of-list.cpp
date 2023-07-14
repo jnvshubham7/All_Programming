@@ -46,65 +46,39 @@ class Solution {
 public:
      ListNode* removeNthFromEnd(ListNode* head, int n) {
 
-    vector<int> v;
-        ListNode* p = head;
-        while(p != nullptr) {
-            v.push_back(p->val);
-            p = p->next;
-        }
+        if(head == NULL)
+            return NULL;
 
-        //erase the nth element from the end
-        v.erase(v.end() - n);
+            ListNode* temp = head;
 
-        //print v
-        // for(int i = 0; i < v.size(); i++) {
-        //     cout<<v[i]<<" ";
-        // }
-      
+            int cnt=0;
 
-      if(v.size() == 0) {
-          return nullptr;
-        }
+            while(temp!=NULL)
+            {
+                cnt++;
+                temp = temp->next;
+            }
 
-        
+            int k=cnt-n;
 
-       ListNode* newhead = new ListNode(v[0]);
-        ListNode* newcur = newhead;
-        for(int i = 0; i < v.size()-1; i++) {
-            newcur->next = new ListNode(v[i+1]);
-            newcur = newcur->next;
-        }
-        newcur->next = NULL;
+            if(k==0)
+            {
+                head = head->next;
+                return head;
+            }
 
-        return newhead;
+            temp=head;
 
+            while(k>1)
+            {
+                temp=temp->next;
+                k--;
+            }
 
+            temp->next = temp->next->next;
 
-      
+            return head;
 
-
-
-
-    //     // ListNode* temp=head;
-    //     // int cnt=0;
-    //     // while(temp!=NULL){
-    //     //     cnt++;
-    //     //     temp=temp->next;
-    //     // }
-    //     // int k=cnt-n;
-    //     // if(k==0){
-    //     //     head=head->next;
-    //     //     return head;
-    //     // }
-    //     // temp=head;
-    //     // while(k>1){
-    //     //     temp=temp->next;
-    //     //     k--;
-    //     // }
-    //     // temp->next=temp->next->next;
-    //     // return head;
-
-        
         
      }
 };
@@ -186,3 +160,105 @@ Solution s;
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ vector<int> v;
+        ListNode* p = head;
+        while(p != nullptr) {
+            v.push_back(p->val);
+            p = p->next;
+        }
+
+        //erase the nth element from the end
+        v.erase(v.end() - n);
+
+        //print v
+        // for(int i = 0; i < v.size(); i++) {
+        //     cout<<v[i]<<" ";
+        // }
+      
+
+      if(v.size() == 0) {
+          return nullptr;
+        }
+
+        
+
+       ListNode* newhead = new ListNode(v[0]);
+        ListNode* newcur = newhead;
+        for(int i = 0; i < v.size()-1; i++) {
+            newcur->next = new ListNode(v[i+1]);
+            newcur = newcur->next;
+        }
+        newcur->next = NULL;
+
+        return newhead;
+
+
+
+      
+
+
+
+
+    //     // ListNode* temp=head;
+    //     // int cnt=0;
+    //     // while(temp!=NULL){
+    //     //     cnt++;
+    //     //     temp=temp->next;
+    //     // }
+    //     // int k=cnt-n;
+    //     // if(k==0){
+    //     //     head=head->next;
+    //     //     return head;
+    //     // }
+    //     // temp=head;
+    //     // while(k>1){
+    //     //     temp=temp->next;
+    //     //     k--;
+    //     // }
+    //     // temp->next=temp->next->next;
+    //     // return head;
+
+        

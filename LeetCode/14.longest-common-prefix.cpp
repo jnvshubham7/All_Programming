@@ -9,24 +9,24 @@ class Solution {
 public:
     string longestCommonPrefix(vector<string>& str) {
 
-         int n = str.size();
-        if(n==0) return "";
+        if(str.size() == 0)
+            return "";
+
+        string prefix = str[0];
         
-        string ans  = "";
-        sort(begin(str), end(str));
-        string a = str[0];
-        string b = str[n-1];
-        
-        for(int i=0; i<a.size(); i++){
-            if(a[i]==b[i]){
-                ans = ans + a[i];
-            }
-            else{
-                break;
+
+        for(int i = 1; i < str.size(); i++) {
+            for(int j = 0; j < prefix.length(); j++) {
+                if(prefix[j] != str[i][j]) {
+                    prefix = prefix.substr(0, j);
+                    break;
+                }
             }
         }
-        
-        return ans;
+
+        return prefix;
+
+     
         
     }
 };

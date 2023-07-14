@@ -45,6 +45,27 @@ using namespace std;
 class Solution {
 public:
     int minDepth(TreeNode* root) {
+
+        int ans=INT_MAX;
+
+        if(root==NULL){
+            return 0;
+        }
+
+        if(root->left==NULL && root->right==NULL){
+            return 1;
+        }
+
+        if(root->left){
+            ans=min(ans,minDepth(root->left));
+        }
+
+        if(root->right){
+            ans=min(ans,minDepth(root->right));
+        }
+
+        return ans+1;
+
         
     }
 };

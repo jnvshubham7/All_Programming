@@ -9,6 +9,14 @@ class Solution {
 public:
     int longestValidParentheses(string s) {
 
+        int n=s.size();
+
+        
+
+       
+    
+        
+
         
         
     }

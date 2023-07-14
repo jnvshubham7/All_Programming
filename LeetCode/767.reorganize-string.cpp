@@ -22,61 +22,68 @@ public:
 #define vs vector<string>
 #define ppi pair<int,pair<int,int>>
 
-    string reorganizeString(string s) {
+    string reorganizeString(string S) {
 
-        int n = s.size();
+        string s ="";
 
-        unordered_map<char, int> m;
-        for (int i = 0; i < n; i++) {
-            m[s[i]]++;
+        unordered_map<char,int> mp;
+
+        priority_queue<pair<int,char>>pq;
+
+        for(auto s:S)
+        {
+            mp[s]++;
         }
 
+        for(auto m:mp)
+        {
+            pq.push({m.second,m.first});
 
 
-        priority_queue<pair<int, char>> pq;
-        for (auto it = m.begin(); it != m.end(); it++) {
-            pq.push(mp(it->second, it->first));
         }
 
-
-
-
-
-
-        string ans = "";
-        while (pq.size() > 1) {
-            int top1_i = pq.top().first;
-            char top1_c = pq.top().second;
+        while(pq.size()>1)
+        {
+            auto top1= pq.top();
             pq.pop();
 
-            int top2_i = pq.top().first;
-            char top2_c = pq.top().second;
+            auto top2 = pq.top();
             pq.pop();
 
-            ans+=top1_c;
-            ans+=top2_c;
-            top1_i--;
-            top2_i--;
-            if (top1_i > 0) {
-                pq.push(mp(top1_i, top1_c));
-            }
-            if (top2_i > 0) {
-                pq.push(mp(top2_i, top2_c));
-            }
+            s+=top1.second;
+            s+=top2.second;
 
-            
+            top1.first -=1;
+
+            top2.first-=1;
+
+            if(top1.first>0)
+            {
+                pq.push(top1);
+                            }
+
+                            if(top2.first>0)
+                            {
+                                pq.push(top2);
+                            }
+
+
+
+
+
+
         }
 
-        if(!pq.empty()){
-           if(pq.top().first>1){
-               return "";
-           }
-              ans+=pq.top().second;
+        if(!pq.empty())
+        {
+            if(pq.top().first >1)
+            return "";
+            else 
+            s+=pq.top().second;
         }
 
-        return ans;
        
-        
+        return s;
     }
 
 };

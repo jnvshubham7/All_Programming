@@ -7,39 +7,35 @@
 // @lc code=start
 class Solution {
 public:
-
-   int dp[101][101];
     int uniquePaths(int m, int n) {
+        return countPaths(0, 0, m, n);
+    }
 
-      memset(dp, 0, sizeof(dp));
 
-     return solve(0, 0, m, n);
+    int countPaths(int row, int col, int m, int n) {
+         int rightPaths = 0, downPaths = 0;
+
+
+        // Base case: if the robot reaches the bottom-right corner, return 1
+
         
-    }
-
-    int solve(int x, int y, int m, int n) {
-
-
-     if(dp[x][y] != 0) return dp[x][y];
-
-
-
-
-
-
-        if (x == m - 1 && y == n - 1) {
-            return dp[x][y] = 1;
+        if (row == m - 1 && col == n - 1) {
+            return 1;
         }
-        if (x >= m || y >= n) {
-            return dp[x][y] = 0;
+
+        // Recursive case: try moving right and down and sum up the results
+       
+        if (col < n - 1) {
+            rightPaths = countPaths(row, col + 1, m, n);
         }
-        return dp[x][y] = solve(x + 1, y, m, n) + solve(x, y + 1, m, n);
+        if (row < m - 1) {
+            downPaths = countPaths(row + 1, col, m, n);
+        }
+
+        return rightPaths + downPaths;
     }
-
-  
-
-
 };
+
 // @lc code=end
 
 

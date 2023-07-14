@@ -27,7 +27,125 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    int maxScore(vector<int>& cardPoints, int k) {
+    int maxScore(vector<int>& cp, int k) {
+
+        int n=cp.size();
+
+
+
+        vector<int> beg(k+1,0);
+        vector<int> end(k+1,0);
+
+
+        beg[0]=cp[0];
+        end[0]=cp[n-1];
+
+        for(int i=1;i<k;i++){
+            beg[i]=beg[i-1]+cp[i];
+            
+        }
+
+        for(int i=1;i<k;i++){
+            end[i]=end[i-1]+cp[n-i-1];
+        }
+
+        for(int i=0;i<k;i++){
+            cout<<beg[i]<<" ";
+        }
+
+        cout<<endl;
+
+        for(int i=0;i<k;i++){
+            cout<<end[i]<<" ";
+        }
+
+        cout<<endl;
+
+        int ans=0;
+        int i=1,j=k-2;
+
+        ans=max(ans,beg[k-1]);
+        ans=max(ans,end[k-1]);
+
+        while(i<=j){
+            int sum=beg[i]+end[j];
+            ans=max(ans,sum);
+            i++;
+            j--;
+        }
+
+        return ans;
+
+
+
+
+
+
+       
+
+        // beg[0]=cp[0];
+        // end[0]=cp[n-1];
+
+        // for(int i=1;i<k;i++){
+        //     beg[i]=beg[i-1]+cp[i];
+            
+        // }
+
+        // for(int i=1;i<k;i++){
+        //     end[i]=end[i-1]+cp[n-i-1];
+        // }
+
+        // int ans=0;
+        // int i=0,j=k-1;
+
+        // while(i<k){
+        //     int sum=beg[i]+end[j];
+        //     ans=max(ans,sum);
+        //     i++;
+        //     j--;
+        // }
+
+        // return ans;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //     int sum=0;
+
+    //     int i=0,j=n-1;
+
+    //    while(k--){
+    //        if(cp[i]>cp[j]){
+    //            cout<<cp[i]<<" ";
+    //            sum+=cp[i];
+            
+    //        }
+    //        else{
+    //             cout<<cp[j]<<" ";
+    //            sum+=cp[j];
+             
+    //        }
+    //           i++;
+    //             j--;
+    //    }
+    //      cout<<endl;
+
+    //     return sum;
+
 
         
 
@@ -90,6 +208,17 @@ public:
      
         // int sum1=0;
         // int sum2=0;
+
+
+
+
+
+
+
+
+
+
+        
         // int ans=0;
 
         // for(int i=0;i<k;i++){
@@ -112,30 +241,30 @@ public:
 
 
 
-int main(){
-Solution s;
+// int main(){
+// Solution s;
 
-    int t;
-    cin>>t;
-    while(t--){
-        int n,k;
-        cin>>n>>k;
-        vector<int> cardPoints(n);
-        fr(i,n){
-            cin>>cardPoints[i];
-        }
-        cout<<s.maxScore(cardPoints,k)<<endl;
-       // vector<vector<int>> ans=s.maxScore(cardPoints,k);
-        // fr(i,ans.size()){
-        //     fr(j,ans[i].size()){
-        //         cout<<ans[i][j]<<" ";
-        //     }
-        //     cout<<endl;
-        // }
+//     int t;
+//     cin>>t;
+//     while(t--){
+//         int n,k;
+//         cin>>n>>k;
+//         vector<int> cardPoints(n);
+//         fr(i,n){
+//             cin>>cardPoints[i];
+//         }
+//         cout<<s.maxScore(cardPoints,k)<<endl;
+//        // vector<vector<int>> ans=s.maxScore(cardPoints,k);
+//         // fr(i,ans.size()){
+//         //     fr(j,ans[i].size()){
+//         //         cout<<ans[i][j]<<" ";
+//         //     }
+//         //     cout<<endl;
+//         // }
 
-    }
+//     }
 
 
 
-    return 0;
-}
+//     return 0;
+// }

@@ -7,33 +7,59 @@
 // @lc code=start
 class Solution {
 public:
+
+  
+     set<vector<int>> s;
+
+     
+
+      void combinationSumHelper(const vector<int>& candidates, int target, int index, vector<int>& current, vector<vector<int>>& result) {
+       
+        if (target == 0) {
+            if(s.find(current)==s.end())
+            {
+                result.push_back(current);
+                s.insert(current);
+            }
+            return;
+        }
+
+        if (target < 0 || index == candidates.size()) {
+            return;
+        }
+
+        // Include the current candidate
+        current.push_back(candidates[index]);
+
+        combinationSumHelper(candidates, target - candidates[index], index+1, current, result);
+        current.pop_back();
+
+        // Exclude the current candidate
+        combinationSumHelper(candidates, target, index + 1, current, result);
+    }
+
+
+
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
 
         vector<vector<int>> ans;
-        set<
         vector<int> cur;
-        solve(candidates,target, 0, cur, ans);
-        return  ans;
+        sort(candidates.begin(), candidates.end());
+        combinationSumHelper(candidates, target, 0, cur, ans);
+        return ans;
+   
+   
+      
+       
         
+    
+
+   
+
+
     }
 
-    void solve(vector<int>& candidates, int target, int start, vector<int>& cur, vector<vector<int>>& ans)
-    {
-        if(target == 0)
-        {
-            ans.push_back(cur);
-            return;
-        }
-        if(target < 0)
-            return;
-        for(int i = start; i < candidates.size(); i++)
-        {
-           
-            cur.push_back(candidates[i]);
-            solve(candidates, target - candidates[i], i+1, cur, ans);
-            cur.pop_back();
-        }
-    }
+   
 };
 // @lc code=end
 

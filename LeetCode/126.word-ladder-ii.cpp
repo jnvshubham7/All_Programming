@@ -9,7 +9,17 @@ class Solution {
 public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
 
-         if(find(wordList.begin(), wordList.end(),endWord) == wordList.end())
+
+
+        
+
+
+
+
+
+
+
+ if(find(wordList.begin(), wordList.end(),endWord) == wordList.end())
       return {{}};
 
       unordered_map<string, bool> vis_map;
@@ -63,13 +73,19 @@ public:
 
       return res;
 
-
-
-
-
     }
 
-    void wordMatch(string word, unordered_map<string, bool>& vis_map, queue<string>& q)
+
+
+
+
+
+
+
+
+
+
+void wordMatch(string word, unordered_map<string, bool>& vis_map, queue<string>& q)
     {
         for(int i=0;i<word.size();i++)
         {
@@ -92,9 +108,31 @@ public:
 
         }
 
-    
-        
+
+
+      
+
     }
+
 };
 // @lc code=end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

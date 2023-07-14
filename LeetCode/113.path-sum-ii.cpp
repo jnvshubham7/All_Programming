@@ -19,27 +19,66 @@
 class Solution {
 public:
      vector<vector<int>> ans;
-    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+    vector<vector<int>> pathSum(TreeNode* root, int ts) {
 
-        dfs(root, targetSum, 0, {});
+
+        if(root==NULL)
+        {
+            return ans;
+        }
+
+        vector<TreeNode*> path;
+
+       func(root,ts,path);
+
         return ans;
+
+
+
+
+
+
         
+
+
     }
 
-    void dfs(TreeNode* root, int targetSum, int currSum, vector<int> path) {
-        if (!root) return;
-        currSum += root->val;
-        path.push_back(root->val);
-        if (!root->left && !root->right) {
-            if (currSum == targetSum) {
-                ans.push_back(path);
+    void func(TreeNode* root,int ts,vector<TreeNode*> path)
+    {
+        if(root==NULL)
+        {
+            return;
+        }
+
+        path.push_back(root);
+
+        if(root->left==NULL && root->right==NULL)
+        {
+            int sum=0;
+            for(int i=0;i<path.size();i++)
+            {
+                sum+=path[i]->val;
+            }
+
+            if(sum==ts)
+            {
+                vector<int> temp;
+                for(int i=0;i<path.size();i++)
+                {
+                    temp.push_back(path[i]->val);
+                }
+
+                ans.push_back(temp);
             }
         }
-        dfs(root->left, targetSum, currSum, path);
-        dfs(root->right, targetSum, currSum, path);
-       
+
+        func(root->left,ts,path);
+        func(root->right,ts,path);
+
     }
 
+
+    
 
 
 

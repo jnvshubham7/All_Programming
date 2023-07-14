@@ -64,48 +64,35 @@ using namespace std;
 class Solution {
 public:
 
-int height(TreeNode* root)
-{
-    if(root==NULL)
-    return 0;
-    int l=height(root->left);
-    int r=height(root->right);
-
-    return 1+max(l,r);
-
-}
-
-bool dfs(TreeNode* root)
-{
-    if(root==NULL)
-    return true;
-
-
-    int l_height=height(root->left);
-    int r_height=height(root->right);
-
-    if(abs(l_height-r_height)>1)
-    return false;
-
-    bool l=dfs(root->left);
-    bool r=dfs(root->right);
-
-    if(!l || !r)
-    return false;
-
-    return true;
-
-
-
-
-}
-
-
     bool isBalanced(TreeNode* root) {
 
-        return dfs(root);
+      if(root==NULL)
+      return true;
 
-        
+      int lh=height(root->left);
+      int rh=height(root->right);
+
+      if(abs(lh-rh)<=1 && isBalanced(root->left) && isBalanced(root->right))
+
+      return true;
+
+      return false;
+
+    }
+
+    int height(TreeNode* root)
+    {
+      if(root==NULL)
+      return 0;
+
+      int lh=height(root->left);
+      int rh=height(root->right);
+
+      return max(lh,rh)+1;
+
+      
+
+      
     }
 };
 // @lc code=end

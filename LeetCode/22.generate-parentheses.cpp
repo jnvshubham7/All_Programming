@@ -28,33 +28,36 @@ using namespace std;
 class Solution {
 public: 
 
-    vector<string> ans;
-
-
-
     vector<string> generateParenthesis(int n) {
 
-        solve("",n,n);
+        vector<string> ans;
+        solve(n, 0, 0, "", ans);
         return ans;
 
 
     }
 
-    void solve(string op,int open,int close){
-        if(open==0 && close==0){
-            ans.push_back(op);
+
+
+
+    void solve(int n, int open, int close, string output, vector<string> &ans)
+    {
+        if(open==n && close==n)
+        {
+            ans.push_back(output);
             return;
         }
-        if(open>0){
-            op.push_back('(');
-            solve(op,open-1,close);
-            op.pop_back();
+
+        if(open<n)
+        {
+            solve(n, open+1, close, output+'(', ans);
         }
-        if(close>open){
-            op.push_back(')');
-            solve(op,open,close-1);
-            op.pop_back();
+
+        if(close<open)
+        {
+            solve(n, open, close+1, output+')', ans);
         }
+
     }
 
 };
@@ -80,3 +83,4 @@ Solution s;
 
     return 0;
 }
+

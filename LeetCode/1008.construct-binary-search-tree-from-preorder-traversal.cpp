@@ -62,43 +62,37 @@ public:
 
 
 
-    TreeNode* bstFromPreorder(vector<int>& preorder) {
+    TreeNode* bstFromPreorder(vector<int>& pre) {   
 
-        return solve(preorder);
+        int n = pre.size();
+
+        if(n == 0) return nullptr;
+
+        return helper(pre, 0, n-1);
 
       
     }
 
-    TreeNode* solve(vector<int>& preorder)
+    TreeNode* helper(vector<int>& pre, int start, int end)
     {
-        if(preorder.size()==0)
-        {
-            return NULL;
-        }
-        
-        int root=preorder[0];
-        TreeNode* root_node=new TreeNode(root);
-        
-        vector<int> left_preorder;
-        vector<int> right_preorder;
-        
-        for(int i=1;i<preorder.size();i++)
-        {
-            if(preorder[i]<root)
-            {
-                left_preorder.pb(preorder[i]);
-            }
-            else
-            {
-                right_preorder.pb(preorder[i]);
-            }
-        }
-        
-        root_node->left=solve(left_preorder);
-        root_node->right=solve(right_preorder);
-        
-        return root_node;
+        if(start > end) return nullptr;
+
+        TreeNode* root = new TreeNode(pre[start]);
+
+        int i = start+1;
+
+        while(i <= end && pre[i] < pre[start]) i++;
+
+        root->left = helper(pre, start+1, i-1);
+
+        root->right = helper(pre, i, end);
+
+        return root;
     }
+
+
+
+   
 };
 // @lc code=end
 

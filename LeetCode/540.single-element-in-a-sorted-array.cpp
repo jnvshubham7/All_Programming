@@ -7,25 +7,31 @@
 // @lc code=start
 class Solution {
 public:
-    int singleNonDuplicate(vector<int>& nums) {
-
-        int n=nums.size();
-
-        // unordered_map<int,int> m;
-        // for(int i=0;i<n;i++)
-        // {
-        //     m[nums[i]]++;
-        // }
-        // for(auto it=m.begin();it!=m.end();it++)
-        // {
-        //     if(it->second==1)
-        //     {
-        //         return it->first;
-        //     }
-        // }
-        // return -1;
+    int singleNonDuplicate(std::vector<int>& nums) {
+        int left = 0;
+        int right = nums.size() - 1;
         
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            
+            if (mid % 2 == 0) {
+                if (nums[mid] == nums[mid + 1]) {
+                    left = mid + 2;
+                } else {
+                    right = mid;
+                }
+            } else {
+                if (nums[mid] == nums[mid - 1]) {
+                    left = mid + 1;
+                } else {
+                    right = mid;
+                }
+            }
+        }
+        
+        return nums[left];
     }
 };
+
 // @lc code=end
 

@@ -43,18 +43,14 @@ class Solution {
 public:
     void deleteNode(ListNode* node) {
 
-        vector<int> v;
-        ListNode* p = node;
-        while(p != nullptr) {
-            v.push_back(p->val);
-            p = p->next;
-        }
-        //print 
-        for(int i = 0; i < v.size(); i++) {
-            cout << v[i] << " ";
-        }
-        vector<int> v1;
-        //print the vector
+        if(node==NULL)
+            return;
+
+        ListNode* temp=node->next;
+        node->val=temp->val;
+        node->next=temp->next;
+
+        
 
 
         

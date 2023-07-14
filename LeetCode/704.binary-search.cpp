@@ -9,29 +9,22 @@ class Solution {
 public:
     int search(vector<int>& nums, int target) {
 
-        int n=nums.size();
-        if(n==0) return -1;
-        int i=0;
-        int j=n-1;
-        while(i<=j)
+        int s=0, e=nums.size()-1, mid;
+
+        while(s<=e)
         {
-            int mid=i+(j-i)/2;
+            mid=(s+e)/2;
             if(nums[mid]==target)
-            {
                 return mid;
-            }
-            else if(nums[mid]>target)
-            {
-                j=mid-1;
-            }
+            else if(nums[mid]<target)
+                s=mid+1;
             else
-            {
-                i=mid+1;
-            }
+                e=mid-1;
         }
+
         return -1;
 
-       
+
         
     }
 };

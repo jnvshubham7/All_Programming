@@ -29,26 +29,31 @@ public:
 
 
         //indegree and outdegree unordered_map
-        unordered_map<int,int> indegree,outdegree;
+        unordered_map<int,int> outdegree;
         fr(i,trust.size()){
-            indegree[trust[i][1]]++;
+           
             outdegree[trust[i][0]]++;
         }
 
-        //print 
-        for(auto it:indegree){
-            cout<<it.first<<" "<<it.second<<" indegree"<<endl;
-        }
-        for(auto it:outdegree){
-            cout<<it.first<<" "<<it.second<<" outdegree"<<endl;
-        }
-
-       for(auto it:indegree){
-
-            if(it.second==n-1 && outdegree.find(it.first)==outdegree.end()) 
-            return it.first;
-        }
        
+        
+
+       unordered_map<int,int> indegree;
+
+        fr(i,trust.size()){
+            indegree[trust[i][1]]++;
+        }
+        for(auto  it :indegree){
+            if(it.second==n-1 && outdegree[it.first]==0){
+               
+                    return it.first;
+                
+            }
+        }
+
+
+
+      
           
        
 

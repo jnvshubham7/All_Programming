@@ -38,18 +38,6 @@ struct TreeNode{
  */
 class Solution {
 public:
-    vector<int> ans;
-    void solve(TreeNode* root)
-    {
-        if(root==NULL)
-        {
-            return;
-        }
-        ans.push_back(root->val);
-        solve(root->left);
-        solve(root->right);
-    }
-
     
     vector<int> preorderTraversal(TreeNode* root) {
 
@@ -65,15 +53,20 @@ public:
             st.pop();
 
             v.push_back(curr->val);
+
+            
+
              if(curr->right)
             {
                 st.push(curr->right);
             }
-            if(curr->left)
+
+             if(curr->left)
             {
                 st.push(curr->left);
 
             }
+           
            
 
         }
@@ -81,12 +74,6 @@ public:
 
         return v;
 
-
-
-
-        // solve(root);
-        // return ans;
-        
     }
 };
 // @lc code=end

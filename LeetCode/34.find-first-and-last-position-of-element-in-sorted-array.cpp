@@ -60,6 +60,41 @@ public:
 
 
 
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+int n = nums.size();
+    int startIndex = -1;
+    int endIndex = -1;
+
+    // Find the starting position of the target
+    for (int i = 0; i < n; i++) {
+        if (nums[i] == target) {
+            startIndex = i;
+            break;
+        }
+    }
+
+    // Find the ending position of the target
+    for (int i = n - 1; i >= 0; i--) {
+        if (nums[i] == target) {
+            endIndex = i;
+            break;
+        }
+    }
+
+    return {startIndex, endIndex};
+        
+
+       
+        
+    }
+};
+
+
+
+
+
 
 
 
@@ -88,39 +123,39 @@ public:
 
 
 // int n = nums.size();
-        // vector<int> res(2, -1);
-        // if (n == 0) return res;
-        // if (n == 1) {
-        //     if (nums[0] == target) {
-        //         res[0] = 0;
-        //         res[1] = 0;
-        //         return res;
-        //     } else {
-        //         return res;
-        //     }
-        // }
-        // int left = 0, right = n - 1;
-        // while (left < right) {
-        //     int mid = left + (right - left) / 2;
-        //     if (nums[mid] < target) {
-        //         left = mid + 1;
-        //     } else {
-        //         right = mid;
-        //     }
-        // }
-        // if (nums[left] != target) return res;
-        // res[0] = left;
-        // right = n - 1;
-        // while (left < right) {
-        //     int mid = left + (right - left + 1) / 2;
-        //     if (nums[mid] > target) {
-        //         right = mid - 1;
-        //     } else {
-        //         left = mid;
-        //     }
-        // }
-        // res[1] = right;
-        // return res;
+//         vector<int> res(2, -1);
+//         if (n == 0) return res;
+//         if (n == 1) {
+//             if (nums[0] == target) {
+//                 res[0] = 0;
+//                 res[1] = 0;
+//                 return res;
+//             } else {
+//                 return res;
+//             }
+//         }
+//         int left = 0, right = n - 1;
+//         while (left < right) {
+//             int mid = left + (right - left) / 2;
+//             if (nums[mid] < target) {
+//                 left = mid + 1;
+//             } else {
+//                 right = mid;
+//             }
+//         }
+//         if (nums[left] != target) return res;
+//         res[0] = left;
+//         right = n - 1;
+//         while (left < right) {
+//             int mid = left + (right - left + 1) / 2;
+//             if (nums[mid] > target) {
+//                 right = mid - 1;
+//             } else {
+//                 left = mid;
+//             }
+//         }
+//         res[1] = right;
+//         return res;
 
 
 

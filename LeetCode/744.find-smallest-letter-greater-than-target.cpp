@@ -10,27 +10,37 @@ public:
     char nextGreatestLetter(vector<char>& letters, char target) {
 
         int n=letters.size();
-        int start=0,end=n-1;
-        char res=' ';
-        while(start<=end){
-            int mid=(start+end)/2;
-            if(letters[mid]==target){
-                start=mid+1;
-            }
-            else if(letters[mid]>target){
-                res=letters[mid];
-                end=mid-1;
-            }
-            else if(letters[mid]<target){
-                
-                start=mid+1;
-            }
+
+        for(int i=0; i<n; i++)
+        {
+            if(letters[i]>target)
+                return letters[i];
         }
 
-        if(res==' '){
-            res=letters[0];
-        }
-        return res;
+        return letters[0];
+
+
+        // int start=0,end=n-1;
+        // char res=' ';
+        // while(start<=end){
+        //     int mid=(start+end)/2;
+        //     if(letters[mid]==target){
+        //         start=mid+1;
+        //     }
+        //     else if(letters[mid]>target){
+        //         res=letters[mid];
+        //         end=mid-1;
+        //     }
+        //     else if(letters[mid]<target){
+                
+        //         start=mid+1;
+        //     }
+        // }
+
+        // if(res==' '){
+        //     res=letters[0];
+        // }
+        // return res;
         
         
     }

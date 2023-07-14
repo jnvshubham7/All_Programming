@@ -10,22 +10,41 @@ public:
     vector<int> findSmallestSetOfVertices(int n, vector<vector<int>>& edges) {
 
 
-         vector<int> res;
-       unordered_map<int,int> indegree;
-        for(int i=0;i<edges.size();i++)
-        {
-            indegree[edges[i][1]]++;
-        }
+    //      vector<int> res;
+    //    unordered_map<int,int> indegree;
+    //     for(int i=0;i<edges.size();i++)
+    //     {
+    //         indegree[edges[i][1]]++;
+    //     }
         
-        for(int i=0;i<n;i++)
-        {
-            if(indegree[i]==0)
-            {
-                res.push_back(i);
-            }
-        }
+    //     for(int i=0;i<n;i++)
+    //     {
+    //         if(indegree[i]==0)
+    //         {
+    //             res.push_back(i);
+    //         }
+    //     }
         
-        return res;
+    //     return res;
+
+    vector<int> res;
+
+    unordered_map<int,int> mp;
+
+    for(int i=0;i<edges.size();i++)
+    {
+        mp[edges[i][1]]++;
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        if(mp[i]==0)
+        {
+            res.push_back(i);
+        }
+    }
+
+    return res;
 
         
         // vector<int> res;

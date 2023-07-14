@@ -23,39 +23,45 @@ public:
 #define ppi pair<int,pair<int,int>>
 #define ppd pair<double,pair<int,int>>
 
-    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+    vector<vector<int>> merge(vector<vector<int>>& arr) {
 
-        vector<pair<int,int>> v;
-        for(auto i:intervals)
+        vector<vector<int>> result;
+       
+        if(arr.size()==0)return result;
+        
+        sort(arr.begin(),arr.end());
+
+        int start=arr[0][0];
+
+        int end=arr[0][1];
+
+        for(int i=1;i<arr.size();i++)
         {
-            v.pb({i[0],i[1]});
+            if(arr[i][0]<=end)
+            {
+                end=max(end,arr[i][1]);
+            }
+            else
+            {
+                result.push_back({start,end});
+                start=arr[i][0];
+                end=arr[i][1];
+            }
         }
 
-        sort(all(v));
-        vector<vector<int>> ans;
-
-        int s=v[0].first,e=v[0].second;
-       
-       for(int i=1;i<v.size();i++)
-       {
-           if(v[i].first<=e)
-           {
-               e=max(e,v[i].second);
-           }
-           else
-           {
-               ans.pb({s,e});
-               s=v[i].first;
-               e=v[i].second;
-           }
-       }
-         ans.pb({s,e});
-        return ans;
-
+        result.push_back({start,end});
 
 
 
         
+
+
+       
+      
+        return result;
+    
+
+      
     }
 };
 // @lc code=end

@@ -29,30 +29,40 @@ class Solution {
 public:
     string minRemoveToMakeValid(string s) {
 
-         int n = s.size();
-        vector<int> stack;
-        for (int i = 0; i < n; i++) {
-            if (s[i] == '(') {
-                stack.push_back(i);
-            } else if (s[i] == ')') {
-                if (stack.empty()) {
-                    s[i] = '*';
-                } else {
-                    stack.pop_back();
-                }
+        int i=0;
+        int n=s.size();
+        int j=n-1;
+
+        while(i<n && j>=0)
+        {
+            if(s[i]=='(' && s[j]==')')
+            {
+                i++;
+                j--;
+            }
+
+            else if(s[i]=='(' && s[j]!=')')
+            {
+                j--;
+            }
+
+            else if(s[i]!=')' && s[j]==')')
+            {
+                i++;
+            }
+
+            else{
+                i++;
+                j--;
             }
         }
-        for (int i = 0; i < stack.size(); i++) {
-            s[stack[i]] = '*';
-        }
-        string res;
-        for (int i = 0; i < n; i++) {
-            if (s[i] != '*') {
-                res += s[i];
-            }
-        }
-        return res;
-        
+
+       0
+
+        return ans;
+
+
+       
     }
 };
 // @lc code=end

@@ -21,19 +21,7 @@ public:
       
    unordered_map<int, int> dict;
 
-    TreeNode *solve(vector<int> &postorder, vector<int> &inorder, int start, int end, int &index) {
-        if (index<0 || start > end) 
-        return NULL;
-    
-        TreeNode *root = new TreeNode(postorder[index]);
-        int position = dict[postorder[index]];
-        index--;
-        root -> right = solve(postorder, inorder, position + 1, end, index);
-        root -> left = solve(postorder, inorder, start, position - 1, index);
-        
-        return root;
-    }
-
+   
 
 
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
@@ -51,6 +39,24 @@ public:
        return solve(postorder, inorder, 0, postorder.size() - 1, index);
 
     }
+
+     TreeNode *solve(vector<int> &postorder, vector<int> &inorder, int start, int end, int &index) {
+        if (index<0 || start > end) 
+        return NULL;
+    
+        TreeNode *root = new TreeNode(postorder[index]);
+        int position = dict[postorder[index]];
+        index--;
+        root -> right = solve(postorder, inorder, position + 1, end, index);
+        root -> left = solve(postorder, inorder, start, position - 1, index);
+        
+        return root;
+    }
+
+
+
+
+
 };
 // @lc code=end
 

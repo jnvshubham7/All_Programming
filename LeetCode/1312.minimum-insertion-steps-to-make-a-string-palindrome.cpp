@@ -25,52 +25,49 @@ public:
 
     int minInsertions(string s) {
 
-      string s1=s;
-        reverse(s1.begin(),s1.end());
+      string rev = s;
 
-        string s2=s;
+      reverse(all(rev));
 
-      return   lcs(s1,s2);
+      return s.length() - lcs(s, rev);
 
-
-         
-        
-        
     }
 
+    int lcs(string s1, string s2) {
 
-    int lcs(string s1,string s2)
-    {
-      int m=s1.size(),n=s2.size();
-      int dp[m+1][n+1];
-      fr(i,m+1)
-      {
-        dp[i][0]=0;
-      }
-      fr(i,n+1)
-      {
-        dp[0][i]=0;
-      }
-      fr(i,m+1)
-      {
-        fr(j,n+1)
-        {
-          if(i==0||j==0)
-            dp[i][j]=0;
-          else if(s1[i-1]==s2[j-1])
-            dp[i][j]=dp[i-1][j-1]+1;
-          else
-            dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+      int n = s1.length();
+
+      int m = s2.length();
+
+      int dp[n + 1][m + 1];
+
+      fr(i, n + 1) {
+
+        fr(j, m + 1) {
+
+          if (i == 0 || j == 0) {
+
+            dp[i][j] = 0;
+
+          } else if (s1[i - 1] == s2[j - 1]) {
+
+            dp[i][j] = 1 + dp[i - 1][j - 1];
+
+          } else {
+
+            dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+
+          }
+
         }
+
       }
-      return n-dp[m][n];
+
+      return dp[n][m];
+
     }
-
-
 
     
-
-   
 };
 // @lc code=end
 

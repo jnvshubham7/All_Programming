@@ -23,19 +23,29 @@ public:
 
     int removeDuplicates(vector<int>& nums) {
 
-        set<int> s;
+        int n=nums.size();
 
-        fr(i,nums.size())
+        if(n==0)
+        return 0;
+
+        int i=0;
+        int j=1;
+
+        while(j<n)
         {
-            s.insert(nums[i]);
-        
+            if(nums[i]==nums[j])
+            {
+                j++;
+            }
+            else
+            {
+                i++;
+                nums[i]=nums[j];
+                j++;
+            }
         }
 
-      for(auto it:s)
-      {
-        
-      }
-
+        return i+1;
         
         
     }

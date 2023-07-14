@@ -8,19 +8,21 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
+        unordered_map<wchar_t, int> mp1;
+        unordered_map<wchar_t, int> mp2;
 
-        unordered_map<char, int> mp1;
-        unordered_map<char, int> mp2;
-        for (auto c : s) {
+        // Populate the frequency maps for string s and t
+        for (wchar_t c : s) {
             mp1[c]++;
         }
-        for (auto c : t) {
+        for (wchar_t c : t) {
             mp2[c]++;
         }
-        return mp1 == mp2;
 
-        
+        // Check if the frequency maps are equal
+        return mp1 == mp2;
     }
 };
+
 // @lc code=end
 

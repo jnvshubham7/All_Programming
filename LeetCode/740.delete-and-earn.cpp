@@ -9,21 +9,33 @@ class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {
 
-        vector<int> cnt(10002);
-		for(int i=0;i<nums.size();i++)
-		{
-			cnt[nums[i]]+=nums[i];
-		}
 
-		vector<int> dp(10002);
-		dp[1]=cnt[1];
-		dp[2]=max(cnt[1],cnt[2]);
-		for(int i=3;i<dp.size();i++)
-		{
-			dp[i]=max(dp[i-2]+cnt[i],dp[i-1]);
-		}
+        unordered_map<int,int> mp;
 
-		return max(dp[10000],dp[9999]);
+        for(int i=0;i<nums.size();i++)
+        {
+            mp[nums[i]]++;
+        }
+
+        int dp[10001]={0};
+
+        dp[1]=mp[1];
+
+        for(int i=2;i<=10000;i++)
+        {
+            dp[i]=max(dp[i-1],dp[i-2]+i*mp[i]);
+        }
+
+        //print dp array
+        for(int i=1;i<=10;i++)
+        {
+            cout<<dp[i]<<" ";
+        }
+        
+
+        return dp[10000];
+
+       
         
     }
 };

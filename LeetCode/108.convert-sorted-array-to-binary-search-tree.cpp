@@ -22,25 +22,37 @@ public:
 
     TreeNode* sortedArrayToBST(vector<int>& nums) {
 
-        return solve(nums,0,nums.size());
-        
+        int n = nums.size();
+
+        if(n == 0) return nullptr;
+
+        return helper(nums, 0, n-1);
+
+       
+
+
+
+
+
+     
     }
-    
-    TreeNode* solve(vector<int>& nums, int start, int end)
+
+    TreeNode* helper(vector<int>& nums, int start, int end)
     {
-        if(start==end)
-        {
-            return NULL;
-        }
+        if(start > end) return nullptr;
 
-        int mid= start + (end-start)/2;
-        TreeNode* root =new TreeNode(nums[mid]);
+        int mid = start + (end - start)/2;
 
-       root->left= solve(nums,start,mid);
-       root->right=solve(nums,mid+1, end);
+        TreeNode* root = new TreeNode(nums[mid]);
 
-       return root;
+        root->left = helper(nums, start, mid-1);
+
+        root->right = helper(nums, mid+1, end);
+
+        return root;
     }
+
+
 };
 // @lc code=end
 

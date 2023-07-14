@@ -18,19 +18,41 @@
  */
 class BSTIterator {
 public:
+
+  stack<TreeNode*> nodes;
+
+    void inorder(TreeNode* root) {
+        if (root == nullptr) {
+            return;
+        }
+
+        inorder(root->right);
+        nodes.push(root);
+        inorder(root->left);
+    }
+     
+     
     BSTIterator(TreeNode* root) {
+
+        inorder(root);
+
+
         
     }
     
     int next() {
+        TreeNode* node = nodes.top();
+        nodes.pop();
+        return node->val;
         
     }
     
     bool hasNext() {
+
+        return !nodes.empty();
         
     }
 };
-
 /**
  * Your BSTIterator object will be instantiated and called as such:
  * BSTIterator* obj = new BSTIterator(root);

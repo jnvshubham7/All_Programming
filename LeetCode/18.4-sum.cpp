@@ -25,66 +25,10 @@ public:
 
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
 
-        ll n = nums.size();
-
-        vector<vector<int>> ans;
-        if(nums.size() < 4) return ans;
-
         sort(all(nums));
-        for(ll i=0;i<n-3;i++)
-        {
-            if(i>0 && nums[i]==nums[i-1])
-            {
-                continue;
-            }
+        int n=nums.size();
 
-            for(ll j=i+1;j<n-2;j++)
-            {
-                if(j>i+1 && nums[j]==nums[j-1])
-                {
-                    continue;
-                }
-                ll left=j+1;
-                ll right=n-1;
-
-                while(left<right)
-                {
-                    ll sum=1ll*nums[i]+1ll*nums[j]+1ll*nums[left]+1ll*nums[right];
-                    if(sum==target)
-                    {
-                        ans.pb({nums[i],nums[j],nums[left],nums[right]});
-                        while(left<right && nums[left]==nums[left+1])
-                        {
-                            left++;
-                        }
-                        while(left<right && nums[right]==nums[right-1])
-                        {
-                            right--;
-                        }
-                        left++;
-                        right--;
-                    }
-                    else if(sum<target)
-                    {
-                        left++;
-                    }
-                    else
-                    {
-                        right--;
-                    }
-                    }
-                }
-                    
-                }
-
-                return ans;
-            
-            
-        
-
-
-
-        
+       
     }
 };
 // @lc code=end

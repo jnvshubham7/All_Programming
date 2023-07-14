@@ -47,81 +47,57 @@ public:
 
     bool canPartitionKSubsets(vector<int>& nums, int k) {
 
-        return solve(nums,k,0,0,0);
-    
+        int n=nums.size();
+
+        sort(nums.begin(),nums.end());
+
+        //print nums
+        for(int i=0;i<n;i++)
+            cout<<nums[i]<<" ";
+
+        int sum=0;
+        for(int i=0;i<n;i++)
+            sum+=nums[i];
+
+        if(sum%k!=0)
+            return false;
+
+        int target=sum/k;
+
+        if(nums[n-1]>target)
+            return false;
+
+        vector<bool> visited(n,false);
+
+        return solve(nums,visited,0,k,0,target);
 
 
+            // return false;
 
-
-
-    //     unordered_map<int,int> mp;
-    //     for(int i=0;i<n-1;i++)
-    //         mp[nums[i]]++;
-
-        
-    //    int sum=nums[n-1];
-
-    //    //print map
-    //     //  for(auto it=mp.begin();it!=mp.end();it++)
-    //     //  {
-    //     //      // cout<<it->first<<" "<<it->second<<endl;
-    //     //  }
-    //     //     cout<<endl;
-
-    //    for(int i=n-2;i>=0;i--)
-    //    {
-    //        if(mp[sum-nums[i]])
-    //        {
-    //         cout<<"sum-nums[i] "<<sum-nums[i]<<endl;
-           
-    //            mp[sum-nums[i]]--;
-    //             cout<<"mp[sum-nums[i]] "<<mp[sum-nums[i]]<<endl;
-    //            k--;
-    //        }
-    //    }
-
-      
-
-    //      for(auto it=mp.begin();it!=mp.end();it++)
-    //      {
-    //           if(it->second)
-    //           {
-    //             return false;
-    //           }
-    //      }
-    //         return true;
-            
-
-        
+     
     }
 
-    bool solve(vector<int>& nums,int k,int sum,int i,int j)
+    bool solve(vector<int>& nums,vector<bool>& visited,int start,int k,int cur_sum,int target)
     {
-        if(k==0)
-        {
+        if(k==1)
             return true;
-        }
-        if(i==nums.size())
+
+        if(cur_sum==target)
+            return solve(nums,visited,0,k-1,0,target);
+
+        for(int i=start;i<nums.size();i++)
         {
-            return false;
+            if(!visited[i])
+            {
+                visited[i]=true;
+                if(solve(nums,visited,i+1,k,cur_sum+nums[i],target))
+                    return true;
+                visited[i]=false;
+            }
         }
-        if(solve(nums,k,sum+nums[i],i+1,j))
-        {
-            return true;
-        }
-        if(solve(nums,k-1,sum,i+1,j))
-        {
-            return true;
-        }
+
         return false;
     }
-
-  
-
-
-
-
-
 
 };
 // @lc code=end

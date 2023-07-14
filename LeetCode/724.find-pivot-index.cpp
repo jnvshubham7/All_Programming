@@ -24,36 +24,11 @@ public:
 #define ppd pair<double,pair<int,int>>
 
     int pivotIndex(vector<int>& nums) {  
-        int n=nums.size();
-       ll sum=0;
-         ll leftsum=0;
-         ll rightsum=0;
-        for(int i=0;i<n;i++)
-        {
-            sum+=nums[i];
-        }
-        rightsum=sum;
 
-        for(int i=0;i<n;i++)
-        {
-            rightsum=rightsum-nums[i];
-            if(leftsum==rightsum)
-            {
-                return i;
-            }
-            leftsum+=nums[i];
-        }
-        return -1;
+        
 
-
-      
-
+        
        
-
-
-
-
-
     }
 };
 // @lc code=end
