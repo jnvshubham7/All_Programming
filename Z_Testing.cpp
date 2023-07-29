@@ -1,41 +1,23 @@
+class Solution {
+public:
+    int minPathSum(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid[0].size();
 
+        //memo 
+        vector<vector<int>> memo(m, vector<int>(n, -1));
 
+        return helper(grid, m - 1, n - 1);
+    }
 
-class Solution
-{
-	public:
-	//Function to find the shortest distance of all the vertices
-    //from the source vertex S.
-    vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
-    {
-        
-        vector<int> dist(V,INT_MAX);
-
-        dist[S]=0;
-
-        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
-
-        pq.push({0,S});
-
-        while(!pq.empty())
-        {
-            int u=pq.top().second;
-            pq.pop();
-
-            for(auto it:adj[u])
-            {
-                int v=it[0];
-                int weight=it[1];
-
-                if(dist[v]>dist[u]+weight)
-                {
-                    dist[v]=dist[u]+weight;
-                    pq.push({dist[v],v});
-                }
-            }
+    int helper(vector<vector<int>>& grid, int row, int col) {
+        // Base case: if we reach the top-left cell, return its value
+        if (row == 0 && col == 0) {
+            return grid[0][0];
         }
 
-        return dist;
+        if()
 
+       
     }
 };
