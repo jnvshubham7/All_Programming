@@ -10,50 +10,52 @@ public:
    
     vector<string> letterCombinations(string digits) {
 
-       
+
+        vector<string> str = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv","wxyz"};
+
 
         vector<string> ans;
 
-        if(digits.size()==0)
-        return ans;
+        int n=digits.size();
 
-        string output="";
-        int index=0;
-
+        if(n==0)
+            return ans;
 
 
-       unordered_map<char,string> m;
-
-        m['2']="abc", m['3']="def", m['4']="ghi", m['5']="jkl", m['6']="mno", m['7']="pqrs", m['8']="tuv", m['9']="wxyz";
-
-        solve(digits, index, output, ans, m);
+        rec(str,ans,digits,0,digits.size(),"");
 
         return ans;
+
+
+
+       
+
+       
 
 
     }
 
-    void solve(string digits, int index, string output, vector<string> &ans, unordered_map<char,string> m)
+    void rec(vector<string> &str,vector<string> &ans,string digits,int i,int n,string temp)
     {
-        if(index == digits.size())
+        if(i==n)
         {
-            ans.push_back(output);
+            ans.push_back(temp);
             return;
         }
 
-        string s=  m[digits[index]];
+        int index=digits[i]-'0';
 
-        for(int i=0;i<s.size();i++)
+        for(int j=0;j<str[index].size();j++)
         {
-            output.push_back(s[i]);
-            solve(digits, index+1, output, ans, m);
-            output.pop_back();
+            temp.push_back(str[index][j]);
+            rec(str,ans,digits,i+1,n,temp);
+            temp.pop_back();
         }
-
-        
-
-
     }
+
+
+
+    
 
 
 

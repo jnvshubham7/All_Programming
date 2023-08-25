@@ -9,38 +9,32 @@ class Solution {
 public:
     bool canJump(vector<int>& nums) {
 
-        int n=nums.size();
-        unordered_map<int,int> mp;
+        int n = nums.size();
 
-        for(int i=0;i<n;i++)
+        return rec(n - 1, nums);
+
+        
+
+    }
+
+
+    bool rec(int n, vector<int>& nums)
+
+    {
+        if(n == 0 || n == 1)
         {
-            mp[i]=nums[i];
+            return true;
         }
 
-        int i=0;
-        while(i<n)
-        {
-            if(mp[i]==0)
-            {
-                if(i==n-1)
-                    return true;
-                else
-                    return false;
-            }
-            else
-            {
-                if(possible(mp,i))
-                {
-                    i+=mp[i];
-                }
-                else
-                {
-                    return false;
-                }
-                
-            }
-        }
-        return true;
+
+        bool x1 = rec(n - 1, nums);
+
+        bool x2 = rec(n - 2, nums);
+
+
+        return x1 || x2;
+
+        
 
     }
 };
