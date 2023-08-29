@@ -7,9 +7,15 @@
 // @lc code=start
 class Solution {
 public:
-    bool canCross(vector<int>& stones) {
+    bool canCross(vector<int>& s) {
+
+
+
+
         
     }
+
+   
 };
 // @lc code=end
 

@@ -19,8 +19,57 @@
 class Solution {
 public:
     int sumNumbers(TreeNode* root) {
+
+       vector<string> sum;
+
+         string s="";
+
+        rec(root,sum,s);
+
+        int ans=0;
+
+        for(int i=0;i<sum.size();i++)
+        {
+            ans+=stoi(sum[i]);
+        }
+
+        return ans;
+
+
+
+
+
+
+
         
     }
+
+
+    void rec(TreeNode* root,vector<string> &sum,string s)
+    {
+        if(root==NULL)
+        {
+            return;
+        }
+
+        if(root->left==NULL && root->right==NULL)
+        {
+            s+=to_string(root->val);
+            sum.push_back(s);
+            return;
+        }
+
+        s+=to_string(root->val);
+
+        rec(root->left,sum,s);
+        rec(root->right,sum,s);
+
+    }
+
+
+
+
+
 };
 // @lc code=end
 

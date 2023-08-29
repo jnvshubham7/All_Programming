@@ -7,24 +7,47 @@
 // @lc code=start
 class Solution {
 public:
-    int strStr(string haystack, string needle) {
+    int strStr(string s, string x) {
 
-        int n1 = haystack.length();
-        int n2 = needle.length();
+        int n=s.length();
+        int m=x.length();
 
-        char first = needle[0];
+        char ch=x[0];
 
-        for(int i = 0; i < n1; i++) {
-            if(haystack[i] == first) {
-                if(haystack.substr(i, n2) == needle)
+        int i=0;
+        int j=0;
+
+
+        while(i<n)
+        {
+            if(s[i]==ch)
+            {
+                if(s.substr(i,m)==x)
+                {
                     return i;
+                }
+                else
+                {
+                    i++;
+                }
             }
+            
+            else
+            {
+                i++;
+            }
+
         }
 
+
         return -1;
-        
-        //time complexity: O(n1 * n2)
-        //space complexity: O(1)
+
+
+       
+
+
+
+       
       
     }
 };

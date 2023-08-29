@@ -41,41 +41,6 @@ public:
 
 int ans=0;
 
-      int left_height(TreeNode *root)
-      {
-        if(root==NULL) return 0;
-        int height=0;
-
-        while(root)
-        {
-            height++;
-            root=root->left;
-        }
-
-        return height;
-
-      }
-
-      int right_height(TreeNode *root)
-      {
-        if(root==NULL) return 0;
-
-        int height=0;
-
-        while(root)
-        {
-            height++;
-
-          root=root->right;
-
-        }
-
-        return height;
-
-        }
-
-        
-
 
       
 
@@ -83,33 +48,38 @@ int ans=0;
 
     int countNodes(TreeNode* root) {
 
-        if(root==NULL) return 0;
+      queue<TreeNode*> q;
 
-        int left_h=left_height(root);
-        cout<<left_h<<" ";
-        int right_h=right_height(root);
-        cout<<right_h<<" "<<endl;
+      q.push(root);
 
-        if(left_h==right_h) 
-        {
-            cout<<((2^left_h)-1)<<" "<<endl;
-        return (pow(2,left_h)-1);
-        }
+      while(!q.empty())
+      {
+          TreeNode* temp=q.front();
+          q.pop();
+         
+
+         int sz=q.size();
+
+          ans+=sz;
+
+
+
+          
+
+          if(temp->left!=NULL)
+          {
+              q.push(temp->left);
+          }
+
+          if(temp->right!=NULL)
+          {
+              q.push(temp->right);
+          }
+      }
+
+      return ans;
+
         
-
-        else 
-        {
-            
-            
-              ans= 1+countNodes(root->left)+countNodes(root->right);
-             cout<<ans<<" ";
-
-             return ans;
-
-
-            
-        }
-       
         
     }
 };
