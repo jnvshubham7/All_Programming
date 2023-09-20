@@ -192,7 +192,7 @@ for (int nm_thd = 1; nm_thd <= 32; nm_thd *= 2) {
     }
     auto endTimePar = chrono::high_resolution_clock::now();
 
-    // Compare results and report L2 norm difference
+    
     double l2NormDiff = 0.0;
     for (int i = 0; i < res_C.size(); i++) {
         l2NormDiff += pow(res_C[i] - res_C[i], 2);
@@ -201,7 +201,7 @@ for (int nm_thd = 1; nm_thd <= 32; nm_thd *= 2) {
 
     cout << "L2 Norm Difference: " << l2NormDiff << endl;
 
-    // Measure and report execution time
+   
     chrono::duration<double> elapsedTimeSeq = endTimeSeq - startTimeSeq;
     chrono::duration<double> elapsedTimePar = endTimePar - startTimePar;
 

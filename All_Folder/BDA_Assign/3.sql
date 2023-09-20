@@ -1,0 +1,15 @@
+LOAD DATA LOCAL INFILE 'C:/path/to/dataset1.csv'
+INTO TABLE table1
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+LOAD DATA LOCAL INFILE 'C:/path/to/dataset2.csv'
+INTO TABLE table2
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+SELECT t1.name, SUM(t2.value) AS total_value
+FROM table1 t1
+JOIN table2 t2 ON t1.id = t2.id
+GROUP BY t1.name;

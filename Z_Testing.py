@@ -1,26 +1,58 @@
-import requests
+#include <iostream>
+#include <vector>
+#include <stack>
 
-year = 2010
-orbit_class = "aten"
-page = 1
+class Solution {
+public:
+    vector<int> func(vector<int>& A) {
+        int n = A.size();
 
-response = requests.get(f"http://jsonmock.hackerrank.com/api/asteroids/search?page={page}").json()
-total_pages = response["total_pages"]
 
-asteroid_list = []
+      vector<int> B(n);
+       stack<int> st; 
 
-for page in range(1, total_pages + 1):
-    response = requests.get(f"http://jsonmock.hackerrank.com/api/asteroids/search?page={page}").json()
+
+        for (int i = 1; i < n; ++i) {
+            while (!st.empty()) {
+                int topIndex = st.top();
+                if (A[i] >= A[topIndex]) {
+                    
+                    st.pop();
+                } else {
+                    
+                    break;
+                }
+            }
+            
+            st.push(i);
+        }
+
+
+        while (!st.empty()) {
+            B[st.top()] = 1;
+            st.pop();
+        }
+
+        return B;
+    }
+};
+
+int main() {
+    vector<int> A = {5, 3, 2, 6, 1, 4};
     
-    for asteroid in response["data"]:
-        if str(year) == asteroid["discovery_date"][:4] and orbit_class.lower() in asteroid["orbit_class"].lower():
-            if asteroid.get("period_yr") is None:
-                asteroid["period_yr"] = 1
-            asteroid["period_yr"] = float(asteroid["period_yr"])
-            asteroid_list.append(asteroid)
+    vector<int> B = func(A);
 
-asteroid_list.sort(key=lambda x: (x["period_yr"], x["designation"]))
+    
+    for (int i = 0; i < A.size(); ++i) {
+        cout << A[i] << " ";
+    }
 
-designations = [asteroid["designation"] for asteroid in asteroid_list]
+    
+    for (int i = 0; i < B.size(); ++i) {
+        cout << B[i] << " ";
+    }
 
-print(designations)
+   cout << endl;
+
+    return 0;
+}
