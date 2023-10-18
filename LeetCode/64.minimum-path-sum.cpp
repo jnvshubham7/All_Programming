@@ -27,40 +27,46 @@ using namespace std;
 // @lc code=start
 class Solution {
 public:
-    int minPathSum(vector<vector<int>>& grid) {
+    int minPathSum(vector<vector<int>>& g) {
 
-        vector<vector<int> > dp(grid.size()+1,vector<int>(grid[0].size()+1,-1));
+        int m=g.size();
+        int n=g[0].size();
 
-        int n=grid.size();
-        int m=grid[0].size();
+        vector<vector<int>> memo(m, vector<int>(n,-1));
 
-        return rec(grid,n,m,0,0,dp);
+        return rec(memo, 0, 0, m, n, g);
 
-      
+       
     }
 
-    int rec(vector<vector<int>>& grid,int n,int m,int i,int j, vector<vector<int> > &dp)
+    int rec(vector<vector<int>>& memo, int i, int j, int m, int n, vector<vector<int>>& g)
     {
-        if(i==n-1 && j==m-1)
+        if(i==m-1 && j==n-1)
         {
-            return grid[i][j];
+            return g[i][j];
         }
 
-        if(dp[i][j]!=-1)
-        {
-            return dp[i][j];
-        }
-
-        if(i>=n || j>=m)
+        if(i>=m || j>=n)
         {
             return INT_MAX;
         }
 
-        int op1=rec(grid,n,m,i+1,j, dp);
-        int op2=rec(grid,n,m,i,j+1, dp);
+        if(memo[i][j]!=-1)
+        {
+            return memo[i][j];
+        }
 
-        return dp[i][j]=min(op1,op2)+grid[i][j];
+        int ans=min(rec(memo, i+1, j, m, n, g), rec(memo, i, j+1, m, n, g)) + g[i][j];
+
+        memo[i][j]=ans;
+
+        return ans;
+
     }
+
+
+
+   
 };
 // @lc code=end
 
@@ -69,74 +75,3 @@ public:
 
 
 
-
-
-#include<bits/stdc++.h>
-using namespace std;
-#define ll long long
-
-int main(){
-
-     
-    //[[1,3,1],[1,5,1],[4,2,1]]
-    vector<vector<int>> grid={{1,3,1},{1,5,1},{4,2,1}};
-
-     int n=grid.size();
-    int m=grid[0].size();
-   
-
-     int dp[n][m];
-
-         dp[0][0]=grid[0][0];
-
-            for(int i=1;i<n;i++)
-            {
-                dp[i][0]=dp[i-1][0]+grid[i][0];
-            }
-            for(int i=1;i<m;i++)
-            {
-                dp[0][i]=dp[0][i-1]+grid[0][i];
-            }
-
-            for(int i=1;i<n;i++)
-            {
-                for(int j=1;j<m;j++)
-                {
-                    dp[i][j]=min(dp[i-1][j],dp[i][j-1])+grid[i][j];
-                }
-            }
-
-            //print dp
-            for(int i=0;i<n;i++)
-            {
-                for(int j=0;j<m;j++)
-                {
-                    cout<<dp[i][j]<<" ";
-                }
-                cout<<endl;
-            }
-
-            //print grid[0].size() elements of grid
-            // for(int i=0;i<grid[0].size();i++)
-            // {
-            //     cout<<grid[0][i]<<" ";
-            // }
-            // cout<<endl;
-
-            //print grid.size() elements of grid
-            // for(int i=0;i<grid.size();i++)
-            // {
-            //     cout<<grid[i][0]<<" ";
-            // }
-            // cout<<endl;
-
-
-            
-
-           // return dp[n-1][m-1];
-
-
-
-
-    return 0;
-}

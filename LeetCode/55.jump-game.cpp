@@ -9,34 +9,35 @@ class Solution {
 public:
     bool canJump(vector<int>& nums) {
 
-        int n = nums.size();
+       
 
-        return rec(n - 1, nums);
+       return rec(nums,0,nums.size()-1);
 
-        
-
+      
     }
 
-
-    bool rec(int n, vector<int>& nums)
-
+    bool rec(vector<int>& nums,int i,int n)
     {
-        if(n == 0 || n == 1)
+        if(i==n)
         {
             return true;
         }
-
-
-        bool x1 = rec(n - 1, nums);
-
-        bool x2 = rec(n - 2, nums);
-
-
-        return x1 || x2;
-
-        
-
+        if(i>n)
+        {
+            return false;
+        }
+        for(int j=1;j<=nums[i];j++)
+        {
+            if(rec(nums,i+j,n))
+            {
+                return true;
+            }
+        }
+        return false;
     }
+
+
+   
 };
 // @lc code=end
 

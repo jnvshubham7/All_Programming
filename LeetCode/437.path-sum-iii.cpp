@@ -18,7 +18,13 @@
  */
 class Solution {
 public:
-    int pathSum(TreeNode* root, int targetSum) {
+    int pathSum(TreeNode* root, int x) {
+
+        
+        
+       
+        
+    
         
     }
 };

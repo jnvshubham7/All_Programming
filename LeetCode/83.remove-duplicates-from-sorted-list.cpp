@@ -23,7 +23,11 @@ using namespace std;
     struct ListNode {
         int val;
         ListNode* next;
-        ListNode(int x) : val(x), next(NULL) {}
+        ListNode(int x) 
+        {
+            val=x;
+            next=NULL;
+        }
     };
 
 
@@ -44,34 +48,25 @@ class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
 
-        if(head==NULL) return head;
-
-        set <int> s;
+        if(head==NULL)
+        {
+            return head;
+        }
         ListNode* temp=head;
-        while(temp!=NULL){
-            s.insert(temp->val);
-            temp=temp->next;
+        while(temp->next!=NULL)
+        {
+            if(temp->val==temp->next->val)
+            {
+                temp->next=temp->next->next;
+            }
+            else
+            {
+                temp=temp->next;
+            }
         }
-        temp=head;
+        return head;
 
-        vector<int> v;
-        //push all the elements in the set into the vector
-        for(auto it:s){
-            v.push_back(it);
-        }
-
-
-       ListNode* head1=new ListNode(v[0]);
-         ListNode* temp1=head1;
-        for(int i=1;i<v.size();i++){
-            temp1->next=new ListNode(v[i]);
-            temp1=temp1->next;
-        }
-        return head1;
-
-
-
-
+       
         
     }
 };
@@ -82,34 +77,12 @@ public:
 
 
 int main(){
+
+
+
 Solution s;
 
-    int n;
-    cin>>n;
-   vi v(n);
-
-   fr(i,n)
-   {
-         cin>>v[i];
-   }
-   
-   ListNode* head= new ListNode(v[0]);
-    ListNode* temp=head;
-   
-    for(int i=1;i<n;i++)
-    {
-        temp->next=new ListNode(v[i]);
-        temp=temp->next;
-    }
-
-    ListNode* res=s.deleteDuplicates(head);
-    while(res!=NULL)
-    {
-        cout<<res->val<<" ";
-        res=res->next;
-    }
-
-
+        
 
 
 

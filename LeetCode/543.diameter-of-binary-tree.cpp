@@ -53,34 +53,35 @@ public:
  
  int diameterOfBinaryTree(TreeNode* root) {
 
-        if(root == NULL)
+        if(root==NULL)
         {
             return 0;
         }
 
-        int ans = 0;
+        int lh=height(root->left);
+        int rh=height(root->right);
 
-        height(root, ans);
+        int ld=diameterOfBinaryTree(root->left);
+        int rd=diameterOfBinaryTree(root->right);
 
-        return ans;
-
+        return max(lh+rh,max(ld,rd));
+        
     }
 
-    int height(TreeNode* root, int &ans)
+    int height(TreeNode* root)
     {
-
-        if(root == NULL)
+        if(root==NULL)
         {
             return 0;
         }
 
-        int left = height(root->left, ans);
-        int right = height(root->right, ans);
+        return 1+max(height(root->left),height(root->right));
 
-        ans = max(ans, left + right);
+    
 
-        return 1 + max(left, right);
-    }
+       
+
+ }
 
   
 };

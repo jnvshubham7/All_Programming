@@ -1,10 +1,3 @@
-/*
- * @lc app=leetcode id=2 lang=cpp
- *
- * [2] Add Two Numbers
- */
-
-// @lc code=start
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -17,64 +10,103 @@
  */
 class Solution {
 public:
+
+// reverseList(ListNode* head) {
+//     ListNode* prev = nullptr;   
+//     ListNode* curr = head;
+//     ListNode* next = nullptr;
+//     while(curr != nullptr) {
+//         next = curr->next;
+//         curr->next = prev;
+//         prev = curr;
+//         curr = next;
+//     }
+//     return prev;
+// }
+
+
+
+
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 
-        l1=reverse(l1);
-        l2=reverse(l2);
 
-        unsigned long long  int num1=0,num2=0,result=0;
-        ListNode* head=NULL;
-        num1=l1->val;
-        l1=l1->next;
-        while(l1!=NULL)
-        {
-            num1=num1*10+l1->val;
-            l1=l1->next;
-        }
-        num2=l2->val;
-        l2=l2->next;
-        while(l2!=NULL)
-        {
-            num2=num2*10+l2->val;
-            l2=l2->next;
-        }
 
-        result=num1+num2;
-        if(result==0)
-        {
-            head=new ListNode(0);
-            return head;
-        }
-        else
-        {
-            while(result!=0)
-            {
-                ListNode* temp=new ListNode(result%10);
-                temp->next=head;
-                head=temp;
-                result=result/10;
-            }
-        }
-        ListNode* x=reverse(head);
-        return x;
 
+
+
+
+//add function to reverse the list
+//ListNode* add(ListNode* l1, ListNode* l2) {
+    ListNode* head = nullptr;
+    ListNode* curr = nullptr;
+    int carry = 0;
+
+    while(l1 != nullptr || l2 != nullptr) {
+        int sum = 0;
+        if(l1 != nullptr) {
+            sum += l1->val;
+            l1 = l1->next;
+        }
+        if(l2 != nullptr) {
+            sum += l2->val;
+            l2 = l2->next;
+        }
+        sum += carry;
+        carry = sum / 10;
+        sum = sum % 10;
+        ListNode* node = new ListNode(sum);
+        if(head == nullptr) {
+            head = node;
+        }
+        if(curr != nullptr) {
+            curr->next = node;
+        }
+        curr = node;
+    }
+    if(carry > 0) {
+        ListNode* node = new ListNode(carry);
+        curr->next = node;
+    }
+    return head;
+//}
+
+
+//reverse the list
+// ListNode* reverse(ListNode* head) {
+//     ListNode* prev = nullptr;
+//     ListNode* curr = head;
+//     ListNode* next = nullptr;
+//     while(curr != nullptr) {
+//         next = curr->next;
+//         curr->next = prev;
+//         prev = curr;
+//         curr = next;
+//     }
+//     return prev;
+// }
+
+
+
+
+
+
+
+
+
+
+
+        //reverse l1 and l2
+        // ListNode* l1_rev = reverse(l1);
+        // ListNode* l2_rev = reverse(l2);
+
+        // //add l1 and l2
+        // ListNode* l1_l2_sum = add(l1_rev, l2_rev);
+
+        // //reverse l1_l2_sum
+        // ListNode* l1_l2_sum_rev = reverse(l1_l2_sum);
+
+        // return l1_l2_sum_rev;
 
         
     }
-
-    ListNode* reverse(ListNode* head)
-    {
-        if(head==NULL || head->next==NULL) return head;
-
-        ListNode* chotaHead=reverse(head->next);
-
-        head->next->next=head;
-
-        head->next=NULL;
-
-        return chotaHead;
-    }
-
 };
-// @lc code=end
-

@@ -7,7 +7,13 @@
 // @lc code=start
 class Solution {
 public:
-    vector<int> majorityElement(vector<int>& nums) {
+    vector<int> majorityElement(vector<int>& v) {
+
+        int n=
+
+        
+
+
 
         
 

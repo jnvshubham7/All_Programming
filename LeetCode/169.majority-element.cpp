@@ -9,27 +9,32 @@ class Solution {
 public:
     int majorityElement(vector<int>& nums) {
 
-        int cnt = 0;
-        int ans=0;
+       unordered_map<int,int> m;
 
-        for(int i = 0; i < nums.size(); i++){
-            if(cnt == 0){
-                ans = nums[i];
+         for(int i=0;i<nums.size();i++)
+         {
+              m[nums[i]]++;
+         }
+
+            for(auto i:m)
+            {
+                if(i.second>nums.size()/2)
+                {
+                    return i.first;
+                }
             }
-            if(nums[i] == ans){
-                cnt++;
-            }
-            else{
-                cnt--;
-            }
-           
-        }
+            return 0;
 
-        return ans;
+            
+
+       // TC O(n)
+       // SC O(n)
+       
+            
+       
 
 
-// time complexity: O(n)
-// space complexity: O(1)
+
 
 
     }

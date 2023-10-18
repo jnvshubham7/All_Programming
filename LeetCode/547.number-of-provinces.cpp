@@ -8,14 +8,6 @@
 
 
 
-
-
-
-
-
-
-
-
 class Solution {
 public:
     int findCircleNum(vector<vector<int>>& graph) {
@@ -44,39 +36,6 @@ public:
     }
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // @lc code=end
 

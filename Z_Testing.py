@@ -1,58 +1,77 @@
 #include <iostream>
-#include <vector>
-#include <stack>
-
-class Solution {
-public:
-    vector<int> func(vector<int>& A) {
-        int n = A.size();
+#include <cstdlib>
+#include <ctime>
+#include <cuda_runtime.h>
 
 
-      vector<int> B(n);
-       stack<int> st; 
 
+__global__ void matrixMultiplication(int* A, int* B, int* C, int n) {
+    int row = blockIdx.y * blockDim.y + threadIdx.y;
+    int col = blockIdx.x * blockDim.x + threadIdx.x;
 
-        for (int i = 1; i < n; ++i) {
-            while (!st.empty()) {
-                int topIndex = st.top();
-                if (A[i] >= A[topIndex]) {
-                    
-                    st.pop();
-                } else {
-                    
-                    break;
-                }
-            }
-            
-            st.push(i);
+    if (row < n && col < n) {
+        int sum = 0;
+        for (int k = 0; k < n; ++k) {
+            sum += A[row * n + k] * B[k * n + col];
         }
-
-
-        while (!st.empty()) {
-            B[st.top()] = 1;
-            st.pop();
-        }
-
-        return B;
+        C[row * n + col] = sum;
     }
-};
+}
+
+
+
 
 int main() {
-    vector<int> A = {5, 3, 2, 6, 1, 4};
-    
-    vector<int> B = func(A);
+    int n;
+    std::cin >> n;
 
-    
-    for (int i = 0; i < A.size(); ++i) {
-        cout << A[i] << " ";
+    int* h_A = new int[n * n];
+    int* h_B = new int[n * n];
+    int* h_C = new int[n * n];
+
+    // Initialize matrices h_A and h_B with random values
+    srand(time(NULL));
+    for (int i = 0; i < n * n; ++i) {
+        h_A[i] = rand() % 1000 + 1;
+        h_B[i] = rand() % 1000 + 1;
     }
 
-    
-    for (int i = 0; i < B.size(); ++i) {
-        cout << B[i] << " ";
-    }
+    int* d_A;
+    int* d_B;
+    int* d_C;
 
-   cout << endl;
+    // Allocate memory on the GPU
+    cudaMalloc((void**)&d_A, sizeof(int) * n * n);
+    cudaMalloc((void**)&d_B, sizeof(int) * n * n);
+    cudaMalloc((void**)&d_C, sizeof(int) * n * n);
+
+    // Copy data from host to device
+    cudaMemcpy(d_A, h_A, sizeof(int) * n * n, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_B, h_B, sizeof(int) * n * n, cudaMemcpyHostToDevice);
+
+    // Define thread and block dimensions
+    dim3 threadsPerBlock(16, 16);
+    dim3 numBlocks((n + 15) / 16, (n + 15) / 16);
+
+    // Launch the matrix multiplication kernel
+    matrixMultiplication<<<numBlocks, threadsPerBlock>>>(d_A, d_B, d_C, n);
+
+    // Copy the result from device to host
+    cudaMemcpy(h_C, d_C, sizeof(int) * n * n, cudaMemcpyDeviceToHost);
+
+    // Print the result matrix h_C if needed
+
+    // Free GPU memory
+    cudaFree(d_A);
+    cudaFree(d_B);
+    cudaFree(d_C);
+
+    // Free CPU memory
+    delete[] h_A;
+    delete[] h_B;
+    delete[] h_C;
 
     return 0;
 }
+
+
