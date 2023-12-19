@@ -7,37 +7,37 @@
 // @lc code=start
 class Solution {
 public:
-    vector<int> asteroidCollision(vector<int>& asteroids) {
+    vector<int> asteroidCollision(vector<int>& v) {
 
-        int n = asteroids.size();
-
-        stack<int> s;
-
-        for (int i = 0; i < n; ++i) {
-            if (asteroids[i] > 0) {
-                s.push(asteroids[i]);
-            }
+      
+        stack<int> st;
+        vector<int> ans;
+        
+        for (int i = 0; i < v.size(); i++) {
+            if (v[i] > 0) st.push(v[i]);
             else {
-                while (!s.empty() && s.top() > 0 && s.top() < abs(asteroids[i])) {
-                    s.pop();
-                }
-                if (s.empty() || s.top() < 0) {
-                    s.push(asteroids[i]);
-                }
-                else if (s.top() == abs(asteroids[i])) {
-                    s.pop();
-                }
+                while (!st.empty() && st.top() > 0 && st.top() < abs(v[i])) st.pop();
+                if (st.empty() || st.top() < 0) st.push(v[i]);
+                else if (st.top() == abs(v[i])) st.pop();
             }
         }
-
-        vector<int> ans(s.size());
-
-        for (int i = s.size() - 1; i >= 0; --i) {
-            ans[i] = s.top();
-            s.pop();
+        
+        while (!st.empty()) {
+            ans.push_back(st.top());
+            st.pop();
         }
-
+        
+        reverse(ans.begin(), ans.end());
+        
         return ans;
+
+
+
+        
+
+        
+
+        
 
 
         

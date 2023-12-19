@@ -20,15 +20,15 @@ using namespace std;
 #define vc vector<char>
 #define vs vector<string>
     
-    struct ListNode {
-        int val;
-        ListNode* next;
-        ListNode(int x) 
-        {
-            val=x;
-            next=NULL;
-        }
-    };
+   struct node {
+    int val;
+    node* next =NULL;
+    node(int value)
+    {
+        val=value;
+    }
+
+   }
 
 
 
@@ -48,26 +48,25 @@ class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
 
-        if(head==NULL)
+        ListNode* curr=head;
+
+        while(curr!=NULL && curr->next!=NULL)
         {
-            return head;
-        }
-        ListNode* temp=head;
-        while(temp->next!=NULL)
-        {
-            if(temp->val==temp->next->val)
+            if(curr->val==curr->next->val)
             {
-                temp->next=temp->next->next;
+                curr->next=curr->next->next;
             }
-            else
-            {
-                temp=temp->next;
+
+            else {
+                curr=curr->next;
             }
+
         }
+
+
         return head;
 
        
-        
     }
 };
 // @lc code=end
@@ -81,6 +80,13 @@ int main(){
 
 
 Solution s;
+
+
+
+
+  
+
+
 
         
 

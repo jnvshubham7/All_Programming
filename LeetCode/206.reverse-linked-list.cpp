@@ -1,46 +1,17 @@
-// #include<bits/stdc++.h>
-// using namespace std;
-
-// struct Node {
-//     int val;
-//     Node* next;
-//     Node(int x)
-//     {
-//         val=x;
-//         next=NULL;
-//     }
-// };
-
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
+        return rev(head, NULL);
+    }
 
-        ListNode* prev=NULL;
-        ListNode* curr=head;
-        ListNode* next=NULL;
-
-        while(curr!=NULL)
-        {
-            next=curr->next;
-            curr->next=prev;
-            prev=curr;
-            curr=next;
+    ListNode* rev(ListNode* curr, ListNode* prev) {
+        if (!curr) {
+            return prev;
         }
 
-        return prev;
+        ListNode* next = curr->next;
+        curr->next = prev;
 
-       
-       
+        return rev(next, curr);
     }
 };
-
-
-
-
-
-
-// int main() {
-//     Solution s;
-
-   
-// }

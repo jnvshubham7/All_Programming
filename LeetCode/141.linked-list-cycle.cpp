@@ -42,27 +42,33 @@ class Solution {
 public:
     int hasCycle(ListNode *head) {
 
-        int len=0;
-        ListNode* temp=head;
-        while(temp!=NULL){
-            len++;
-            temp=temp->next;
-        }
-
-        return len;
-
-        //check last node->next==NULL
-
-        temp=head;
-        for(int i=0;i<len-1;i++){
-            temp=temp->next;
-        }
-        if(temp->next==NULL){
+        if(head==NULL)
+        {
             return false;
         }
 
 
-       return true;;
+
+        ListNode* slow=head;
+        ListNode* fast=head;
+
+        while(fast->next!=NULL && fast->next->next!=NULL)
+        {
+            fast=fast->next->next;
+            slow=slow->next;
+
+            if(slow==fast)
+            {
+                return true;
+            }
+
+          }
+
+          return false;
+
+
+
+       
 
 
 

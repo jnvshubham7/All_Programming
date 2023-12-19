@@ -20,7 +20,7 @@ public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
 
       vector<TreeNode*> path1;
-        vector<TreeNode*> path2;
+       vector<TreeNode*> path2;
 
         if(!findPath(root, p, path1) || !findPath(root, q, path2)) return nullptr;
 
