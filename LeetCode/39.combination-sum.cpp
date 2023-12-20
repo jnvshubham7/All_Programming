@@ -7,33 +7,52 @@
 // @lc code=start
 class Solution {
 public:
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
 
+    vector<vector<int>> combinationSum(vector<int>& v, int tar) {
+
+        int sum=0;
+        vector<int> temp;
         vector<vector<int>> ans;
 
-        vector<int> cur;
-        dfs(candidates,target, 0, cur, ans);
-        return  ans;
+        rec(v, tar, sum, temp, ans, 0);
+
+        return ans;
+
+     
 
         
     }
 
-    void dfs(vector<int>& candidates, int target, int start, vector<int>& cur, vector<vector<int>>& ans)
+
+    void rec(vector<int>& v, int tar, int sum, vector<int> temp, vector<vector<int>> &ans, int i)
     {
-        if(target == 0)
+
+        if(sum>tar)
         {
-            ans.push_back(cur);
             return;
         }
-        if(target < 0)
-            return;
-        for(int i = start; i < candidates.size(); i++)
+
+        if(sum==tar)
         {
-            cur.push_back(candidates[i]);
-            dfs(candidates, target - candidates[i], i, cur, ans);
-            cur.pop_back();
+            ans.push_back(temp);
+            return;
         }
+
+        for(int j=i; j<v.size(); j++)
+        {
+            temp.push_back(v[j]);
+            rec(v, tar, sum+v[j], temp, ans, j);
+            temp.pop_back();
+        }
+
+        
+      
     }
+
+
+
+
+
 
 };
 
