@@ -39,6 +39,23 @@ class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
 
+        ListNode* ans;
+
+        if(!l1)
+        {
+            return l2;
+        }
+
+        if(!l2)
+        {
+            return l1;
+        }
+
+        
+
+
+        
+
     }
 
 };
