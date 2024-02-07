@@ -8,31 +8,35 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
+       int n = nums.length;
+        if (n == 0) return 0;
 
-        unordered_set<int> numSet(nums.begin(), nums.end());
-        int maxLen = 0;
-        
-        for (int num : nums) {
-            if (numSet.find(num - 1) == numSet.end()) {
-                int currentNum = num;
-                int currentLen = 1;
-                
-                while (numSet.find(currentNum + 1) != numSet.end()) {
-                    currentNum++;
-                    currentLen++;
-                }
-                
-                maxLen = max(maxLen, currentLen);
+        int mxx = Arrays.stream(nums).max().getAsInt();
+
+        // counting sort create at
+
+        int[] cnt = new int[mxx + 1];
+
+        for (int i = 0; i < n; i++) {
+            cnt[nums[i]]++;
+        }
+
+        int ans = 0, cur = 0;
+
+        for (int i = 0; i <= mxx; i++) {
+            if (cnt[i] > 0) {
+                cur++;
+                ans = Math.max(ans, cur);
+            } else {
+                cur = 0;
             }
         }
+
+        return ans;
+
+       
+
         
-        return maxLen;
-
-        // time complexity: O(n)
-        // space complexity: O(n)
-
-
-
        
     }
 };

@@ -8,8 +8,25 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
+
+        rec()
         
     }
+
+
+    rec()
+    {
+
+
+        int tk = 
+        int ntk =
+
+        
+    }
+
+
+
+
 };
 // @lc code=end
 

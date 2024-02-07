@@ -9,14 +9,6 @@ class Solution {
 public:
     int ladderLength(string bw, string ew, vector<string>& wl) {
 
-      
-
-
-        
-   
-
-
-
     }
 
 };

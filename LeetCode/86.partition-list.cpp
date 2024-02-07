@@ -1,68 +1,37 @@
-/*
- * @lc app=leetcode id=86 lang=cpp
- *
- * [86] Partition List
- */
-
-// @lc code=start
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 class Solution {
 public:
     ListNode* partition(ListNode* head, int x) {
 
-        vector<int> v1, v2;
-        ListNode* cur = head;
-        while (cur) {
-            if (cur->val < x) {
-                v1.push_back(cur->val);
+        ListNode* l1 = new ListNode();
+        ListNode* l2 = new ListNode();
+
+        ListNode* temp1 = l1;
+        ListNode* temp2 = l2;
+
+        ListNode* temp = head;
+
+        while (temp != NULL) {
+            if (temp->val < x) {
+                temp1->next = temp;
+                temp1 = temp1->next;
             } else {
-                v2.push_back(cur->val);
+                temp2->next = temp;
+                temp2 = temp2->next;
             }
-            cur = cur->next;
+
+            temp = temp->next;
         }
-       //print v1 and v2
 
-    //    for(int i = 0; i < v1.size(); i++) {
-    //        cout << v1[i] << " ";
-    //    }
-    //      cout << endl;
-    //         for(int i = 0; i < v2.size(); i++) {
-    //         cout << v2[i] << " ";
-    //         }
-    //         cout << endl;
+        temp2->next = NULL;
 
+        temp1->next = l2->next;
 
-        ListNode* head1 = new ListNode(0);
+        return l1->next;
 
-        
-        ListNode* cur1 = head1;
-        for (int i = 0; i < v1.size(); i++) {
-            cur1->next = new ListNode(v1[i]);
-            cur1 = cur1->next;
-        }
-        
-        for(int i = 0; i < v2.size(); i++) {
-            cur1->next = new ListNode(v2[i]);
-            cur1 = cur1->next;
-        }
-        return head1->next;
-
-
-            
-
-
+     
        
+
         
+
     }
 };
-// @lc code=end
-
