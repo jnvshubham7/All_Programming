@@ -1,6 +1,7 @@
 {
     "files.exclude": {
-        "**/*.exe": true 
+        "**/*.exe": true ,
+        "**/*.class": true 
         
     },
     "cph.general.saveLocation": ""
