@@ -1,84 +1,38 @@
-#include <iostream>
-#include <vector>
-
+#include<bits/stdc++.h>
 using namespace std;
 
-int main() {
+int main(){
+
     int n;
-    cin >> n;
+    cin>>n;
+    vector<int> a(n);
 
-    vector<int> arr(n);
-    for (int i = 0; i < n; ++i) {
-        cin >> arr[i];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
     }
 
-    int q;
-    cin >> q;
+    int len =INT_MIN;
+
+    int cnt=1;
 
 
-
-
-   
-
-   
-    while (q--) {
-        int l, r;
-        cin >> l >> r;
-
-
-        int sum=0;
-
-        int cnt=0;
-
-
-
-
-
-
-      for(int i=0;i<n;i++)
-      {
-        for(int j=l;j<=r;j++)
+    for(int i=1;i<n;i++)
+    {
+        if(arr[i]>arr[i-1])
         {
-
-            
-            if(arr[i]%j)
-            {
-                cnt++;
-
-
-
-            }
-
-            if(cnt==n-1)
+            cnt++;
+        }
+        else
         {
-            sum+=j
-            cnt=0;
+            len=max(len,cnt);
+            cnt=1;
         }
 
 
-
-
-
-        }
-
-        cnt
-
-
-
-
-
-        
-      }
-
-
-
-
-
-
-
-
-       
     }
+
+    cout<<len<<endl;
+
 
     return 0;
 }
