@@ -1,21 +1,32 @@
+import java.util.*;
 
-public class Employee {
-	
-	
-	public String name;
-	public String address;
-	public int numbers;
-	public int SSN;
-	public double salary;
-	public void mailCheck()
-	
-	{
-		 System.out.println("Mailing check to " + name + "\n" + address);
-		 
-	}
-	public double computePay()
-	{
-		return salary/52;
-	}
+// Employee.java
+public class Employee implements Comparable<Employee> {
+  String firstName;
+  String lastName;
 
+  // Constructor sets firstName and lastName
+  public Employee(String first, String last)
+  {
+    this.firstName = first;
+    this.lastName = last;
+  }
+
+  // User-friendly output when printed.
+  public String toString()
+  {
+    return "( " + lastName + ", " + firstName + " )";
+  }
+
+  // Implement the Comparable interface
+  @Override public int compareTo(Employee value)
+  {
+    if (this.lastName.compareTo(value.lastName) != 0) {
+      // If lastNames are different, compare lastName
+      return this.lastName.compareTo(value.lastName);
+    } else {
+      // If lastNames are the same, compare firstName
+      return this.firstName.compareTo(value.firstName);
+    }
+  }
 }

@@ -4,5 +4,6 @@
         "**/*.class": true 
         
     },
-    "cph.general.saveLocation": ""
+    "cph.general.saveLocation": "",
+    "java.debug.settings.onBuildFailureProceed": true
   }
