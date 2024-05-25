@@ -1,11 +1,97 @@
-import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Comparator;
 
-public class Solution {
-    public static void main(String[] args){
+class Sim {
+    private int simId;
+    private String customerName;
+    private double balance;
+    private double ratePerSecond;
+    private String circle;
+
+    public Sim(int simId, String customerName, double balance, double ratePerSecond, String circle) {
+        this.simId = simId;
+        this.customerName = customerName;
+        this.balance = balance;
+        this.ratePerSecond = ratePerSecond;
+        this.circle = circle;
+    }
+
+    public int getSimId() {
+        return simId;
+    }
+
+    public void setSimId(int simId) {
+        this.simId = simId;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public double getRatePerSecond() {
+        return ratePerSecond;
+    }
+
+    public void setRatePerSecond(double ratePerSecond) {
+        this.ratePerSecond = ratePerSecond;
+    }
+
+    public String getCircle() {
+        return circle;
+    }
+
+    public void setCircle(String circle) {
+        this.circle = circle;
+    }
+}
+
+class Solution {
+    public static Sim[] transferCircle(Sim[] sims, String circle1, String circle2) {
+        // Count the number of SIMs in circle1
+        int count = 0;
+        for (Sim sim : sims) {
+            if (sim.getCircle().equalsIgnoreCase(circle1)) {
+                count++;
+            }
+        }
+
+        // Create an array to hold only the SIMs in circle1
+        Sim[] result = new Sim[count];
+        int index = 0;
+
+        for (Sim sim : sims) {
+            if (sim.getCircle().equalsIgnoreCase(circle1)) {
+                sim.setCircle(circle2);
+                result[index++] = sim;
+            }
+        }
+
+        // Sort result with respect to rate per second in descending order
+        Arrays.sort(result, Comparator.comparingDouble(Sim::getRatePerSecond).reversed());
+
+        return result;
+    }
+
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Sim[] sim = new Sim[5];
-        for(int i = 0;i < 5;i++){
+
+        // Adjust the number of SIMs to match the provided input data
+        Sim[] sims = new Sim[5];
+
+        for (int i = 0; i < 5; i++) {
             int simId = sc.nextInt();
             sc.nextLine();
             String customerName = sc.nextLine();
@@ -13,68 +99,22 @@ public class Solution {
             double ratePerSecond = sc.nextDouble();
             sc.nextLine();
             String circle = sc.nextLine();
-            sim[i] = new Sim(simId,customerName,balance,ratePerSecond,circle);
+
+            sims[i] = new Sim(simId, customerName, balance, ratePerSecond, circle);
         }
+
+        // Read the circles to transfer from and to
         String circle1 = sc.nextLine();
         String circle2 = sc.nextLine();
-        sc.close();
-        Sim[] result = transferCircle(sim,circle1,circle2);
-        for(int i = 0;i < result.length;i++){
-            System.out.println(result[i].getSimId() +" "+ result[i].getCustomerName() +" "+ result[i].getCircle() +" "+ result[i].getRatePerSecond());
-        }
-    }
-    public static Sim[] transferCircle(Sim[] sim,String circle1,String circle2){   
-        Sim[] refined = new Sim[0];
-        for(int i=0;i<5;i++){
-            if(sim[i].getCircle().equals(circle1)){
-                refined=Arrays.copyOf(refined,refined.length+1);
-                refined[refined.length-1]=sim[i];
-                refined[refined.length-1].setCircle(circle2);
-            }
-        }
-        for(int i=0;i<refined.length-1;i++){
-           for(int j=0;j<refined.length-1-i;j++){
-               if(refined[j].getRatePerSecond()<refined[j+1].getRatePerSecond())
-               {
-                 Sim temp=refined[j];
-                 refined[j]=refined[j+1];
-                 refined[j+1]=temp; 
-               }             
-           }
-        }
-        return refined;
-    } 
-}
-class Sim{
-    int simId;
-    String customerName;
-    double balance;
-    double ratePerSecond;
-    String circle;
 
-    public int getSimId(){
-        return simId;
-    }
-    public String getCustomerName(){
-        return customerName;
-    }
-    public double getBalance(){
-        return balance;
-    }
-    public double getRatePerSecond(){
-        return ratePerSecond;
-    }
-    public String getCircle(){
-        return circle;
-    }
-    public void setCircle(String circle){
-        this.circle=circle;
-    }
-    Sim(int simId,String customerName,double balance, double ratePerSecond,String circle){
-        this.simId = simId;
-        this.ratePerSecond = ratePerSecond;
-        this.customerName = customerName;
-        this.circle = circle;
-        this.balance=balance;
+        // Perform the circle transfer
+        Sim[] result = transferCircle(sims, circle1, circle2);
+
+        // Output the results
+        for (Sim sim : result) {
+            System.out.println(sim.getSimId() + " " + sim.getCustomerName() + " " + sim.getCircle() + " " + sim.getRatePerSecond());
+        }
+
+        sc.close();
     }
 }
