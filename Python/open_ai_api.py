@@ -2,6 +2,8 @@ import httpx
 from openai import OpenAI
 from openai import OpenAIError, RateLimitError, APIError
 
+# Replace 'your-api-key' with your actual API key
+api_key = 'your-api-key
 
 # Replace with your actual proxy URL and port if needed
 proxy_url = "http://172.31.2.3:8080"
