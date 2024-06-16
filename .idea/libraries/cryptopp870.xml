@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="cryptopp870">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Python/NS/cryptopp870/bds10.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Python/NS/cryptopp870/vs2005.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
