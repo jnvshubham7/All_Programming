@@ -82,7 +82,7 @@ def toggle_listening():
 
 def update_button_text():
     if is_listening:
-        button.config(text="Stop Listening")
+        button.config(text="Stop")
     else:
         button.config(text="Listen")
 
@@ -136,8 +136,8 @@ def floating_button():
     root.overrideredirect(True)
     root.attributes("-topmost", True)
 
-    # Add padding for drag-and-drop
-    drag_frame = tk.Frame(root, bg='gray')
+    # Enhance the design
+    drag_frame = tk.Frame(root, bg='darkblue')
     drag_frame.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
     def drag_window(event):
@@ -148,11 +148,11 @@ def floating_button():
     root.bind("<B1-Motion>", drag_window)
 
     # Create a circular button
-    button_frame = tk.Frame(root, width=60, height=60)
+    button_frame = tk.Frame(root, width=60, height=60, bg='lightblue')
     button_frame.pack_propagate(False)
     button_frame.pack(pady=10)
 
-    button = ttk.Button(button_frame, text="Listen", command=toggle_listening)
+    button = ttk.Button(button_frame, text="Listen", command=toggle_listening, style='TButton')
     button.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     # Add close button
@@ -161,10 +161,12 @@ def floating_button():
 
     root.protocol('WM_DELETE_WINDOW', hide_window)
 
-    # Add key binding for Win+Y shortcut
-    root.bind('<Control-y>', lambda event: toggle_listening())
-    root.bind('<Control-q>', lambda event: close_window())
-    
+    # Add key binding for Ctrl+Alt+L shortcut
+    root.bind('<Control-Alt-l>', lambda event: toggle_listening())
+
+    # Configure button style
+    style = ttk.Style()
+    style.configure('TButton', font=('Helvetica', 12, 'bold'), foreground='blue', background='white')
 
     root.mainloop()
 
