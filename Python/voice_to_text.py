@@ -90,9 +90,15 @@ def create_image():
     # Create an image for the system tray icon
     width = 64
     height = 64
-    image = Image.new('RGB', (width, height), (255, 255, 255))
+    image = Image.new('RGBA', (width, height), (0, 0, 0, 0))  # Transparent background
     dc = ImageDraw.Draw(image)
-    dc.rectangle((0, 0, width, height), fill=(255, 0, 0))
+
+    # Draw a circle with a gradient
+    for i in range(64):
+        color = (255, 0, 0, int(255 * (1 - i / 64)))
+        dc.ellipse([(i, i), (64 - i, 64 - i)], outline=color)
+
+    # Add text in the center
     dc.text((width // 4, height // 4), "FB", fill=(255, 255, 255))
     return image
 
@@ -119,6 +125,14 @@ def floating_button():
     root = tk.Tk()
     root.title("Floating Button")
     root.geometry("200x200")
+
+    # Calculate the bottom-right corner position
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+    x = screen_width - 200
+    y = screen_height - 200
+    root.geometry(f"+{x}+{y}")
+
     root.overrideredirect(True)
     root.attributes("-topmost", True)
 
@@ -135,6 +149,10 @@ def floating_button():
 
     root.bind("<B1-Motion>", drag_window)
     root.protocol('WM_DELETE_WINDOW', hide_window)
+
+    # Add key binding for ALT + V shortcut
+    root.bind('<Alt-v>', lambda event: toggle_listening())
+
     root.mainloop()
 
 if __name__ == "__main__":
