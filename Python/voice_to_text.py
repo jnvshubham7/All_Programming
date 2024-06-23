@@ -124,23 +124,21 @@ def floating_button():
     global button, root
     root = tk.Tk()
     root.title("Floating Button")
-    root.geometry("200x200")
+    root.geometry("100x100")
 
     # Calculate the bottom-right corner position
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
-    x = screen_width - 200
-    y = screen_height - 200
+    x = screen_width - 100
+    y = screen_height - 100
     root.geometry(f"+{x}+{y}")
 
     root.overrideredirect(True)
     root.attributes("-topmost", True)
 
-    button = ttk.Button(root, text="Listen", command=toggle_listening)
-    button.pack(expand=True, fill=tk.BOTH)
-
-    close_button = tk.Button(root, text="X", command=close_window, bg="red", fg="white")
-    close_button.place(x=180, y=0)  # Position the button at the top-right corner
+    # Add padding for drag-and-drop
+    drag_frame = tk.Frame(root, bg='gray')
+    drag_frame.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
     def drag_window(event):
         x = event.x_root - root.winfo_width() // 2  # Center the drag
@@ -148,10 +146,25 @@ def floating_button():
         root.geometry(f"+{x}+{y}")
 
     root.bind("<B1-Motion>", drag_window)
+
+    # Create a circular button
+    button_frame = tk.Frame(root, width=60, height=60)
+    button_frame.pack_propagate(False)
+    button_frame.pack(pady=10)
+
+    button = ttk.Button(button_frame, text="Listen", command=toggle_listening)
+    button.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+    # Add close button
+    close_button = tk.Button(root, text="X", command=close_window, bg="red", fg="white")
+    close_button.place(x=80, y=0)  # Position the button at the top-right corner
+
     root.protocol('WM_DELETE_WINDOW', hide_window)
 
-    # Add key binding for ALT + V shortcut
-    root.bind('<Alt-v>', lambda event: toggle_listening())
+    # Add key binding for Win+Y shortcut
+    root.bind('<Control-y>', lambda event: toggle_listening())
+    root.bind('<Control-q>', lambda event: close_window())
+    
 
     root.mainloop()
 
