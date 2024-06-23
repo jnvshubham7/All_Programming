@@ -125,7 +125,7 @@ def floating_button():
     button = ttk.Button(root, text="Listen", command=toggle_listening)
     button.pack(expand=True, fill=tk.BOTH)
 
-    close_button = ttk.Button(root, text="X", command=close_window)
+    close_button = tk.Button(root, text="X", command=close_window, bg="red", fg="white")
     close_button.place(x=180, y=0)  # Position the button at the top-right corner
 
     def drag_window(event):
