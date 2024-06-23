@@ -9,6 +9,7 @@ import whisper
 import pystray
 from PIL import Image, ImageDraw
 import tempfile
+import keyboard  # Import the keyboard library
 
 # Check if ffmpeg is accessible
 try:
@@ -170,5 +171,11 @@ def floating_button():
 
     root.mainloop()
 
+def global_hotkey_listener():
+    keyboard.add_hotkey('ctrl+alt+l', toggle_listening)
+   
+    keyboard.wait('esc')
+
 if __name__ == "__main__":
+    threading.Thread(target=global_hotkey_listener, daemon=True).start()
     floating_button()
