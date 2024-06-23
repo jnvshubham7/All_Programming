@@ -172,8 +172,7 @@ def floating_button():
     root.mainloop()
 
 def global_hotkey_listener():
-    keyboard.add_hotkey('ctrl+alt+l', toggle_listening)
-   
+    keyboard.add_hotkey('ctrl+shift+l', toggle_listening)
     keyboard.wait('esc')
 
 if __name__ == "__main__":
