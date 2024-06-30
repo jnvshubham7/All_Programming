@@ -61,6 +61,7 @@ def recognize_speech():
             text = result['text']
             print(f"Text: {text}")
             pyperclip.copy(text)  # Copy text to clipboard
+            keyboard.press_and_release('ctrl+v')  # Automatically paste the text
         except Exception as e:
             print(f"Error recognizing audio: {e}")
         finally:
