@@ -15,64 +15,75 @@ public class IPA3 {
             student[i] = new Student(a,b,c,d,e);
         }
 
-        int ans1 = findCountofDayscholarStudents(student);
-        if(ans1>0)
-        {
-            System.out.println(ans1);
-        }
-        else
-        {
-            System.out.println("No student found");
-        }
 
-        Student ans2 = findStudentWithSecondHighestScore(student);
-        if(ans2== null)
-        {
-            System.out.println("No student found");
-        }
-        else{
-            System.out.println(ans2.getRollNo()+"#"+ans2.getName()+"#"+ans2.getScore());
-        }
+
+       int cnt =  findCountOfDayscholarStudents(student );
+
+     Student[] st =   findStudentwithSecondHighestScore(student);
+       
+
+
+       if(cnt==0)
+       {
+
+
+       }
+
+       else {
+
+        System.out.println(cnt);
+
+
+       }
+
+
+
+
+
+       
     }
-    public static int findCountofDayscholarStudents(Student[] student)
-    {
-        int count=0;
-        for(int i=0; i<student.length; i++)
+
+    private static Student[] findStudentwithSecondHighestScore(Student[] student) {
+
+        Student[] st = new Student[0];
+
+        for(Student st:student)
         {
-            if (student[i].getDayScholar()==true && student[i].getScore()>80)
+            if(s.getDayScholar() && s.getScore()>80)
             {
-                count++;
-            }
-        }
-        if(count>0)
-        {
-            return count;
-        }
-        return 0;
-    }
-    public static Student findStudentWithSecondHighestScore(Student[] student)
-    {
-        double[] arr = new double[0];  // length of array = 0
-        for(int i=0; i<student.length; i++)
-        {
-            if(student[i].getDayScholar()==false)
-            {
-                arr = Arrays.copyOf(arr,arr.length+1); // length of array = 1
-                arr[arr.length-1] = student[i].getScore();
-            }
-        }
-        Arrays.sort(arr);
-        double shs = arr[arr.length-2];
-        for(int i=0; i<student.length; i++)
-        {
-            if(student[i].getScore()== shs)
-            {
-                return student[i];
+                st = 
+
             }
         }
 
-        return null;
+        
+
+        
+
+
+
     }
+
+    private static int findCountOfDayscholarStudents(Student[] st) {
+
+        int cnt=0;
+
+        for(Student s:st)
+        {
+            if(s.getDayScholar() && s.getScore()>80)
+            {
+                cnt++;
+            }
+        }
+
+        return cnt;
+
+
+
+
+
+    }
+   
 }
 class Student
 {
