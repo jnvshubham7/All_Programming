@@ -119,3 +119,23 @@ void main() {
   myBike.start();
   myTruck.start();
 }
+
+
+
+// Types of Polymorphism
+// 1.Compile-Time Polymorphism (Method Overloading and Operator Overloading):
+
+// Method Overloading: Dart does not support traditional method overloading 
+//(same method name with different parameters) like some other languages 
+//(e.g., Java or C++). Instead, you can achieve similar behavior using 
+//optional positional parameters or named parameters.
+// Operator Overloading: Dart allows you to overload operators for user-defined 
+// classes.
+
+
+
+//2. Run-Time Polymorphism (Method Overriding):
+
+// Method Overriding: This is the primary form of polymorphism in Dart, 
+//where a subclass provides a specific implementation of a method that is 
+//already defined in its superclass.
