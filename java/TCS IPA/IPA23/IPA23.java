@@ -47,32 +47,12 @@ public class IPA23 {
     }
     public static int FindNumClearancedByLoc(Institute[] in, String l)
     {
-        int sum = 0;
-        for (int i = 0; i < in.length; i++) {
-            if(in[i].getLocation().equalsIgnoreCase(l))
-            {
-                sum += in[i].getClear();
-            }
-        }
-        return sum;
+        
+       
     }
     public static Institute[] UpdateInstitutionGrade(Institute[] in, String n)
     {
-        Institute[] arr = new Institute[0];
-        for (int i = 0; i < in.length; i++) {
-            if(in[i].getName().equalsIgnoreCase(n))
-            {
-                arr = Arrays.copyOf(arr,arr.length+1);
-                arr[arr.length-1] = in[i];
-            }
-        }
-        if(arr.length>0)
-        {
-            return arr;
-        }
-        else{
-            return null;
-        }
+        
     }
 }
 class Institute

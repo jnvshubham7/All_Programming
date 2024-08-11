@@ -13,6 +13,7 @@ public class Solution {
 
             emp[i] = new Employee(a,b,c,d,e);
         }
+        
         int sal = sc.nextInt();sc.nextLine();
         String dept = sc.nextLine();
         String[] ans1 = findDept(emp,sal);

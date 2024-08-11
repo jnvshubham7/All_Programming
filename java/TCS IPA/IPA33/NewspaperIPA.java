@@ -19,6 +19,8 @@ public class NewspaperIPA {
         sc.nextLine();
         String name = sc.nextLine();
 
+        sc.close();
+
         int totalprice = findTotalPriceByPublicationYear(np, pubyear);
         if (totalprice != 0) {
             System.out.println(totalprice);
