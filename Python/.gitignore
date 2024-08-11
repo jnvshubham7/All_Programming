@@ -1,2 +1,5 @@
 myenv
 build
+.idea
+.vscode
+dist
