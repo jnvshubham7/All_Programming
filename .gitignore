@@ -3,3 +3,5 @@
 
 # Ignore all .cph files
 .cph
+.idea
+.vscode
