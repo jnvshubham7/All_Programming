@@ -1,7 +1,0 @@
-{
-    "python.testing.pytestArgs": [
-        "CN_LAB"
-    ],
-    "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
-}
