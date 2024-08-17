@@ -17,5 +17,5 @@ def remove_assistant_section(directory):
             print(f"Processed {filename}")
 
 # Usage
-directory = "D:\GitHub\All Notes\ChatGPT Notes"
+directory = "D:\GitHub\All Notes\ChatGPT Notes1"
 remove_assistant_section(directory)

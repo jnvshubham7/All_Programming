@@ -26,5 +26,5 @@ def remove_user_content(directory):
             print(f"Processed {filename}")
 
 # Usage
-directory = "D:\GitHub\All Notes\ChatGPT Notes"
+directory = "D:\GitHub\All Notes\ChatGPT Notes1"
 remove_user_content(directory)

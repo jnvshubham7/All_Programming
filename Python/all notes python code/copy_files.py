@@ -17,6 +17,6 @@ def copy_files(src_dir, dest_dir):
 
 # Example usage
 source_directory = r'C:\Users\Shubham\Downloads\2024-08-17-conversations'
-destination_directory = r'D:\GitHub\All Notes\ChatGPT Notes'
+destination_directory = r'D:\GitHub\All Notes\ChatGPT Notes1'
 
 copy_files(source_directory, destination_directory)

@@ -1,16 +1,14 @@
 import os
 import re
 
-def modify_filenames(directory):
+def remove_digits_from_filename(directory):
     # Only process the files in the current directory, not subdirectories
     for filename in os.listdir(directory):
         file_path = os.path.join(directory, filename)
         
         if os.path.isfile(file_path):
-            # Remove hyphens and replace underscores with spaces
-            new_filename = filename.replace('-', '')  # Remove hyphens
-            new_filename = new_filename.replace('_', ' ')  # Replace underscores with spaces
-            
+            # Remove digits from the filename
+            new_filename = re.sub(r'[0-9]+', '', filename)
             new_file_path = os.path.join(directory, new_filename)
             
             # Check if the new filename already exists
@@ -29,7 +27,7 @@ def modify_filenames(directory):
                 print(f'Renamed: {file_path} -> {new_file_path}')
 
 # Specify the directory you want to start with
-directory_to_rename = r'D:\GitHub\All Notes\ChatGPT Notes'
+directory_to_rename = r'D:\GitHub\All Notes\ChatGPT Notes1'
 
 # Call the function
-modify_filenames(directory_to_rename)
+remove_digits_from_filename(directory_to_rename)
