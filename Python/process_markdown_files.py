@@ -7,14 +7,14 @@ client = Groq(
 )
 
 # Define the directory containing the Markdown files
-input_directory = "D:\GitHub\All Notes\ChatGPT Notes"
+input_directory = "D:\GitHub\All Notes\Data Structures"
 output_directory = "D:\\GitHub\\All Notes\\ChatGPT Notes1"
 
 # Ensure the output directory exists
 os.makedirs(output_directory, exist_ok=True)
 
 # Define the prompt for processing files
-prompt = "create a article from below content "
+prompt = "create a article from below content with heading and subheading explain in details with code and example  "
 
 # Process each Markdown file in the directory
 for filename in os.listdir(input_directory):
