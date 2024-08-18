@@ -14,7 +14,9 @@ output_directory = "D:\\GitHub\\All Notes\\ChatGPT Notes1"
 os.makedirs(output_directory, exist_ok=True)
 
 # Define the prompt for processing files
-prompt = "create a article from below content with heading and subheading explain in details with code and example  "
+# Define the prompt for processing files
+prompt = "rewrite in article  in point wise  with code and example without giving  any details you should direct start writing article from first line with heading and subheading explain in details"
+
 
 # Process each Markdown file in the directory
 for filename in os.listdir(input_directory):
