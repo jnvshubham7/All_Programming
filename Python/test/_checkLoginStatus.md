@@ -1,15 +1,14 @@
-**Checking Login Status in Flutter Using Firebase Authentication**
+**Async/Await in Flutter: Understanding the Basics**
 
-### Problem Statement
+In this article, we will explore the concept of Async/Await in Flutter, along with a small example to illustrate the concept. Async/Await is a fundamental concept in modern programming and is used extensively in Flutter to handle asynchronous operations, such as making network requests or performing database operations.
 
-To check if a user is already logged in when launching a Flutter app using Firebase Authentication.
+**What is Async/Await?**
 
-### Solution
+Async/Await is a syntax sugar on top of the `Future` and `async` and `await` keywords in Dart. It allows you to write asynchronous code that is easier to read and maintain. In essence, `async` and `await` allow you to write asynchronous code that looks and feels like synchronous code.
 
-To solve this problem, we can use the `FirebaseAuth` instance to check the current user and then navigate to the home screen if the user is already logged in.
+**The `_checkLoginStatus` Function**
 
-### Code Snippet
-
+Let's take a look at the `_checkLoginStatus` function, which is used to check the login status of a user:
 ```dart
 void _checkLoginStatus() async {
   logger.d("Checking login status...");
@@ -21,46 +20,28 @@ void _checkLoginStatus() async {
   }
 }
 ```
+In this function, we are using the `async` keyword to indicate that the function is asynchronous. The `async` keyword allows the function to return a `Future`, which is a handle to a value that may not be available yet.
 
-### Explanation
+**The `async` keyword**
 
-1.  **Get the Firebase Authentication Instance**: We start by getting an instance of the `FirebaseAuth` class, which is the primary class for interacting with Firebase Authentication.
+When a function is marked with the `async` keyword, it means that the function can return a `Future`. A `Future` is an object that represents a value that may not be available yet. It's like a promise that said value will be available at some point in the future.
 
-    ```dart
-    FirebaseAuth auth = FirebaseAuth.instance;
-    ```
+**The `await` keyword**
 
-2.  **Get the Current User**: We then use the `currentUser` property of the `FirebaseAuth` instance to get the current user.
+The `await` keyword is used to pause the execution of the function until the `Future` returned by the previous statement is resolved. In other words, `await` is used to wait for the `Future` to complete before continuing the execution of the function.
 
-    ```dart
-    User? user = auth.currentUser;
-    ```
+In our example, the `_checkLoginStatus` function uses the `await` keyword to wait for the `currentUser` property of the `FirebaseAuth` instance to be resolved. This property returns a `Future<User?>`, which we use the `await` keyword to pause the execution of the function until the `Future` is resolved.
 
-3.  **Check if the User is Null**: We check if the `user` is null or not. If the user is null, it means the user is not logged in.
+**How it works**
 
-    ```dart
-    if (user != null) {
-    ```
+Here's how the function works, step by step:
 
-4.  **Navigate to Home Screen**: If the user is not null, it means the user is already logged in. We then use the `Navigator` class to navigate to the home screen.
+1. The `_checkLoginStatus` function is called, which is marked with the `async` keyword.
+2. The function checks the `currentUser` property of the `FirebaseAuth` instance, which returns a `Future<User?>`.
+3. The `Future` is used with the `await` keyword to pause the execution of the function until the `Future` is resolved.
+4. When the `Future` is resolved, the function checks if the `User` object is not null. If it is not null, the function navigates to the home screen.
+5. If the `User` object is null (i.e., the user is not logged in), the function does nothing.
 
-    ```dart
-    Navigator.pushReplacementNamed(context, '/home_screen');
-    ```
+**Conclusion**
 
-### Example
-
-Let's say we have a login screen and after a successful login, we want to navigate to the home screen. We can call the `_checkLoginStatus` function after a successful login:
-
-```dart
-Future<void> login(String email, String password) async {
-  try {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-    _checkLoginStatus();
-  } catch (e) {
-    print(e);
-  }
-}
-```
-
-In this example, after a successful login, the `_checkLoginStatus` function will be called which will check if the user is already logged in. If the user is logged in, it will navigate to the home screen.
+In this article, we have explored the basics of Async/Await in Flutter, along with a small example to illustrate the concept. Async/Await is a powerful tool that allows us to write asynchronous code that is easier to read and maintain. By using `async` and `await` keywords, we can write code that is more readable and easier to reason about.

@@ -1,83 +1,73 @@
-**Showing a Permission Dialog in Flutter**
+**Handling Permissions in Flutter: A Step-by-Step Guide**
 
-### Showing a Permission Dialog
+In Flutter, requesting permissions is a necessary step to access devices' sensitive features such as SMS, phone, camera, or storage. In this article, we will explore the concept of handling permissions in Flutter and provide a step-by-step guide on how to request and check permissions.
 
-Here is the code to show a permission dialog in Flutter:
-```
-void _showPermissionDialog() {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Permissions Required'),
-        content: Text(
-            'SMS and Phone permissions are required to proceed. Please grant permissions in settings.'),
-        actions: [
-          TextButton(
-            child: Text('Open Settings'),
-            onPressed: () {
-              // Open device settings
-              openAppSettings();
-              Navigator.of(context).pop();
-            }
-          ),
-          TextButton(
-            child: Text('Cancel'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            }
-          ),
-        ],
-      );
-    }
-  );
-}
-```
-### Understanding the Code
+**Concepts**
 
-* The `showDialog` function is used to display a dialog on top of the current screen.
-* The `builder` property is used to define the content of the dialog.
-* The `AlertDialog` widget is used to create the dialog with a title, content, and actions.
-* The `title` property is used to set the title of the dialog.
-* The `content` property is used to set the content of the dialog.
-* The `actions` property is used to set the actions for the dialog.
-* The `TextButton` widget is used to create a button with a text label.
-* The `onPressed` property is used to define the callback function that is called when the button is pressed.
-* The `openAppSettings` function is used to open the device settings.
-* The `Navigator.of(context).pop()` function is used to dismiss the dialog.
+1. **Permission types**: There are several types of permissions in Flutter, including:
+	* ` permission.contacts`: Access to device's contacts.
+	* `permission.camera`: Access to device's camera.
+	* `permission.microphone`: Access to device's microphone.
+	* `permission.storage`: Access to device's storage.
+	* `permission.sms`: Access to device's SMS feature.
+	* `permission.phone`: Access to device's phone feature.
+2. **Permission status**: There are three possible permission statuses:
+	* `PermissionStatus.granted`: The permission is granted and can be used.
+	* `PermissionStatus.denied`: The permission is denied and cannot be used.
+	* `PermissionStatus.restricted`: The permission is restricted and can only be used in limited ways.
+3. **PermissionRequest**: A permission request is an object that represents a permission and its status.
 
-### Example
+**Requesting Permissions**
 
-Here is an example of how to use the `_showPermissionDialog` function:
-```
-void main() {
-  runApp(MyApp());
-}
+To request a permission, you can use the `permission_handler` package. Here's an example:
+```dart
+import 'package:permission_handler/permission_handler.dart';
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Permissions Example'),
-        ),
-        body: Center(
-          child: ElevatedButton(
-            child: Text('Show Permission Dialog'),
-            onPressed: () {
-              _showPermissionDialog();
-            }
-          ),
-        ),
-      ),
-    );
+void _requestPermission() {
+  PermissionStatus status = await Permission.sms.request();
+  if (status.isGranted) {
+    print('SMS permission granted');
+  } else if (status.isDenied) {
+    print('SMS permission denied');
+  } else {
+    print('SMS permission restricted');
   }
 }
 ```
-In this example, when the "Show Permission Dialog" button is pressed, the `_showPermissionDialog` function is called, which displays the permission dialog. The user can then choose to open the device settings or cancel the dialog.
+In this example, we request the `Permission.sms` permission and check its status using the `isGranted`, `isDenied`, or `isRestricted` properties.
+
+**Checking Permissions**
+
+To check if a permission is granted, you can use the `permission_handler` package. Here's an example:
+```dart
+import 'package:permission_handler/permission_handler.dart';
+
+void _checkPermission() {
+  PermissionStatus status = await Permission.sms.status;
+  if (status.isGranted) {
+    print('SMS permission granted');
+  } else if (status.isDenied) {
+    print('SMS permission denied');
+  } else {
+    print('SMS permission restricted');
+  }
+}
+```
+In this example, we check the current status of the `Permission.sms` permission using the `status` property.
+
+**Handling Denied Permissions**
+
+When a permission is denied, you may want to prompt the user to grant the permission. Here's an example:
+```dart
+void _handleDeniedPermission() {
+  if (await Permission.sms.status.isDenied) {
+    // Prompt the user to grant permission
+    await Permission.sms.request();
+  }
+}
+```
+In this example, we check if the `Permission.sms` permission is denied and prompt the user to grant it using the `request` method.
+
+**Conclusion**
+
+In this article, we have explored the concept of handling permissions in Flutter. We have discussed the different types of permissions, permission statuses, and how to request and check permissions. We have also provided examples of requesting and checking permissions, as well as handling denied permissions. By following these guidelines, you can ensure that your Flutter app requests and handles permissions correctly.

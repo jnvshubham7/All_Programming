@@ -1,59 +1,42 @@
-**Setting up Phone Autofill in Flutter**
+**Android Auto-Fill Support in Flutter**
 
-### `_setupPhoneAutoFill()` Method Explanation
+In this article, we will discuss how to integrate Android auto-fill support in a Flutter application. This feature allows users to autofill phone numbers and other information from their Android devices.
 
-The `_setupPhoneAutoFill()` method is responsible for setting up the phone autofill functionality in a Flutter app. Below are the key points and explanations for each section:
+**What is Android Auto-Fill?**
 
-**1. Adding OTPSmsListener**
+Android Auto-Fill is a feature introduced in Android 8.0 (API level 26) that allows apps to request and receive autofill information from the user's device. This information can include username, password, credit card numbers, and even phone numbers.
 
-* `otpsSmsListener = OTPSmsListener(_phoneController);`
-	+ This line adds an OTPSmsListener to the `_phoneController`. The OTPSmsListener is responsible for handling one-time password (OTP) SMS messages.
+**Implementing Android Auto-Fill in Flutter**
 
-**Example (Assuming a class named `MyController`):**
+To implement Android auto-fill support in a Flutter application, you need to create an instance of the `OTPSmsListener` class and set it up with a `TextEditingController`, which is used to get the text input.
 
+Here's an example code snippet:
 ```dart
-class MyController extends StatefulWidget {
-  @override
-  _MyControllerState createState() => _MyControllerState();
-}
-
-class _MyControllerState extends State<MyController> {
-  late OTPSmsListener otpSmsListener;
-
-  @override
-  void initState() {
-    super.initState();
-    otpSmsListener = OTPSmsListener(this);
+void _setupPhoneAutoFill() {
+  otpSmsListener = OTPSmsListener(_phoneController); // Add this line
+  if (defaultTargetPlatform == TargetPlatform.android) {
+    logger.d("Requesting all phone numbers for auto-fill");
+    const MethodChannel('plugins.flutter.io/auto_fill')
+        .invokeMethod('requestAllPhoneNumbers');
   }
 }
 ```
+In this code, we create an instance of the `OTPSmsListener` class and pass the `phoneController` to it. Then, we check if the default target platform is Android. If it is, we invoke the `requestAllPhoneNumbers` method on the `MethodChannel` to request all phone numbers for auto-fill.
 
-**2. Requesting All Phone Numbers for Auto-fill (Android Only)**
+**How does it work?**
 
-* `if (defaultTargetPlatform == TargetPlatform.android) { ... }`
-	+ This block of code checks if the app is running on an Android device.
-* `logger.d("Requesting all phone numbers for auto-fill");`
-	+ Logs a message indicating that the app is requesting all phone numbers for auto-fill.
-* `const MethodChannel('plugins.flutter.io/auto_fill').invokeMethod('requestAllPhoneNumbers');`
-	+ This line requests all phone numbers for auto-fill using the MethodChannel.
+When the user is prompted to auto-fill a phone number, they can choose from a list of phone numbers stored on their device. The `OTPSmsListener` class listens for OTP SMS messages and receives the auto-fill information from the device.
 
-**Android Code Example:**
+When the user selects a phone number from the list, the `OTPSmsListener` class notifies the app, and the app can then use this information to auto-fill the phone number field.
 
-```java
-if (BuildConfig.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-    OneTimeAutoFillClient client = new OneTimeAutoFillClient(context);
-    List<PhoneAccountHandle> handles = new ArrayList<>();
-    client.fillCreditCardHandles(handles, new OneTimeAutoFillClient.OnFillCreditCardHandlesCallback() {
-        @Override
-        public void onFillCreditCardHandles(List<PhoneAccountHandle> handles) {
-            // Handle auto-fill responses
-        }
-    });
-}
-```
+**Benefits of Android Auto-Fill**
 
-**Key Takeaways:**
+Android auto-fill support provides several benefits to users, including:
 
-* The `_setupPhoneAutoFill()` method sets up the phone autofill functionality in a Flutter app.
-* It adds an OTPSmsListener to the `_phoneController` to handle OTP SMS messages.
-* On Android devices, it requests all phone numbers for auto-fill using the MethodChannel.
+1. **Convenience**: Users can quickly and easily autofill phone numbers and other information without having to manually enter them.
+2. **Security**: By using the device's built-in storage and locking mechanisms, auto-fill information is more secure than storing it in the app itself.
+3. **Accessibility**: Auto-fill support helps users with disabilities by providing an easier way to enter information.
+
+**Conclusion**
+
+In this article, we have discussed how to implement Android auto-fill support in a Flutter application. By using the `OTPSmsListener` class and invoking the `requestAllPhoneNumbers` method, you can provide your users with a convenient and secure way to autofill phone numbers and other information.

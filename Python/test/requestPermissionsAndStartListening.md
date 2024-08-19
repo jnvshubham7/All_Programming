@@ -1,35 +1,15 @@
-**Common Permission Request in Android**
+**Requesting Permissions and Handling Results in Flutter**
 
-**Requesting Phone and SMS Permissions**
+In Flutter, when we need to access sensitive functionality like phone or SMS permissions, we need to request permission from the user. This is a standard practice in Android and iOS app development. In this article, we will explore how to request permissions and handle the results in Flutter.
 
-Here's an example of how to request phone and SMS permissions in an Android app using the `telephony` package:
+**The Concept**
 
-```
-Future<void> requestPermissionsAndStartListening() async {
-    final bool? result = await telephony.requestPhoneAndSmsPermissions;
-    if (result == null || !result) {
-      logger.e("Permissions not granted");
-    }
-}
-```
+In Flutter, we use the `permission_handler` package to request permissions. This package provides a simple way to request and handle permissions on both Android and iOS platforms. The `requestPhoneAndSmsPermissions` method is used to request permission to access phone and SMS functionality.
 
-**Explanation**
+**Example Code**
 
-* The `requestPhoneAndSmsPermissions` method is used to request permission to access the phone and SMS functionality on the device.
-* The method returns a `bool?` value, which is nullable because the user may choose to not grant the permission.
-* In the example code, we use an async/await syntax to wait for the permission request result.
-* If the result is `null`, it means the permission request was cancelled, in which case we log an error message. If the result is `false`, it means the user declined the permission, in which case we also log an error message.
-* If the result is `true`, it means the user granted the permission, in which case you can proceed with using the phone and SMS functionality.
-
-**Code**
-
-Here is the complete code snippet:
+Let's take a look at the example code:
 ```dart
-import 'package:logger/logger.dart';
-import 'package:telephony/telephony.dart';
-
-Logger logger = Logger();
-
 Future<void> requestPermissionsAndStartListening() async {
   final bool? result = await telephony.requestPhoneAndSmsPermissions;
   if (result == null || !result) {
@@ -37,17 +17,34 @@ Future<void> requestPermissionsAndStartListening() async {
   }
 }
 ```
+In this code, we define a method `requestPermissionsAndStartListening()` that asynchronously requests permission to access phone and SMS functionality using the `telephony` object from the `permission_handler` package. The `requestPhoneAndSmsPermissions` method returns a `Future` that resolves to a boolean value indicating whether the permission was granted or not.
 
-**Example Output**
+**Explanation**
 
-If the user grants the permission, the output will be:
+Here's what's happening in the code:
 
+1. We define the method `requestPermissionsAndStartListening()` that will request permission to access phone and SMS functionality.
+2. We use the `await` keyword to wait for the result of the `requestPhoneAndSmsPermissions` method, which returns a `Future` that resolves to a boolean value.
+3. We check if the result is null or false, which means the permission was not granted. In this case, we log an error message using the `logger` object.
+4. If the result is true, it means the permission was granted, and we can proceed with using the phone and SMS functionality.
+
+**Handling Permission Results**
+
+When the user grants or denies permission, the `requestPhoneAndSmsPermissions` method returns a boolean value indicating the result. We can use this value to handle the permission result.
+
+For example, if we want to perform an action only if the permission is granted, we can do so by using the result of the `requestPhoneAndSmsPermissions` method:
+```dart
+Future<void> requestPermissionsAndStartListening() async {
+  final bool? result = await telephony.requestPhoneAndSmsPermissions;
+  if (result == true) {
+    // Permission granted, proceed with using phone and SMS functionality
+  } else {
+    // Permission not granted, handle the error
+  }
+}
 ```
-2023-02-20 14:30:00.000 [INFO] Flutter: Permissions granted
-```
+In this example, we check if the result is true, and if so, we proceed with using the phone and SMS functionality. If the result is false, we handle the error.
 
-If the user declines the permission, the output will be:
+**Conclusion**
 
-```
-2023-02-20 14:30:00.000 [ERROR] Flutter: Permissions not granted
-```
+In this article, we explored how to request permissions and handle the results in Flutter using the `permission_handler` package. We learned how to request permission to access phone and SMS functionality and how to handle the result of the permission request. By following these steps, you can ensure that your Flutter app handles permission requests correctly and provides a smooth user experience.

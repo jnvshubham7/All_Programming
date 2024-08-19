@@ -1,64 +1,42 @@
-### Dismissing a Dialog with Pressed Button
+**Understandig the `ElevatedButton` widget and its properties in Flutter**
 
-When creating a dialog in Flutter, sometimes you might want to dismiss the dialog when a button is pressed. This can be achieved using the `Navigator.of(context).pop()` method.
+In Flutter, the `ElevatedButton` widget is a basic button component that can be used to perform various actions. In this article, we will explore the `ElevatedButton` widget and its properties, along with a detailed explanation and example code.
 
-Here's how to create a basic example:
+**What is the `ElevatedButton` widget?**
 
+The `ElevatedButton` widget is a material design button that raises up the button when pressed. It is used to trigger an action or perform a specific task. This widget is part of the `material` library in Flutter and is designed to conform to the Material Design guidelines.
+
+**Properties of the `ElevatedButton` widget**
+
+The `ElevatedButton` widget has several properties that can be used to customize its behavior and appearance. Some of the most commonly used properties are:
+
+* `child`: This property is used to specify the widget that will be displayed as the button's child. In our example, we are using a `Text` widget with the text "OK".
+* `onPressed`: This property is used to specify the callback function that will be executed when the button is pressed.
+
+**Example Code**
+
+Here is an example code snippet that uses the `ElevatedButton` widget:
+```dart
+ElevatedButton(
+  child: const Text('OK'),
+  onPressed: () {
+    Navigator.of(context).pop();
+  },
+)
 ```
-import 'package:flutter/material.dart';
+**Explanation**
 
-class DemoApp extends StatefulWidget {
-  @override
-  _DemoAppState createState() => _DemoAppState();
-}
+In this example, we are creating an `ElevatedButton` widget with the text "OK" as its child. The `onPressed` property is set to a callback function that will be executed when the button is pressed. This function uses the `Navigator` class to pop the current route from the navigator.
 
-class _DemoAppState extends State<DemoApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Dialog Demo'),
-        ),
-        body: Center(
-          child: ElevatedButton(
-            child: Text('Show Dialog'),
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  // create a dialog
-                  return AlertDialog(
-                    title: Text('Title'),
-                    content: Text('Content'),
-                    actions: [
-                      TextButton(
-                        child: Text('OK'),
-                        onPressed: () {
-                          // dismiss the dialog
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  );
-                },
-              );
-            },
-          ),
-        ),
-      ),
-    );
-  }
-}
-```
+**How the `ElevatedButton` widget works**
 
-In the above code:
+Here's a step-by-step breakdown of how the `ElevatedButton` widget works:
 
-*   We create a basic `MaterialApp` with an `ElevatedButton` in the `body` of the `Scaffold`.
-*   When the button is pressed, it shows a dialog using the `showDialog` method.
-*   The dialog has a `TextButton` inside the `actions` property.
-*   The `onPressed` property of the `TextButton` is used to call a function. In this case, we're calling `Navigator.of(context).pop()` to dismiss the dialog.
+1. When the button is pressed, the `onPressed` callback function is executed.
+2. The `onPressed` function is responsible for performing the desired action. In our example, this action is to pop the current route from the navigator.
+3. The `Navigator` class is used to manage the navigation process in a Flutter app. It provides a way to navigate between different routes or screens.
+4. When the button is pressed, the `Navigator` class pops the current route from the navigator, which causes the screen to change to the previous route.
 
-When you run the app and press the button, you'll see a dialog with an "OK" button. When you press the "OK" button, the dialog will be dismissed.
+**Conclusion**
 
-Note: The `Navigator.of(context).pop()` method will only work if you're currently in a `Navigator` context.
+In this article, we have explored the `ElevatedButton` widget and its properties in Flutter. We have also seen an example code snippet that uses the `ElevatedButton` widget to pop the current route from the navigator when pressed. Understanding the `ElevatedButton` widget and its properties is essential for building robust and user-friendly interfaces in Flutter.
