@@ -7,7 +7,7 @@ client = Groq(
 )
 
 # Define the directory containing the Markdown files
-input_directory = "D:\GitHub\All Notes\Data Structures"
+input_directory = "D:\GitHub\All Notes\Android_chatgpt"
 output_directory = "D:\\GitHub\\All Notes\\ChatGPT Notes1"
 
 # Ensure the output directory exists
