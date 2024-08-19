@@ -16,17 +16,12 @@ os.makedirs(renamed_directory, exist_ok=True)
 
 # Function to clean and extract the suggested file name
 def extract_filename(suggestion):
-    # Extract the first valid line that resembles a filename, ignoring common intro phrases
-    lines = suggestion.strip().splitlines()
-    for line in lines:
-        # Skip lines that start with intro phrases
-        if line.startswith(("Based on the content,", "I suggest", "A concise and valid", "Here's a concise and valid", "Here are")):
-            continue
-        # Remove any invalid characters and trim whitespace
-        cleaned_filename = re.sub(r'[\\/*?:"<>|]', "", line).strip()
-        if cleaned_filename:
-            # Replace spaces with underscores and append .md
-            return cleaned_filename.replace(" ", "_") + ".md"
+    # Extract the filename from the code or command formatted suggestion
+    match = re.search(r'`(.+?)`', suggestion)
+    if match:
+        cleaned_filename = match.group(1).strip()
+        # Remove any invalid characters and return as .md file
+        return re.sub(r'[\\/*?:"<>|]', "", cleaned_filename).replace(" ", "_") + ".md"
     return None  # Return None if no valid filename is found
 
 # Step 2: Read the newly created files and get suggestions for new filenames
@@ -38,11 +33,11 @@ for processed_filename in os.listdir(output_directory):
         with open(processed_filepath, 'r') as file:
             processed_content = file.read()
 
-        # Prepare the request to Groq for filename suggestions
+        # Prepare the request to Groq for filename suggestions in code format
         name_suggestion_message = [
             {
                 "role": "user",
-                "content": f"Based on the content below, suggest a concise and valid file name:\n\n{processed_content}",
+                "content": f"Based on the content below, suggest a concise and valid filename in the format of a code or command:\n\nContent:\n\n{processed_content}",
             }
         ]
 
