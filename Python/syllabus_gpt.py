@@ -7,7 +7,7 @@ client = Groq(
 )
 
 # Define the path to the input Markdown file
-input_file_path = r"D:\GitHub\All_Programming\Python\flutter_syllabus.md"
+input_file_path = r"D:\GitHub\All_Programming\Python\flutter\05_Forms_Gestures.md"
 output_directory = r"D:\GitHub\All Notes\ChatGPT Notes1"
 
 # Ensure the output directory exists
@@ -42,7 +42,7 @@ for line in lines:
             response_content = chat_completion.choices[0].message.content
 
             # Define the output file name based on the line content
-            output_filename = f"{line.strip()[:50].replace(' ', '_')}.md"
+            output_filename = f"{line.strip()[:50].replace(' ', ' ')}.md"
             output_file_path = os.path.join(output_directory, output_filename)
 
             # Write the response to the new file
