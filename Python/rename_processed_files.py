@@ -8,23 +8,26 @@ client = Groq(
 )
 
 # Define the directories
-output_directory = "D:\\GitHub\\All Notes\\ChatGPT Notes1"
-renamed_directory = "D:\\GitHub\\All Notes\\ChatGPT Renamed Notes"
+output_directory = r"D:\GitHub\All_Programming\Python\test"
+renamed_directory = r"D:\GitHub\All_Programming\Python\1"
 
 # Ensure the renamed directory exists
 os.makedirs(renamed_directory, exist_ok=True)
 
 # Function to clean and extract the suggested file name
 def extract_filename(suggestion):
-    # Extract first valid line that resembles a filename (ignoring common intro phrases)
+    # Extract the first valid line that resembles a filename, ignoring common intro phrases
     lines = suggestion.strip().splitlines()
     for line in lines:
-        # Check if the line contains a valid filename structure and doesn't start with generic phrases
-        if not line.startswith(("Based on the content,", "I suggest", "A concise and valid")):
-            cleaned_filename = re.sub(r'[\\/*?:"<>|]', "", line).strip()
-            if cleaned_filename:  # Ensure it's not empty
-                return cleaned_filename.replace(" ", "_") + ".md"
-    return None  # Fallback if no valid filename is found
+        # Skip lines that start with intro phrases
+        if line.startswith(("Based on the content,", "I suggest", "A concise and valid", "Here's a concise and valid", "Here are")):
+            continue
+        # Remove any invalid characters and trim whitespace
+        cleaned_filename = re.sub(r'[\\/*?:"<>|]', "", line).strip()
+        if cleaned_filename:
+            # Replace spaces with underscores and append .md
+            return cleaned_filename.replace(" ", "_") + ".md"
+    return None  # Return None if no valid filename is found
 
 # Step 2: Read the newly created files and get suggestions for new filenames
 for processed_filename in os.listdir(output_directory):
@@ -35,31 +38,31 @@ for processed_filename in os.listdir(output_directory):
         with open(processed_filepath, 'r') as file:
             processed_content = file.read()
 
-        # Ask Groq for a file name suggestion based on the entire content
+        # Prepare the request to Groq for filename suggestions
         name_suggestion_message = [
             {
                 "role": "user",
-                "content": f"Based on the content below, suggest a concise and valid file name:\n\nContent:\n\n{processed_content}",
+                "content": f"Based on the content below, suggest a concise and valid file name:\n\n{processed_content}",
             }
         ]
 
         try:
+            # Request a filename suggestion from Groq
             name_suggestion_completion = client.chat.completions.create(
                 messages=name_suggestion_message,
                 model="llama3-8b-8192",
             )
 
-            # Get the suggested file name from the response
+            # Extract and clean the suggested filename
             suggested_name_raw = name_suggestion_completion.choices[0].message.content
             suggested_name = extract_filename(suggested_name_raw)
 
             if suggested_name:
-                # Define the new file path
+                # Define the new file path with the suggested name
                 renamed_file_path = os.path.join(renamed_directory, suggested_name)
 
-                # Rename the file with the cleaned suggested name
+                # Rename the file with the suggested name
                 os.rename(processed_filepath, renamed_file_path)
-
                 print(f"File {processed_filename} renamed to {suggested_name}")
             else:
                 print(f"No valid filename could be extracted for {processed_filename}")
