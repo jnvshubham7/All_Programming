@@ -7,8 +7,8 @@ client = Groq(
 )
 
 # Define the path to the input Markdown file
-input_file_path = r"D:\GitHub\All_Programming\Python\flutter\01_Basics.md"
-output_directory = r"D:\GitHub\All Notes\ChatGPT Notes1"
+input_file_path = r"D:\GitHub\All_Programming\Python\flutter_syllabus.md"
+output_directory = r"D:\GitHub\All_Programming\Python\1"
 
 # Ensure the output directory exists
 os.makedirs(output_directory, exist_ok=True)
