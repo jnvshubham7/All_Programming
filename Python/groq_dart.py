@@ -15,7 +15,7 @@ output_directory = r"D:\GitHub\All_Programming\Python\test"  # Output directory 
 os.makedirs(output_directory, exist_ok=True)
 
 # Prompt for Groq processing
-prompt = "rewrite in article in point-wise format with code and example. No introduction, start directly with headings and detailed explanations."
+prompt = "write article with code and example with detail explanation(all concepts are in flutter )(not exaplin my code just explain the concept and take small examples )"
 
 # Function to extract all Dart functions from the file content
 def extract_functions(content):
