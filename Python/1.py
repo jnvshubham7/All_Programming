@@ -11,24 +11,8 @@ files = sorted([f for f in os.listdir(directory) if f.endswith(".md")])
 for filename in files:
     old_path = os.path.join(directory, filename)
     
-    # Perform replacements and capitalization
-    new_filename = (
-        filename.replace(".dart.", ".")
-        .replace(".java.", ".")
-        .replace(".pdf.", ".")
-        .replace(".gradle.", ".")
-        .replace(".sh.", ".")
-        .replace("_", " ")
-        .replace("-", " ")
-        .replace(".md.", ".")
-        .replace(".txt.", ".")
-        .replace(".xml.", ".")
-        # .title()
-        .replace(".Md", ".md")
-    )
-    
-    # Add spaces before capital letters
-    new_filename = re.sub(r'(?<!^)(?=[A-Z])', ' ', new_filename)
+    # Remove spaces before capital letters
+    new_filename = re.sub(r' ', '', filename)
     
     new_path = os.path.join(directory, new_filename)
     

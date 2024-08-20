@@ -13,23 +13,12 @@ for filename in files:
     
     # Perform replacements and capitalization
     new_filename = (
-        filename.replace(".dart.", ".")
-        .replace(".java.", ".")
-        .replace(".pdf.", ".")
-        .replace(".gradle.", ".")
-        .replace(".sh.", ".")
-        .replace("_", " ")
-        .replace("-", " ")
-        .replace(".md.", ".")
-        .replace(".txt.", ".")
-        .replace(".xml.", ".")
-        # .title()
+        filename
+        .title()
         .replace(".Md", ".md")
     )
     
-    # Add spaces before capital letters
-    new_filename = re.sub(r'(?<!^)(?=[A-Z])', ' ', new_filename)
-    
+  
     new_path = os.path.join(directory, new_filename)
     
     # Add a suffix if the new file name already exists
