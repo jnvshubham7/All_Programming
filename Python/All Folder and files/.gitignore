@@ -1,7 +1,0 @@
-myenv
-build
-.idea
-.vscode
-dist
-env
-serviceAccountKey.json
