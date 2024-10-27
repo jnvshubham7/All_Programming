@@ -3,42 +3,17 @@ using namespace std;
 
 int main(){
 
+   int x = 10;
+int* ptr = &x;
 
-    cout<<"number :"<<" "<<endl;
-    
+// Access the value of x through ptr
+cout << *ptr << endl;  // Output: 10
+cout << ptr << endl;   // Output: Address of x
 
-    int n;
-    cin>>n;
-
-    vector<int> arr(n);
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-
-    }
-
-    
-
-    // sort(arr.begin(),arr.end());
-
-
-    // cout<<arr[0]; 
-
-    // int temp=INT_MAX;
-
-    // for(int i=0;i<n;i++)
-    // {
-    //     if(arr[i]<temp)
-    //     {
-    //         temp=arr[i];
-
-    //     }
-    // }
-
-
-    // cout<<temp<<endl;
-
-
-
+// Modify the value of x through ptr
+*ptr = 20;
+cout << x << endl;  // Output: 20
+cout << ptr << endl;  // Output: 20
 
 
     return 0;
